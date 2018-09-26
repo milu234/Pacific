@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/assignmentinfo.css">
+	<title>Pacific | AssignmentInfo</title>
+</head>
+<body>
+
+<div class="container">
+	<form>
+	 <label for="subject">Assignment 1</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+	</form>
+</div>
+
+<script>
+SEC_HTTPS = true;
+SEC_BASE = "compilers.widgets.sphere-engine.com"; 
+(function(d, s, id){ SEC = window.SEC || (window.SEC = []);
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; 
+  js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);   
+}(document, "script", "sphere-engine-compilers-jssdk"));
+</script>
+
+<div class="sec-widget" data-widget="e3d5627b55668a242d472ad134681e63"></div>
+</body>
+</html>
