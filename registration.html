@@ -7,7 +7,7 @@
 <body>
 	<button onclick="document.getElementById('id1').style.display='block'" style="width: auto;" >Sign Up</button>
 	<div id="id1" class="modal" >
-		<span onclick="document.getElementById('id1').style.display='none'" class="close" title="Close Modal">&times;</span><form class="modal-content"  action="php/registration.php" method="POST" onsubmit="validate()"> 
+		<span onclick="document.getElementById('id1').style.display='none'" class="close" title="Close Modal">&times;</span><form class="modal-content"  action="php/registration.php" method="POST" onsubmit="return validate()" style="border-radius: 25px;width: 70%;"> 
 			<div class="container">
 				<h1>Register</h1>
 				<p>Get Yourself register</p>
@@ -15,12 +15,12 @@
 
 				 <!-- email -->
 				<label for="email"><b>Email</b></label>
-				<input type="text" placeholder="Enter your Email"  name="email" required>       
+				<input type="text" placeholder="Enter your Email"  name="email" id="email" required >       
 
 
 				<!-- password -->
 				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter your Password" id="pass" name="psw" required>
+				<input type="password" placeholder="Enter your Password" id="pass" name="psw" required >
 
 
 				<!-- confirm password -->
@@ -40,6 +40,7 @@
 						<option value="D15">D15</option>
 						<option value="D20">D20</option>
 						<option value="Teaching Staff">Teaching Staff</option>
+						<option value="Teaching Staff">Non - Teaching Staff</option>
 					</select>
 				
 				<br><br><br><br>
@@ -72,6 +73,31 @@
 				modal.style.display = "none";
 			} 
 		}
+
+		function validate(){
+			var password = document.getElementById('pass').value;
+			var conf_password = document.getElementById('conf_pass').value;
+			var email = document.getElementById('email').value;
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+			if(password!=conf_password){
+				alert("Password Not Matched");
+				return false;
+			}
+
+
+			if(email.match(mailformat)){
+				
+				return true;
+			} else{
+				alert("Email Id is not valid...");
+				return false;
+			}
+
+			return true;
+		}
+
+
 
 
 	</script>

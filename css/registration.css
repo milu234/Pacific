@@ -58,6 +58,7 @@ button:hover{
 /*Add padding elements to the conatainer*/
 .container{
 	padding: 16px;
+  border-radius: 50%;
 }
 
 /*The Modal background*/
