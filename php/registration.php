@@ -17,7 +17,7 @@
 		$user = $_POST['email'];
 		$pass = $_POST['psw'];
 		$conf_pass = $_POST['confpsw'];
-		$radio = $_POST['radio'];
+		$radio = $_POST['radio']; // user role
 		$class = $_POST['class_name'];
 
 		$query = "Insert into users(email, password, role, class) values('".$user."', '".$pass."','".$radio."', '".$class."');";
