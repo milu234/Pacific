@@ -15,7 +15,7 @@
    include('../layouts/nav.php') ?>
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="index.html">
+      <form class="modal-content" action="php/create_projects.php" method="POST" >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Project</h5>
@@ -44,7 +44,7 @@
                   <label for = "projectstatus"><b>Project Status</b></label>
                </div>
                <div class="col-eight">
-                  <input type="range" min="1" max="100" value="50" class="slider" id="MyRange">
+                  <input type="range" min="1" max="100" value="50" class="slider" id="MyRange" name="range" >
                   <p>Project Completion Status - <span id="demo"></span>%</p>
                </div>
             </div>
@@ -58,9 +58,24 @@
                </div>
             </div>
             
+
+                    <div class="formrow">
+               <div class="col-three">
+                  <label for = "githubusername"><b>Github Username</b></label>
+               </div>
+               <div class="col-eight">
+                  <input type="text" placeholder="Enter the  Github username" name="githubusername" > 
+               </div>
+            </div>
+
+
+
+
+
+
             <div class="formrow clearfix" style="justify-content: center;">
                <div class="col-six" style="text-align: center;">
-                  <button type="submit" class="signupbtn">Save</button>
+                  <button type="submit" class="signupbtn" name="save" >Save</button>
                </div>
                <div class="col-six" style="text-align: center;">
                   <button onclick="document.getElementById('id2').style.display='none'" class="cancelbtn">Cancel</button>

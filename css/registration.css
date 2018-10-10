@@ -12,9 +12,7 @@ input[type = text], input[type = password]{
 	background: #f1f1f1;
 }
 
-input[type = radio]{
 
-}
 
 /*Add a background colour whwn the inputs get focussed */
 
@@ -211,7 +209,7 @@ hr{
 select {
 
   /* styling */
-  width: 100%
+  width: 100%;
   background-color: white;
   border: thin solid blue;
   border-radius: 4px;
