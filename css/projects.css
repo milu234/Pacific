@@ -322,6 +322,7 @@ select.round:focus {
 
 .formrow{
   width : 100%;
+  padding-right: 2%;
   float: center;
   align-items: center;
 }
@@ -359,6 +360,12 @@ h4{
 }
 a{
 	text-decoration-line: none;
+}
+
+@media screen and (max-width: 1600px){
+  .modal{
+    padding :2% 5%;
+  }
 }
 
 @media screen and (max-width: 768px){

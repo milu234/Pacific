@@ -3,13 +3,16 @@
 <head>
 	<title>Assignment Dashboard</title>
 	<meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/projects.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/projects.css">
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
 </head>
 
 <body id="top">
-   <?php include('layouts/nav.php') ?>
+   <?php
+   $active="assignments";
+    include('../layouts/nav.php') ?>
 
    <div id="id2" class="modal">
       <form class="modal-content" action="index.html">
@@ -20,7 +23,7 @@
 
             <!-- Name of the assignment -->
             <div class="row">
-               <div class="col-three">
+               <div class="col-four">
                   <label for = "nameoftheassignment"><b>Name of the Assignment</b></label>
                </div>
                <div class="col-eight">
@@ -28,7 +31,7 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-three">
+               <div class="col-four">
                   <label for = "marksallotedtotheassignment"><b>Description</b></label>
                </div>
                <div class="col-eight">
@@ -36,7 +39,7 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-three">
+               <div class="col-four">
                   <label for = "selectclass"><b>Select Class</b></label>
                </div>
                <div class="col-eight">
@@ -51,7 +54,7 @@
             </div>
             <br>
             <div class="row">
-               <div class="col-three">
+               <div class="col-four">
                   <label for = "assignmenttype"><b>Assignment Type</b></label>
                </div>
                <div class="col-eight">
@@ -64,7 +67,7 @@
             </div>
             <br>
             <div class="row">
-               <div class="col-three">
+               <div class="col-four">
                   <label for ="deadline">Deadline</label>
                </div>
                <div class="col-eight"></div>
@@ -94,38 +97,49 @@
    		<div class="row">
    			<div class="col-twelve">
                   <div class="container">
-                     <h5 class="add">Assignments</h5>                 
+                     <h5 class="add">Assignments Evaluated</h5>                 
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
-                           <th>Evaluation Status</th>
                         </tr>
                         <tr>
-                           <td><a href="assignment_details.php"><h4>Assignment 1</h4></a></td>
-                           <td class="score">Checked</td>
+                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
                         </tr>
                         <tr>
-                           <td><a href="assignment_details.php"><h4>Assignment 2</h4></a></td>
-                           <td class="score">Not Checked</td>
+                           <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
                         </tr>
                         <tr>
-                           <td><a href="assignment_details.php"><h4>Assignment 3</h4></a></td>
-                           <td class="score">Not Checked</td>
+                           <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
                         </tr>
                      </table>
                   </div>
-         </div>
+            </div>
    		</div>
    		<div class="row">
-   			<div class="col-seven">
-   			</div>
-   			
-   			<!-- <div class="col-three"></div> -->
-   		</div>
+            <div class="col-twelve">
+                  <div class="container">
+                     <h5 class="add">Assignments Not Evaluated</h5>                 
+                     <table class="table-common">
+                        <tr>
+                           <th>Title</th>
+                        </tr>
+                        <tr>
+                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
+                        </tr>
+                        <tr>
+                           <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
+                        </tr>
+                        <tr>
+                           <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
+                        </tr>
+                     </table>
+                  </div>
+            </div>
+         </div>
    </section>
 	
-   
-	<?php include('layouts/footer.php') ?>
+   <div class="clearfix"></div>
+	<?php include('../layouts/footer.php') ?>
    <script >
 
 
@@ -151,8 +165,8 @@ window.onclick = function(event) {
        }
       
    </script> 
-   <script src="js/jquery-1.11.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
+   <script src="../js/jquery-1.11.3.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
 </body>
 </html>
