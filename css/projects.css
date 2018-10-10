@@ -1,6 +1,24 @@
 @import url("index.css");
 
-* {box-sizing: border-box;}
+body{
+	background-color: #dbdde0 !important;
+}
+
+.stats{
+	height : 100%;
+	position: relative;
+	margin-top: 100px;
+	z-index: 100;
+}
+
+header{
+	position: fixed !important;
+    background: #14171c !important;
+    top: 0 !important;
+}
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
 
 /*Full width input fields*/
 
@@ -8,13 +26,11 @@ input[type = text], input[type = password]{
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0 22px 0;
+	display: inline-block;
 	border:none;
 	background: #f1f1f1;
 }
 
-input[type = radio]{
-
-}
 
 /*Add a background colour whwn the inputs get focussed */
 
@@ -26,66 +42,52 @@ input[type=password]:focus{
 
 /*Set a style for all the buttons*/
 
-.formrow button{
+button{
 	background-color: #4CAF50;
 	color: white;
 	padding: 14px 20px;
-	margin:8px 10%;
+	margin:8px 0;
 	border: none;
 	cursor: pointer;
-	opacity: 0.9;
-  border-radius: 10px;
+	width: 100%;
+	opacity: 0.9
 
 }
 
 button:hover{
 	opacity: 1
 }
-label{
-  padding-right : 20px;
-  display: inline-block;
-}
+
 /*Extra styles for cancel button*/
 
 .cancelbtn{
 	padding: 14px 20px;
-	background-color: #f44336 !important;
+	background-color: #f44336;
 }
 
-.formrow{
-  width : 100%;
-  float: center;
-  align-items: center;
-}
-.formrow:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 /*Float cancel and signup buttons and add an equa width*/
 .cancelbtn, .signupbtn{
-	float: center;
+	float: left;
 	width: 50%;
 }
 
-/*Add padding elements to the container*/
+/*Add padding elements to the conatainer*/
 .container{
 	padding: 16px;
-  padding-top: 5px !important;
 }
 
 /*The Modal background*/
 .modal{
 	display: none; /*hidden by default*/
+	top:0;
+	padding: 5% 15%;
 	position: fixed;/*stau in the plave*/
 	z-index: 800;/*sit on the tip*/
 	width: 100%; /*full wigth*/
 	height: 100%; /*full height*/
-  left :0;
-  padding: 5% 20%;
 	overflow:hidden; /* enable sbroll id possinbe*/
 	background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  	background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 
 /*modal coneyent box*/
@@ -94,9 +96,8 @@ label{
 	background-color: #171b23;
 	margin: 0 auto 15% auto; /*5%fron the yop ans 15# from  yje bottom and the middle */
 	border:1px solid #888;
-  border-radius: 30px;
+	border-radius: 30px;
 	width: 80%; /*Could be more or less depending on the screen sizee*/
-  color: #FFFFFF;
 }
 
 /*style the horizontal ruler*/
@@ -107,7 +108,8 @@ hr{
 }
 
 
-/* The Close Button */
+/*The Close button*/
+
 .close {
     color: #aaaaaa;
     padding-top: 15px;
@@ -143,8 +145,7 @@ hr{
 /*******************************************Radio button****************************/
 
 .container-radio {
-    padding-right: 20%;
-    padding-left: 20%;
+    display: block;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
@@ -211,7 +212,6 @@ hr{
 select {
 
   /* styling */
-  width: 100%;
   background-color: white;
   border: thin solid blue;
   border-radius: 4px;
@@ -264,6 +264,102 @@ select.round:focus {
   border-color: green;
   outline: 0;
 }
+/* 00000000000000000000000000000000000slider000000000000000000000000000000000000000000000 */
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* appearance: none; */
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background:  #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url('contrasticon.png');
+  cursor: pointer;
+}
+
+.formrow button{
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin:8px 10%;
+	border: none;
+	cursor: pointer;
+	opacity: 0.9;
+  border-radius: 10px;
+
+}
+
+.cancelbtn{
+	padding: 14px 20px;
+	background-color: #f44336 !important;
+}
+
+.formrow{
+  width : 100%;
+  float: center;
+  align-items: center;
+}
+.formrow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*Float cancel and signup buttons and add an equa width*/
+.cancelbtn, .signupbtn{
+	float: center;
+	width: 50%;
+}
+
+.score{
+	text-align: center;
+	font-size: 2rem;
+	color:#8e8b87;
+}
+
+.basic-stats-child{
+	height: 122px;
+	width:33%;
+	float: left;
+}
+.add {
+    background: #24b3ab;
+    color: white;
+    padding: 20px;
+}
+
+h4{
+	text-align: center;
+	color: #05bca9 !important;
+}
+a{
+	text-decoration-line: none;
+}
 
 @media screen and (max-width: 768px){
   .modal{
@@ -280,3 +376,96 @@ select.round:focus {
     width : 90%;
   }
 }
+
+@media only screen and (min-width: 770px){
+  nav{
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 770px){
+  nav{
+    float: right;
+  }
+}
+
+/*progress-bar css*/
+.progress-bar {
+    background-color: #1a1a1a;
+    height: 25px;
+    padding: 5px;
+    width: 80%;
+    margin: 50px 0;         
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;           
+}
+
+.progress-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 3px;
+    padding-top: 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    transition: width .4s ease-in-out;    
+}
+
+.blue span {
+    background-color: #34c2e3;   
+}
+
+.orange span {
+      background-color: #fecf23;
+      background-image: linear-gradient(top, #fecf23, #fd9215);  
+}   
+
+.green span {
+      background-color: #a5df41;
+      background-image: linear-gradient(top, #a5df41, #4ca916);  
+}
+
+.stripes span {
+    background-size: 30px 30px;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+                        transparent 75%, transparent);            
+    
+    animation: animate-stripes 3s linear infinite;             
+}
+
+@keyframes animate-stripes {
+    0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+
+.shine span {
+    position: relative;
+}
+
+.shine span::after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    border-radius: 3px;
+    animation: animate-shine 2s ease-out infinite;             
+}
+
+@keyframes animate-shine {
+    0% {opacity: 0; width: 0;}
+    50% {opacity: .5;}
+    100% {opacity: 0; width: 95%;}
+}
+
+.glow span {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;    
+    animation: animate-glow 1s ease-out infinite;          
+}
+
+@keyframes animate-glow {
+ 0% { box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;} 
+ 50% { box-shadow: 0 5px 5px rgba(255, 255, 255, .3) inset, 0 -5px 5px rgba(255, 255, 255, .3) inset;} 
+ 100% { box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;}
+ }
