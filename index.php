@@ -59,7 +59,7 @@
 
 <div id="id1" class="modal">
       <form class="modal-content"  action="index.html" >
-      <span class="close">&times;</span> 
+      <span id="span1" class="close">&times;</span> 
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Register</h5>
             <hr>
@@ -130,7 +130,7 @@
 
    <div id="id2" class="modal">
       <form class="modal-content"  action="index.html" >
-         <span class="close">&times;</span> 
+         <span id="span2" class="close">&times;</span> 
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Login</h5>
             <hr>
@@ -370,22 +370,23 @@
       //Get the modal
       var modal1 = document.getElementById('id1');
       var modal2 = document.getElementById('id2');
-      var span1 = document.getElementsByClassName("close")[0];
-      var span2 = document.getElementsByClassName("close")[1];
+      var span1 = document.getElementById("span1");
+      var span2 = document.getElementById("span2");
 
       //When the users click anywhere outside the modal
       span1.onclick = function() {
-         modal.style.display = "none";
+         modal1.style.display = "none"; 
       }
       span2.onclick = function() {
-         document.getElementById('id2').style.display="none";
+         document.getElementById('id2').style.display='none';
+         console.log("done");
       }
       window.onclick = function(event) {
          if (event.target == modal1){
-            modal.style.display = "none";          
+            modal1.style.display = "none";          
          }
          if (event.target == modal2){
-            document.getElementById('id2').style.display='none';          
+            modal2.style.display='none';          
          }          
          // body...
       }
