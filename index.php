@@ -1,5 +1,14 @@
 <!DOCTYPE html>
+<?php
+   session_start();
+   if(isset($_SESSION['user']))
+      $user = unserialize($_SESSION['user']);
 
+   if(isset($_SESSION['err'])){
+      echo "<script>alert('".$_SESSION['err']."');</script>";
+      unset($_SESSION['err']);
+   }
+?>
 <head>
 
    <!--- basic page needs
@@ -18,7 +27,31 @@
    <link rel="stylesheet" href="css/index.css">  
    <link rel="stylesheet" href="css/landing.css">
    <link rel="stylesheet" href="css/registration.css">
-
+   <style>
+   #notif-box{
+      /*position is fixed so that the notif box appears anywhere in the window*/
+      position:fixed;
+      width:200px;
+      height: 90px;
+      top:50px;
+      left:-400px;
+      opacity: 0;
+      transition:opacity ease-in-out 1000ms, left ease-in-out 1000ms;
+      background-color: green;
+      color:white;
+      border-radius: 4px;
+      font-family: Arial;
+   }
+   #notif-close{
+      cursor: pointer;
+      float:right;
+      margin-right: 5px;
+      margin-top: 2px;
+   }
+   #notif-box-content{
+      margin:7px;
+   }
+   </style>
    <!-- script
    ================================================== -->
 
@@ -29,7 +62,10 @@
 </head>
 
 <body id="top">
-
+<div id="notif-box">
+   <span id="notif-close" onclick="closeNotif()" style="float:right;margin:5px 5px 0 0">&times;</span>
+   <p id="notif-box-content"></p>
+</div>
 	<!-- header 
    ================================================== -->
    <header>
@@ -46,8 +82,13 @@
 					<li><a class="smoothscroll"  href="#process" title="">Process</a></li>
 					<li><a class="smoothscroll"  href="#about" title="">About Us</a></li>
 					<li><a class="smoothscroll"  href="#features" title="">Features</a></li>
-					<li class="highlight with-sep"><a onclick="login()" href="#">Login</a></li>				
-					<li class="highlight"><a onclick="signup()" href="#">Sign Up</a></li>					
+					
+               <?php if(!isset($_SESSION['user'])) {?>
+                  <li class="highlight with-sep"><a onclick="login()" href="#">Login</a></li>				
+   					<li class="highlight"><a onclick="signup()" href="#">Sign Up</a></li>	
+               <?php } else {?>
+                  <li class="highlight"><a href="php/logout.php">Logout</a></li>
+               <?php }?>
 				</ul>
 			</nav>
 
@@ -78,20 +119,20 @@
             <div class="formrow">
                <div class="col-three"><label for="category"><b>I am a</b></label></div>
                <div class="col-nine">
-                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value="1" ><span class="checkmark"></label>
-                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value="2" ><span class="checkmark"></label>
+                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value="student" ><span class="checkmark"></label>
+                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value="staff" ><span class="checkmark"></label>
                </div>              
             </div>
             <div class="formrow">
                <div class="col-three"><label for="email"><b>Select Class</b></label></div>
                <div class="col-nine">
-                  <select class="round" name = "class_name" >
-                     <option value="0">Select Class</option>
-                     <option value="1">D5</option>
-                     <option value="2">D10</option>
-                     <option value="3">D15</option>
-                     <option value="4">D20</option>
-                     <option value="5">Teaching Staff</option>
+                  <select class="round" name = "class_name" required="">
+                     <option value="0" disabled>Select Class</option>
+                     <option value="D5">D5</option>
+                     <option value="D10">D10</option>
+                     <option value="D15">D15</option>
+                     <option value="D20">D20</option>
+                     <option value="Teaching staff">Teaching Staff</option>
                   </select>
                </div>              
             </div>
@@ -129,7 +170,7 @@
    </div>
 
    <div id="id2" class="modal">
-      <form class="modal-content"  action="index.html" >
+      <form class="modal-content" method="post" action="php/login.php" >
          <span id="span2" class="close">&times;</span> 
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Login</h5>
@@ -417,12 +458,24 @@
 			
 			return true;
 		}
-
-
-      
-
    </script>
-
+   <script type="text/javascript">
+      var status = "<?php echo $_SESSION['login_success']; ?>";
+      function closeNotif() {
+         document.getElementById('notif-box').style.opacity = 0;
+         document.getElementById('notif-box').style.left = "-400px"
+      }
+      function showNotif(){
+         document.getElementById('notif-box').style.backgroundColor = "<?php echo $_SESSION['notif-box-color']; ?>";
+         document.getElementById('notif-box-content').innerHTML = "<?php echo $_SESSION['notif-box-message']?>";
+         document.getElementById('notif-box').style.opacity = 1;
+         document.getElementById('notif-box').style.left = "10px";
+      }
+      if(status == "1"){
+         setTimeout(showNotif, 500);
+         setTimeout(closeNotif, 5000);
+      }
+   </script>
    <!-- Java Script
    ================================================== --> 
    <script src="js/jquery-1.11.3.min.js"></script>

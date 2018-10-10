@@ -20,19 +20,24 @@
 		$radio = $_POST['radio']; // user role
 		$class = $_POST['class_name'];
 
-		$query = "Insert into users(email, password, role_id, class_id) values('".$user."', '".$pass."','".$radio."', '".$class."');";
+		// get the class id and role id from the database and use them in the query
+		include 'includes/utils.php';
+		$role_id = getRoleId($radio);
+		$class_id = getClasId($class);
+
+		$query = "Insert into users(email, password, role_id, class_id) values('".$user."', '".$pass."',".$role_id.", ".$class_id.");";
 		$result = mysqli_query($conn, $query);
-		
 		if($result){
 			include 'includes/User.php';
 			$query = "Select user_id from users where email='".$user."'";
 			$result1 = mysqli_query($conn, $query);
-			if($result1){
-				$id = $result1;
+			if(mysqli_num_rows($result1) > 0){
+				// get the user id from the database after insertion
+				$id = mysqli_fetch_assoc($result1)['user_id'];
 				$user_obj = new User($id, $user, $radio, $class);
-				$_SESSION['user'] = $user_obj;
+				$_SESSION['user'] = serialize($user_obj);
+				header("location:http://localhost/Pacific/");
 			}
-			header("location:http://localhost/Pacific/");
 		}
 	}
 
