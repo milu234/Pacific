@@ -58,40 +58,40 @@
    </header> <!-- /header -->       
 
 <div id="id1" class="modal">
-      <form class="modal-content"  action="index.html" >
+      <form class="modal-content"  action="php/registration.php" method = "POST" onsubmit = "return validate()" >
       <span id="span1" class="close">&times;</span> 
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Register</h5>
             <hr>
             <div class="formrow">
                <div class="col-three"><label for="email"><b>Email</b></label></div>
-               <div class="col-nine"><input type="text" placeholder="Enter your Email"  name="email" required></div>           
+               <div class="col-nine"><input type="text" placeholder="Enter your Email"  name="email" id="email"  required></div>           
             </div>
             <div class="formrow">
                <div class="col-three"><label for="psw"><b>Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password"  name="psw" required></div>              
+               <div class="col-nine"><input type="password" placeholder="Enter your Password"  name="psw" id="pass" required></div>              
             </div>
             <div class="formrow">
                <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" required></div>            
+               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
             </div>
             <div class="formrow">
                <div class="col-three"><label for="category"><b>I am a</b></label></div>
                <div class="col-nine">
-                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value="1"><span class="checkmark"></label>
-                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio"><span class="checkmark" value="2"></label>
+                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value=1 ><span class="checkmark"></label>
+                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value=2 ><span class="checkmark"></label>
                </div>              
             </div>
             <div class="formrow">
                <div class="col-three"><label for="email"><b>Select Class</b></label></div>
                <div class="col-nine">
-                  <select class="round">
+                  <select class="round" name = "class_name" >
                      <option value="0">Select Class</option>
-                     <option value="1">D5</option>
-                     <option value="2">D10</option>
-                     <option value="3">D15</option>
-                     <option value="4">D20</option>
-                     <option value="5">Teaching Staff</option>
+                     <option value="D5">D5</option>
+                     <option value="D10">D10</option>
+                     <option value="D15">D15</option>
+                     <option value="D20">D20</option>
+                     <option value="Teaching Staff">Teaching Staff</option>
                   </select>
                </div>              
             </div>
@@ -389,7 +389,37 @@
             modal2.style.display='none';          
          }          
          // body...
-      }
+
+        }
+        //  =======================Form validation==========================================
+
+  function validate(){
+			var password = document.getElementById('pass').value;
+			var conf_password = document.getElementById('conf_pass').value;
+			var email = document.getElementById('email').value;
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      
+
+    // ============================Email not valid====================
+
+    if(email.match(mailformat)){
+				
+				return true;
+			} else{
+				alert("Email Id is not valid...");
+				return false;
+			}
+
+			if(password!=conf_password){
+				alert("Password Not Matched");
+				return false;
+			}
+			
+			return true;
+		}
+
+
+      
 
    </script>
 
