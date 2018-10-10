@@ -78,8 +78,8 @@
             <div class="formrow">
                <div class="col-three"><label for="category"><b>I am a</b></label></div>
                <div class="col-nine">
-                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value=1 ><span class="checkmark"></label>
-                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value=2 ><span class="checkmark"></label>
+                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value="1" ><span class="checkmark"></label>
+                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value="2" ><span class="checkmark"></label>
                </div>              
             </div>
             <div class="formrow">
@@ -87,11 +87,11 @@
                <div class="col-nine">
                   <select class="round" name = "class_name" >
                      <option value="0">Select Class</option>
-                     <option value="D5">D5</option>
-                     <option value="D10">D10</option>
-                     <option value="D15">D15</option>
-                     <option value="D20">D20</option>
-                     <option value="Teaching Staff">Teaching Staff</option>
+                     <option value="1">D5</option>
+                     <option value="2">D10</option>
+                     <option value="3">D15</option>
+                     <option value="4">D20</option>
+                     <option value="5">Teaching Staff</option>
                   </select>
                </div>              
             </div>

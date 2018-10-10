@@ -20,12 +20,12 @@
 		$radio = $_POST['radio']; // user role
 		$class = $_POST['class_name'];
 
-		$query = "Insert into users(email, password, role, class) values('".$user."', '".$pass."','".$radio."', '".$class."');";
+		$query = "Insert into users(email, password, role_id, class_id) values('".$user."', '".$pass."','".$radio."', '".$class."');";
 		$result = mysqli_query($conn, $query);
 		
 		if($result){
 			include 'includes/User.php';
-			$query = "Select id from users where email='".$user."'";
+			$query = "Select user_id from users where email='".$user."'";
 			$result1 = mysqli_query($conn, $query);
 			if($result1){
 				$id = $result1;
