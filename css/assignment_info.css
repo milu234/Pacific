@@ -18,7 +18,11 @@ header{
 .card-body{
   background-color: #ffffff;
   border: 0.1px solid;
-  border-radius : 10px;
+  border-radius : 5px;
+}
+
+.score{
+  text-align: center;
 }
 h5{
   margin :1rem !important;

@@ -3,13 +3,16 @@
 <head>
   <title>ProjectDashboard</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/projectinfo.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="../css/projectinfo.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
 </head>
 
 <body id="top">
-  <?php include('layouts/nav.php') ?>
+  <?php
+  $active="projects";
+   include('../layouts/nav.php') ?>
 
   <section class="projectinfo">
     
@@ -63,6 +66,9 @@
   </section>
 
 
-<?php include('layouts/footer.php');?>
+<?php include('../layouts/footer.php');?>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
 </body>
 </html>

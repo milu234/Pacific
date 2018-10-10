@@ -3,14 +3,17 @@
 <head>
 	<title>Dashboard</title>
 	<meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="css/calendar.css">
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+  <link rel="stylesheet" type="text/css" href="../css/calendar.css">
 </head>
 
 <body id="top">
-	<?php include('layouts/nav.php') ?>
+	<?php
+   $active="dashboard";
+    include('../layouts/nav.php') ?>
 
    <section class="stats">
    		<div class="row">
@@ -120,10 +123,10 @@
    </section>
 	
 	
-	<?php include('layouts/footer.php') ?>
-   <script src="js/jquery-1.11.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/notify.js"></script>
-   <script src="js/main.js"></script>
+	<?php include('../layouts/footer.php') ?>
+   <script src="../js/jquery-1.11.3.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/notify.js"></script>
+   <script src="../js/main.js"></script>
 </body>
 </html>
