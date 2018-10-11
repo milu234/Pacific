@@ -135,7 +135,7 @@
                      <option value="D10">D10</option>
                      <option value="D15">D15</option>
                      <option value="D20">D20</option>
-                     <option value="Teaching staff">Teaching Staff</option>
+                     <option value="Teaching_Staff">Teaching Staff</option>
                   </select>
                </div>              
             </div>

@@ -24,7 +24,16 @@
 			$_SESSION['login_success'] = True;
 			$_SESSION['notif-box-color'] = "green";
 			$_SESSION['notif-box-message'] = "You have logged in succesfully.";
-			header("location:http://localhost/Pacific/");
+			// header("location:http://localhost/Pacific/");
+
+			if($role_id == 1){
+				header("location:http://localhost/Pacific/student/dashboard.php");
+			}
+
+			else if($role_id == 2) {
+				header("location:http://localhost/Pacific/staff/dashboard.php");
+			}
+
 		} else {
 			$_SESSION['err'] = "Invalid username or password.";
 			header("location:http://localhost/Pacific");
@@ -35,4 +44,5 @@
 		header("location:http://localhost/Pacific");
 	}
 
+	
 ?>
