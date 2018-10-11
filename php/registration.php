@@ -36,7 +36,7 @@
 				// get the user id from the database after insertion
 				$id = mysqli_fetch_assoc($result1)['user_id'];
 				$user_obj = new User($id, $email, getRoleName($role_id), getClassName($class_id));
-				$_SESSION['user'] = serialize($user_obj);
+				$_SESSION['user'] = $user_obj;
 				if($role_id == 1){
 					header("location:http://localhost/Pacific/student/dashboard.php");
 				}
