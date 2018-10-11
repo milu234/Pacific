@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2018 at 12:51 PM
+-- Generation Time: Oct 11, 2018 at 06:02 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -64,6 +64,17 @@ CREATE TABLE `class` (
   `class_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `class`
+--
+
+INSERT INTO `class` (`class_id`, `class_name`) VALUES
+(1, 'D5'),
+(2, 'D10'),
+(3, 'D15'),
+(4, 'D20'),
+(5, 'Teaching_Staff');
+
 -- --------------------------------------------------------
 
 --
@@ -74,8 +85,19 @@ CREATE TABLE `projects` (
   `project_id` int(11) UNSIGNED NOT NULL,
   `project_name` varchar(1000) NOT NULL,
   `project_description` varchar(255) NOT NULL,
-  `project_link` varchar(255) NOT NULL
+  `project_link` varchar(255) NOT NULL,
+  `github_username` varchar(255) NOT NULL,
+  `project_status` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_link`, `github_username`, `project_status`) VALUES
+(1, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 50),
+(2, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 32),
+(3, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 61);
 
 -- --------------------------------------------------------
 
@@ -101,6 +123,14 @@ CREATE TABLE `role` (
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`role_id`, `role_name`) VALUES
+(1, 'Student'),
+(2, 'Teacher');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +144,13 @@ CREATE TABLE `users` (
   `role_id` int(20) UNSIGNED NOT NULL,
   `class_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `class_id`) VALUES
+(10, '2016.milan.hazra@ves.ac.in', '1234', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -175,6 +212,7 @@ ALTER TABLE `role`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `class_id_foreign` (`class_id`),
   ADD KEY `role_id_foreign` (`role_id`);
 
@@ -205,13 +243,13 @@ ALTER TABLE `assignment_evaluation`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `class_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `project_evaluation`
@@ -223,13 +261,13 @@ ALTER TABLE `project_evaluation`
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `role_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `role_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
