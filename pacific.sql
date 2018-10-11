@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2018 at 06:02 AM
+-- Generation Time: Oct 11, 2018 at 06:36 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -128,8 +128,8 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`role_id`, `role_name`) VALUES
-(1, 'Student'),
-(2, 'Teacher');
+(1, 'student'),
+(2, 'staff');
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `class_id`) VALUES
-(10, '2016.milan.hazra@ves.ac.in', '1234', 1, 1);
+(10, '2016.milan.hazra@ves.ac.in', '1234', 1, 1),
+(12, 'amit@gmail.com', '1234', 2, 3),
+(13, 'm@gmail.com', '1234', 2, 5),
+(16, 'walshfer@gmail.com', '1234', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -267,7 +270,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
