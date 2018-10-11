@@ -27,7 +27,6 @@
 		$class_id = getClasId($class);
 
 		$query = "Insert into users(email, password, role_id, class_id) values('".$user."', '".$pass."',".$role_id.", ".$class_id.");";
-		echo $query;
 		$result = mysqli_query($conn, $query);
 		if($result){
 			include 'includes/User.php';
