@@ -23,7 +23,7 @@
 						<li><a href="projects.php" title="">Projects</a></li>
 						<li><a href="assignments.php" title="">Assignments</a></li>
 						<li class="highlight with-sep"><a href="#"><i class="fa fa-bell"></i></a></li>  
-						<li class="highlight"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>HI, user</a></li>
+						<li class="highlight"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>HI,.'echo "$user->email";'.</a></li>
 						<li class="highlight"><a href="../php/logout.php" title="">Logout</a></li>';
 					} 
 					if($active=="projects"){
