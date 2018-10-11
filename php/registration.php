@@ -36,7 +36,7 @@
 				$id = mysqli_fetch_assoc($result1)['user_id'];
 				$user_obj = new User($id, $user, $radio, $class);
 				$_SESSION['user'] = serialize($user_obj);
-				header("location:http://localhost/Pacific/");
+				header("location:http://localhost/Pacific");
 			}
 		}
 	}

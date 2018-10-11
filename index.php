@@ -88,7 +88,10 @@
    					<li class="highlight"><a onclick="signup()" href="#">Sign Up</a></li>	
                <?php } else {?>
                   <li class="highlight"><a href="php/logout.php">Logout</a></li>
+                  <!-- <li class="highlight"><a href="#">Hi , </a></li> -->
+                  <li class="highlight"><a href="student/dashboard.php">Dashboard</a></li>
                <?php }?>
+               
 				</ul>
 			</nav>
 
@@ -236,7 +239,7 @@
    			<h5>Process</h5>
    			<h1>How it works?</h1>
 
-   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+   			<p class="lead">Create and Post your projects here for Evaluation and solve the real time assignments and get yourself evaluated</p>
 
    		</div>   		
    	</div>
@@ -249,7 +252,7 @@
 
    				<h5>Sign Up</h5>
 
-   				<p>Lorem ipsum Cupidatat nostrud non cupidatat ut dolor id eiusmod non minim aute consectetur incididunt tempor irure aute consequat quis voluptate.</p>
+   				<p>A college Email-Id and Password is Enough</p>
    					
    			</div>
 
@@ -257,7 +260,7 @@
 
 	   			<h5>Upload</h5>
 
-	   			<p>Lorem ipsum Cupidatat nostrud non cupidatat ut dolor id eiusmod non minim aute consectetur incididunt tempor irure aute consequat quis voluptate.</p>
+	   			<p>Upload the work or projects that you have done beyond the syllabus and get yourself evluated . Complete the tasks and assignments in given time and be a programmer streak</p>
    					
    			</div>
    				
@@ -269,7 +272,7 @@
 
    				<h5>Create</h5>
 
-   				<p>Lorem ipsum Cupidatat nostrud non cupidatat ut dolor id eiusmod non minim aute consectetur incididunt tempor irure aute consequat quis voluptate.</p>
+   				<p>Create groups and start working on the project for better experience and also get yourself a mentor and get yourself evaluated</p>
    					
    			</div>
 
@@ -277,7 +280,7 @@
 
    				<h5>Publish</h5>
 
-   				<p>Lorem ipsum Cupidatat nostrud non cupidatat ut dolor id eiusmod non minim aute consectetur incididunt tempor irure aute consequat quis voluptate.</p>
+   				<p>Keep track of all your projects before publishing and also complete the fortnight targets . Get an experience of working in a group and also be better programmer</p>
    					
    			</div>
 

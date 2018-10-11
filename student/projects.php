@@ -15,7 +15,7 @@
    include('../layouts/nav.php') ?>
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="php/create_projects.php" method="POST" >
+      <form class="modal-content" action="../php/create_projects.php" method="POST" >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Project</h5>

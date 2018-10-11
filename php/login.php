@@ -32,7 +32,7 @@
 
 	} else {
 		$_SESSION['err'] = "User does not exit";
-		header("location:http://localhost/Pacific/");
+		header("location:http://localhost/Pacific");
 	}
 
 ?>
