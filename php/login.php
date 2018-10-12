@@ -14,23 +14,21 @@
 		$result = mysqli_query($conn, $query);
 		if(mysqli_num_rows($result) == 1){
 			// password matched
-			$id = mysqli_fetch_assoc($result)['user_id'];
-			$role_id = mysqli_fetch_assoc($result)['role_id'];
-			$class_id = mysqli_fetch_assoc($result)['clas_id'];
+			$user = mysqli_fetch_assoc($result);
 			include 'includes/utils.php';
 			include 'includes/User.php';
-			$user_obj = new User($id, $email, getRoleName($role_id), getClassName($class_id));
+			$user_obj = new User($user['user_id'], $email, getRoleName($user['role_id']), getClassName($user['class_id']));
 			$_SESSION['user'] = serialize($user_obj);
 			$_SESSION['login_success'] = True;
 			$_SESSION['notif-box-color'] = "green";
 			$_SESSION['notif-box-message'] = "You have logged in succesfully.";
 			// header("location:http://localhost/Pacific/");
 
-			if($role_id == 1){
+			if($user['role_id'] == 1){
 				header("location:http://localhost/Pacific/student/dashboard.php");
 			}
 
-			else if($role_id == 2) {
+			else if($user['role_id'] == 2) {
 				header("location:http://localhost/Pacific/staff/dashboard.php");
 			}
 

@@ -8,10 +8,42 @@
 	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
   <link rel="stylesheet" type="text/css" href="../css/calendar.css">
+  <style>
+   #notif-box{
+      /*position is fixed so that the notif box appears anywhere in the window*/
+      position:fixed;
+      width:200px;
+      height: 90px;
+      top:50px;
+      left:-400px;
+      opacity: 0;
+      transition:opacity ease-in-out 1000ms, left ease-in-out 1000ms;
+      background-color: green;
+      color:white;
+      border-radius: 4px;
+      font-family: Arial;
+      z-index: 1000;
+   }
+   #notif-close{
+      cursor: pointer;
+      float:right;
+      margin-right: 5px;
+      margin-top: 2px;
+   }
+   #notif-box-content{
+      margin:7px;
+   }
+   </style>
 </head>
 
 <body id="top">
-	<?php
+	
+   <div id="notif-box">
+      <span id="notif-close" onclick="closeNotif()" style="float:right;margin:5px 5px 0 0">&times;</span>
+      <p id="notif-box-content"></p>
+   </div>
+   
+   <?php
    $active="dashboard";
     include('../layouts/nav.php') ?>
 
@@ -121,8 +153,28 @@
    			<!-- <div class="col-three"></div> -->
    		</div>
    </section>
-	
-	
+	<script type="text/javascript">
+      var status = "<?php echo $_SESSION['login_success']; ?>";
+      function closeNotif() {
+         document.getElementById('notif-box').style.opacity = 0;
+         document.getElementById('notif-box').style.left = "-400px"
+      }
+      function showNotif(){
+         document.getElementById('notif-box').style.backgroundColor = "<?php echo $_SESSION['notif-box-color']; ?>";
+         document.getElementById('notif-box-content').innerHTML = "<?php echo $_SESSION['notif-box-message']?>";
+         document.getElementById('notif-box').style.opacity = 1;
+         document.getElementById('notif-box').style.left = "10px";
+      }
+      if(status == "1"){
+         setTimeout(showNotif, 500);
+         setTimeout(closeNotif, 5000);
+      }
+   </script>
+	<?php 
+      // clear the session var so that the message does not reappear everytime the page reloads
+      if(isset($_SESSION['login_success']))
+         unset($_SESSION['login_success']);
+   ?>
 	<?php include('../layouts/footer.php') ?>
    <script src="../js/jquery-1.11.3.min.js"></script>
    <script src="../js/plugins.js"></script>
