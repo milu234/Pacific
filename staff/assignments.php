@@ -15,7 +15,7 @@
     include('../layouts/nav.php') ?>
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="index.html">
+      <form class="modal-content" action="../php/create_assignments.php"  method="POST"  >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Asignment</h5>
@@ -44,11 +44,12 @@
                </div>
                <div class="col-eight">
                   <select class="round"  name="classalloted">
-                     <option value="0">Select Class</option>
-                     <option value="1">D5</option>
-                     <option value="2">D10</option>
-                     <option value="3">D15</option>
-                     <option value="4">D20</option>               
+                     <option value="0" disabled>Select Class</option>
+                     <option value="D5">D5</option>
+                     <option value="D10">D10</option>
+                     <option value="D15">D15</option>
+                     <option value="D20">D20</option>
+                     <option value="Teaching_staff">Teaching Staff</option>               
                   </select>
                </div>
             </div>
@@ -59,7 +60,7 @@
                </div>
                <div class="col-eight">
                   <select class="round" name="assignment_type"  >
-                     <option value="0">Assignment Type</option>
+                     <option value="0" disabled>Assignment Type</option>
                      <option value="document">Document</option>
                      <option value="code">Code</option>
                   </select>
