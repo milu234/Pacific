@@ -32,12 +32,28 @@
             </div>
             <div class="row">
                <div class="col-four">
-                  <label for = "marksallotedtotheassignment"><b>Description</b></label>
+                  <label for = "marksallotedtotheassignment"><b>Marks</b></label>
                </div>
                <div class="col-eight">
                   <input type="text" placeholder="Enter the marks alloted to the assignment" name="marksallotedtotheassignment" required>
                </div>
             </div>
+
+
+            <!-- ********************** -->
+
+             <div class="row">
+               <div class="col-four">
+                  <label for = "marksallotedtotheassignment"><b>Description</b></label>
+               </div>
+               <div class="col-eight">
+                  <textarea placeholder="Enter the Description of the project" name="descriptionoftheassignment" required></textarea>
+               </div>
+            </div>
+
+
+
+
             <div class="row">
                <div class="col-four">
                   <label for = "selectclass"><b>Select Class</b></label>
