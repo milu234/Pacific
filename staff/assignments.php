@@ -43,7 +43,7 @@
                   <label for = "selectclass"><b>Select Class</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round">
+                  <select class="round"  name="classalloted">
                      <option value="0">Select Class</option>
                      <option value="1">D5</option>
                      <option value="2">D10</option>
@@ -58,10 +58,10 @@
                   <label for = "assignmenttype"><b>Assignment Type</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round">
+                  <select class="round" name="assignment_type"  >
                      <option value="0">Assignment Type</option>
-                     <option value="1">Document</option>
-                     <option value="2">Code</option>
+                     <option value="document">Document</option>
+                     <option value="code">Code</option>
                   </select>
                </div>
             </div>
