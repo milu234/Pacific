@@ -86,8 +86,8 @@
 
                 <!-- ================== -->
                 <div class="formrow">
-               <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
+               <div class="col-three"><label for="confpsw"><b>First Name</b></label></div>
+               <div class="col-nine"><input type="password" placeholder="Enter your first name"  name="confpsw" id="conf_pass"  required></div>            
             </div>
 
 
