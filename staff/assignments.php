@@ -1,4 +1,7 @@
+
 <!DOCTYPE html>
+
+ 
 <html>
 <head>
 	<title>Assignment Dashboard</title>
@@ -12,7 +15,15 @@
 <body id="top">
    <?php
    $active="assignments";
-    include('../layouts/nav.php') ?>
+
+   session_start();
+
+
+    include('../layouts/nav.php');
+//     include('../php/create_assignments.php')
+     
+    ?>
+
 
    <div id="id2" class="modal">
       <form class="modal-content" action="../php/create_assignments.php"  method="POST"  >
@@ -123,15 +134,13 @@
                         <tr>
                            <th>Title</th>
                         </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
-                        </tr>
-                        <tr>
+
+                        <!-- <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
                         </tr>
                         <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
-                        </tr>
+                        </tr> -->
                      </table>
                   </div>
             </div>
@@ -144,6 +153,7 @@
                         <tr>
                            <th>Title</th>
                         </tr>
+                        
                         <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
                         </tr>

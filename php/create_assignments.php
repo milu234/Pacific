@@ -15,9 +15,18 @@ include 'includes/User.php';
       $dateofsubmission = $_POST['deadline'];
       $query = "INSERT into assignments(assignment_name,assignment_marks,assignment_type,description_of_assignment,date_of_submission,user_id,class_id) VALUES ('".$nameoftheassignment."',".$marksallotedtoassignment.",'".$assignment_type."','".$description."','".$dateofsubmission."',".$user->id.",".$class_id.")";
       $result = mysqli_query($conn,$query);
-      echo $query;
-      // header("location:http://localhost/Pacific/staff/dashboard.php");
+    //   echo $query;
+      header("location:http://localhost/Pacific/staff/dashboard.php");
 
+
+      $result2 = mysqli_query($conn,"SELECT assignment_name,date_of_submission from assignments where user_id = ".$user->id." ");
+      while($rows = mysqli_fetch_assoc($result2)){
+          echo $rows['assignment_name'];
+          
+      }
+
+    
+       
 
    if(isset($_SESSION['err'])){
       echo "<script>alert('".$_SESSION['err']."');</script>";
