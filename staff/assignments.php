@@ -87,7 +87,11 @@
                <div class="col-four">
                   <label for ="deadline">Deadline</label>
                </div>
-               <div class="col-eight"></div>
+               <div class="col-eight">
+                  <input type = "datetime-local" placeholder="Enter the Description of the project" name="deadline" required></textarea>
+               </div>
+            </div>
+
             </div>
             
             <div class="formrow clearfix" style="justify-content: center;">

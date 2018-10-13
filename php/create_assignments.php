@@ -12,10 +12,11 @@ include 'includes/User.php';
       $class_id = getClasId($class);
       $assignment_type = $_POST['assignment_type'];
       $description = $_POST['descriptionoftheassignment'];
-      $query = "INSERT into assignments(assignment_name,assignment_marks,assignment_type,description_of_assignment,user_id,class_id) VALUES ('".$nameoftheassignment."',".$marksallotedtoassignment.",'".$assignment_type."','".$description."',".$user->id.",".$class_id.")";
+      $dateofsubmission = $_POST['deadline'];
+      $query = "INSERT into assignments(assignment_name,assignment_marks,assignment_type,description_of_assignment,date_of_submission,user_id,class_id) VALUES ('".$nameoftheassignment."',".$marksallotedtoassignment.",'".$assignment_type."','".$description."','".$dateofsubmission."',".$user->id.",".$class_id.")";
       $result = mysqli_query($conn,$query);
       echo $query;
-       header("location:http://localhost/Pacific/staff/dashboard.php");
+      // header("location:http://localhost/Pacific/staff/dashboard.php");
 
 
    if(isset($_SESSION['err'])){

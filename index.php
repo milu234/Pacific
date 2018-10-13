@@ -83,6 +83,23 @@
                <div class="col-three"><label for="email"><b>Email</b></label></div>
                <div class="col-nine"><input type="text" placeholder="Enter your Email"  name="email" id="email"  required></div>           
             </div>
+
+                <!-- ================== -->
+                <div class="formrow">
+               <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
+               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
+            </div>
+
+
+            <!-- <div class="formrow">
+               <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
+               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
+            </div> -->
+
+            <!-- =================================== -->
+
+
+
             <div class="formrow">
                <div class="col-three"><label for="psw"><b>Password</b></label></div>
                <div class="col-nine"><input type="password" placeholder="Enter your Password"  name="psw" id="pass" required></div>              
