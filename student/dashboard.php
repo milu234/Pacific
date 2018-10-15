@@ -37,6 +37,7 @@
 </head>
 
 <body id="top">
+
 	
    <div id="notif-box">
       <span id="notif-close" onclick="closeNotif()" style="float:right;margin:5px 5px 0 0">&times;</span>
@@ -45,7 +46,12 @@
    
    <?php
    $active="dashboard";
-    include('../layouts/nav.php') ?>
+    include('../layouts/nav.php');
+    $conn = mysqli_connect('localhost','root','','pacific');
+    $result2 = mysqli_query($conn,"SELECT assignments.assignment_id,assignments.assignment_name,assignments.date_of_submission from  assignments inner join users on assignments.class_id = users.class_id ");
+//     $id = $_GET['assignment_id'];
+    
+    ?>
 
    <section class="stats">
    		<div class="row">
@@ -135,16 +141,21 @@
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
+                           <th>Deadline</th>
+                           <!-- <th>Assigned By</th> -->
                         </tr>
+                        <?php
+                                //include('../php/create_assignments.php');
+                               
+                              while($rows = mysqli_fetch_assoc($result2))
+                              {
+                        ?>
                         <tr>
-                           <td><a href="#"><h4>Assignment 1</h4></a></td>
+                           <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                           <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
+                           <!-- <td><a href="assignment_info.php"><h4<  echo $rows['email']; ?></h4></a></td> -->
                         </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 3</h4></a></td>
-                        </tr>
+                      <?php  }?>
                      </table>
                </div>
    				<br>
