@@ -138,7 +138,7 @@
             </div>
             <div class="formrow">
                <div class="col-twelve">
-                  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                  <p>By creating an account you agree to our <a href="staff/terms_conditions.php" style="color:dodgerblue">Terms & Privacy</a>.</p>
                </div>             
             </div>
 

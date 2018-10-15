@@ -27,6 +27,7 @@
 			<form>
 			 <div class="table-header"><h5>Assignment 1</h5></div>
 			 <button type = "submit" class = "signupbtn" >Upload Document</button>
+			 <br>
 			 <?php
 			 
 			 while($rows = mysqli_fetch_assoc($result2))
