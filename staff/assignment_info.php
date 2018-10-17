@@ -15,38 +15,44 @@
 	 include('../layouts/nav.php');
 	 $conn = mysqli_connect('localhost','root','','pacific');
 	 $id = $_GET['id'];
+	   
 	 
-	 $result2 = mysqli_query($conn,"SELECT * from assignments where assignment_id = '".$id."' "); ?>
+	 $result2 = mysqli_query($conn,"SELECT u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  "); ?>
 
 	<section class="ass_info">
 		<div class="row">
 			<form>
 			 <div class="table-header"><h5>Assignment 1</h5></div>
 			 
-			 <?php
-			 
-			 while($rows = mysqli_fetch_assoc($result2))
-			 {
-			 	?>
-			 <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p>
-
-			 <?php } ?>
-	
+				
 			</form>
 		</div>
 		<div class="row">
 			<table>
 				<tr>
-					<th width="10%">Sr No</th>
+					<!-- <th width="10%">Sr No</th> -->
 					<th>Name</th>
+					
+					
 					<th width="20%">Score</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>Athul Balakrishnan</td>
-					<td class="score">40</td>
-				</tr>
-				<tr>
+				
+				<?php
+
+
+			 while($rows = mysqli_fetch_assoc($result2))
+			 {
+			 	?>
+				 <tr>
+			 <td><?php echo $rows['email']; ?></td>
+			 
+			 <td><?php echo $rows['assignment_marks']; ?></td>
+				</tr>	
+
+			 <?php } ?>
+
+				
+				<!-- <tr>
 					<td>2</td>
 					<td>Athul Balakrishnan</td>
 					<td class="score">40</td>
@@ -80,7 +86,7 @@
 					<td>8</td>
 					<td>Athul Balakrishnan</td>
 					<td class="score">40</td>
-				</tr>
+				</tr> -->
 
 			</table>
 		</div>

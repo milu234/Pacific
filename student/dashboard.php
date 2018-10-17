@@ -48,8 +48,9 @@
    $active="dashboard";
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
-    $result2 = mysqli_query($conn,"SELECT assignments.assignment_id,assignments.assignment_name,assignments.date_of_submission from  assignments inner join users on assignments.class_id = users.class_id ");
-//     $id = $_GET['assignment_id'];
+    $result2 = mysqli_query($conn,"SELECT u.email,a.assignment_id,a.assignment_name,a.assignment_marks,a.date_of_submission,a.user_id from users u,assignments a   where a.class_id = u.class_id and u.user_id = $user->id ");
+    $result3 = mysqli_query($conn,"SELECT u.email  from users u , assignments a where a.user_id = u.user_id  ");
+//      $id = $_GET['assignment_id'];
     
     ?>
 
@@ -142,18 +143,18 @@
                         <tr>
                            <th>Title</th>
                            <th>Deadline</th>
-                           <!-- <th>Assigned By</th> -->
+                            <th>Assigned By</th>
                         </tr>
                         <?php
                                 //include('../php/create_assignments.php');
                                
-                              while($rows = mysqli_fetch_assoc($result2))
+                              while($rows = mysqli_fetch_assoc($result2) and $rows2 = mysqli_fetch_assoc($result3) )
                               {
                         ?>
                         <tr>
                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
                            <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
-                           <!-- <td><a href="assignment_info.php"><h4<  echo $rows['email']; ?></h4></a></td> -->
+                            <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
                         </tr>
                       <?php  }?>
                      </table>
