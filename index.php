@@ -34,6 +34,7 @@
    <!-- favicons
 	================================================== -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 </head>
 
@@ -376,9 +377,24 @@
             	</div>            	                 
 
 			  </div> <!-- /features-block -->
+        <h1>Contact Us</h1>
+   <div id="map"> </div>
+   <style>
+   #map{
+       height : 400px;
+       width:60%
+   }
+
+</style>
+
 		
 	</section> <!-- /features -->
+
+
+  <!-- ==============================Maps===================================================== -->
 	
+
+   
    <!-- footer
    ================================================== -->
    <footer>
@@ -450,10 +466,27 @@
 			
 			return true;
 		}
+
+
+
+          // Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: 19.045393, lng: 72.88960529999997};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 25, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
    </script>
+
+
    
    <!-- Java Script
    ================================================== --> 
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmXZEcaOOGxVpwbqYfROvxyG_u7dJGVA0&callback=initMap" /*use you own api key */
+   async defer></script>
    <script src="js/jquery-1.11.3.min.js"></script>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
