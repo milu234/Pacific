@@ -12,13 +12,30 @@
 
 	<?php
 	$active="assignments";
-	 include('../layouts/nav.php') ?>
+	 include('../layouts/nav.php');
+	 $conn = mysqli_connect('localhost','root','','pacific');
+	 $id = $_GET['id'];
+
+	 $result2 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id."'");
+	
+
+	 
+	 ?>
 
 	<section class="ass_info">
 		<div class="row">
 			<form>
 			 <div class="table-header"><h5>Assignment 1</h5></div>
-			 <p class="card-body">hello this is the place for question</p>
+			 <button type = "submit" class = "signupbtn" >Upload Document</button>
+			 <br>
+			 <?php
+			 
+			 while($rows = mysqli_fetch_assoc($result2))
+			 {
+			 	?>
+			 <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p>
+
+			 <?php } ?>
 			</form>
 		</div>
 

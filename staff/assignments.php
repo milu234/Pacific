@@ -1,4 +1,7 @@
+
 <!DOCTYPE html>
+
+ 
 <html>
 <head>
 	<title>Assignment Dashboard</title>
@@ -12,10 +15,18 @@
 <body id="top">
    <?php
    $active="assignments";
-    include('../layouts/nav.php') ?>
+
+   session_start();
+
+
+    include('../layouts/nav.php');
+//     include('../php/create_assignments.php')
+     
+    ?>
+
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="index.html">
+      <form class="modal-content" action="../php/create_assignments.php"  method="POST"  >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Asignment</h5>
@@ -32,23 +43,40 @@
             </div>
             <div class="row">
                <div class="col-four">
-                  <label for = "marksallotedtotheassignment"><b>Description</b></label>
+                  <label for = "marksallotedtotheassignment"><b>Marks</b></label>
                </div>
                <div class="col-eight">
                   <input type="text" placeholder="Enter the marks alloted to the assignment" name="marksallotedtotheassignment" required>
                </div>
             </div>
+
+
+            <!-- ********************** -->
+
+             <div class="row">
+               <div class="col-four">
+                  <label for = "marksallotedtotheassignment"><b>Description</b></label>
+               </div>
+               <div class="col-eight">
+                  <textarea placeholder="Enter the Description of the project" name="descriptionoftheassignment" required></textarea>
+               </div>
+            </div>
+
+
+
+
             <div class="row">
                <div class="col-four">
                   <label for = "selectclass"><b>Select Class</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round">
-                     <option value="0">Select Class</option>
-                     <option value="1">D5</option>
-                     <option value="2">D10</option>
-                     <option value="3">D15</option>
-                     <option value="4">D20</option>               
+                  <select class="round"  name="classalloted">
+                     <option value="0" disabled>Select Class</option>
+                     <option value="D5">D5</option>
+                     <option value="D10">D10</option>
+                     <option value="D15">D15</option>
+                     <option value="D20">D20</option>
+                     <option value="Teaching_staff">Teaching Staff</option>               
                   </select>
                </div>
             </div>
@@ -58,10 +86,10 @@
                   <label for = "assignmenttype"><b>Assignment Type</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round">
-                     <option value="0">Assignment Type</option>
-                     <option value="1">Document</option>
-                     <option value="2">Code</option>
+                  <select class="round" name="assignment_type"  >
+                     <option value="0" disabled>Assignment Type</option>
+                     <option value="document">Document</option>
+                     <option value="code">Code</option>
                   </select>
                </div>
             </div>
@@ -70,7 +98,11 @@
                <div class="col-four">
                   <label for ="deadline">Deadline</label>
                </div>
-               <div class="col-eight"></div>
+               <div class="col-eight">
+                  <input type = "datetime-local" placeholder="Enter the Description of the project" name="deadline" required></textarea>
+               </div>
+            </div>
+
             </div>
             
             <div class="formrow clearfix" style="justify-content: center;">
@@ -102,15 +134,13 @@
                         <tr>
                            <th>Title</th>
                         </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
-                        </tr>
-                        <tr>
+
+                        <!-- <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
                         </tr>
                         <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
-                        </tr>
+                        </tr> -->
                      </table>
                   </div>
             </div>
@@ -123,6 +153,7 @@
                         <tr>
                            <th>Title</th>
                         </tr>
+                        
                         <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
                         </tr>

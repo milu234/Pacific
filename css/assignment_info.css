@@ -20,7 +20,10 @@ header{
   border: 0.1px solid;
   border-radius : 5px;
 }
-
+.cancelbtn, .signupbtn{
+	float: center;
+	width: 50%;
+}
 .score{
   text-align: center;
 }

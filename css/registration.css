@@ -82,8 +82,10 @@ label{
   left :0;
   padding: 5% 20%;
 	overflow:hidden; /* enable sbroll id possinbe*/
-	background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+	/* background-color: rgb(0,0,0); /* Fallback color */
+  /*background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  /* max-height: calc(100vh - 210px);
+  overflow-y: auto; */
 }
 
 /*modal coneyent box*/
@@ -96,6 +98,7 @@ label{
 	width: 80%; /*Could be more or less depending on the screen sizee*/
   color: #FFFFFF;
 }
+
 
 /*style the horizontal ruler*/
 

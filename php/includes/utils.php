@@ -14,7 +14,7 @@ function getClasId($class_name) {
 }
 function getClassName($class_id) {
 	global $database_connection;
-	$query = "Select class_name from class where class_id='".$class_id."'";
+	$query = "Select class_name from class where class_id=".$class_id;
 	$result = mysqli_query($database_connection, $query); 
 	$id = null;
 	if(mysqli_num_rows($result) > 0) {
@@ -35,11 +35,12 @@ function getRoleId($role_name) {
 }
 function getRoleName($role_id) {
 	global $database_connection;
-	$query = "Select role_name from class where class_id='".$role_id."'";
+	$query = "Select role_name from role where role_id=".$role_id;
+	echo $query;
 	$result = mysqli_query($database_connection, $query); 
 	$id = null;
 	if(mysqli_num_rows($result) > 0) {
-		$id = mysqli_fetch_assoc($result)['class_name'];
+		$id = mysqli_fetch_assoc($result)['role_name'];
 	}
 	return $id;
 }

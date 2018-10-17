@@ -13,8 +13,13 @@
 <body id="top">
 	<?php
    $active="dashboard";
-   include('../layouts/nav.php') ?>
-
+   include('../layouts/nav.php');
+   $conn = mysqli_connect('localhost','root','','pacific');
+   
+   $result2 = mysqli_query($conn,"SELECT assignment_name,date_of_submission,assignment_id from assignments where user_id = ".$user->id." ");
+   $rowcount = mysqli_num_rows($result2);
+   ?>
+   
    <section class="stats">
    		<div class="row">
    			<div class="card col-twelve">
@@ -30,7 +35,7 @@
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;10</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php  echo $rowcount ?></i></h2>
    									<h6>Assignments Created</h6>
    								</div>
 							</div>
@@ -99,16 +104,27 @@
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
+                           <th>Deadline</th>
                         </tr>
+
+                        <!-- <tr>
+                           <th>Deadline</th>
+                        </tr> -->
+
+                        <!-- ============================================================ -->
+                        <?php
+                                //include('../php/create_assignments.php');
+                               
+                              while($rows = mysqli_fetch_assoc($result2))
+                              {
+                        ?>
                         <tr>
-                           <td><a href="#"><h4>Assignment 1</h4></a></td>
+                           <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                           <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
                         </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 3</h4></a></td>
-                        </tr>
+                      <?php  }?>
+                       
+                        <!-- ===================================================================== -->
                      </table>
                </div>
    				<br>
