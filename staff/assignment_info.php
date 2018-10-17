@@ -17,7 +17,7 @@
 	 $id = $_GET['id'];
 	   
 	 
-	 $result2 = mysqli_query($conn,"SELECT u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  "); ?>
+	 $result2 = mysqli_query($conn,"SELECT distinct u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 "); ?>
 
 	<section class="ass_info">
 		<div class="row">

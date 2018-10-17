@@ -142,6 +142,7 @@
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
+                           <th>Marks</th>
                            <th>Deadline</th>
                             <th>Assigned By</th>
                         </tr>
@@ -153,6 +154,7 @@
                         ?>
                         <tr>
                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                           <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
                            <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
                             <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
                         </tr>
