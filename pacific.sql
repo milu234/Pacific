@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2018 at 06:36 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Oct 18, 2018 at 03:41 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,13 +31,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `assignments` (
   `assignment_id` int(11) UNSIGNED NOT NULL,
   `assignment_name` varchar(255) NOT NULL,
-  `assignment_description` varchar(255) NOT NULL,
   `assignment_marks` int(11) NOT NULL,
   `date_of_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_of_submission` datetime NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `class_id` int(10) UNSIGNED NOT NULL
+  `class_id` int(10) UNSIGNED NOT NULL,
+  `assignment_type` varchar(255) NOT NULL,
+  `description_of_assignment` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`assignment_id`, `assignment_name`, `assignment_marks`, `date_of_creation`, `date_of_submission`, `user_id`, `class_id`, `assignment_type`, `description_of_assignment`) VALUES
+(35, 'Caesar Cipher', 30, '2018-10-17 07:19:13', '2018-10-22 17:55:00', 37, 3, 'document', 'Do It in Python'),
+(36, 'Round Robin', 30, '2018-10-17 07:21:12', '2018-10-17 17:55:00', 37, 4, 'document', 'jbckabckbcb'),
+(37, 'Diagonal Differnce', 30, '2018-10-17 09:04:30', '2018-10-25 17:00:00', 40, 3, 'document', 'Use Python'),
+(38, 'New Assignment Posted', 20, '2018-10-18 10:50:31', '2018-01-02 00:01:00', 40, 2, 'code', 'Do it as soon as possible');
 
 -- --------------------------------------------------------
 
@@ -50,8 +61,20 @@ CREATE TABLE `assignment_evaluation` (
   `assignment_marks` int(11) NOT NULL,
   `assignment_comments` varchar(255) NOT NULL,
   `assignment_id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `pdf_file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment_evaluation`
+--
+
+INSERT INTO `assignment_evaluation` (`assignment_evaluation_id`, `assignment_marks`, `assignment_comments`, `assignment_id`, `user_id`, `pdf_file`) VALUES
+(14, 0, '', 35, 39, 'Paraphrasing assignment.pdf'),
+(20, 0, '', 35, 39, 'IP UT 2.pdf'),
+(21, 0, '', 35, 33, 'IJERTV2IS100652.pdf'),
+(22, 0, '', 35, 34, ''),
+(23, 0, '', 35, 34, 'Paraphrasing assignment.pdf');
 
 -- --------------------------------------------------------
 
@@ -150,10 +173,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `class_id`) VALUES
-(10, '2016.milan.hazra@ves.ac.in', '1234', 1, 1),
-(12, 'amit@gmail.com', '1234', 2, 3),
-(13, 'm@gmail.com', '1234', 2, 5),
-(16, 'walshfer@gmail.com', '1234', 1, 1);
+(33, 'milan@gmail.com', '123456', 1, 3),
+(34, 'chirag@gmail.com', '123456', 1, 3),
+(35, 'walsh@gmail.com', '123456', 1, 3),
+(36, 'athul@gmail.com', '123456', 1, 3),
+(37, 'pooja@gmail.com', '123456', 2, 5),
+(38, 'sagar@gmail.com', '123456', 1, 4),
+(39, 'shravan@gmail.com', '123456', 1, 4),
+(40, 'dimple@gmail.com', '123456', 2, 5);
 
 -- --------------------------------------------------------
 
@@ -165,6 +192,16 @@ CREATE TABLE `works_on` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `works_on`
+--
+
+INSERT INTO `works_on` (`user_id`, `project_id`) VALUES
+(35, 1),
+(35, 2),
+(33, 1),
+(38, 1);
 
 --
 -- Indexes for dumped tables
@@ -183,7 +220,8 @@ ALTER TABLE `assignments`
 --
 ALTER TABLE `assignment_evaluation`
   ADD PRIMARY KEY (`assignment_evaluation_id`),
-  ADD KEY `assign_id_foreign` (`assignment_id`);
+  ADD KEY `assign_id_foreign` (`assignment_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `class`
@@ -234,13 +272,13 @@ ALTER TABLE `works_on`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `assignment_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `assignment_evaluation`
 --
 ALTER TABLE `assignment_evaluation`
-  MODIFY `assignment_evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_evaluation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `class`
@@ -270,7 +308,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
@@ -287,7 +325,8 @@ ALTER TABLE `assignments`
 -- Constraints for table `assignment_evaluation`
 --
 ALTER TABLE `assignment_evaluation`
-  ADD CONSTRAINT `assign_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`assignment_id`);
+  ADD CONSTRAINT `assign_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`assignment_id`),
+  ADD CONSTRAINT `assignment_evaluation_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `project_evaluation`
