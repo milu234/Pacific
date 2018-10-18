@@ -102,33 +102,46 @@
                            <th>Completion Status</th>
                            <th>Evaluation Status</th>
                         </tr>
+                        <?php 
+                        // query the project details
+                        $conn = mysqli_connect('localhost', 'root', '', 'pacific')
+                        or die('Couldnt connect to the database');
+                        $id = $user->id; // current user id retrieved from session 
+                        $query = "SELECT p.project_id, project_name, project_status 
+                        FROM projects p, works_on w WHERE p.project_id=w.project_id
+                        AND user_id=".$id;
+                        echo $query;
+                        $result = mysqli_query($conn, $query);
+                        if($result){
+                           // if query executes sucessfully
+                           if(mysqli_num_rows($result)>0){
+                              // if the user has projects
+                              $rows = "executed";
+                           } else{
+                              $rows = null;
+                              echo "no projects found for the user";
+                           }
+                        }else{
+                           echo "db error";
+                        }
+                        ?>
+                        <?php if ($rows != null) { ?>
+                        <?php while ($row=mysqli_fetch_assoc($result)){ 
+                           // creates the link for every project
+                           $link = "http://localhost/Pacific/student/projectsinfo.php?project_id=".$row['project_id'];
+                           $status = $row['project_status'];
+                           ?>
                         <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
+                           <td><a href="<?php echo $link;?>"><h4><?php echo $row['project_name'];?></h4></a></td>
                            <td style="width: 25%">
                               <div class="progress-bar green stripes">
-                                  <span style="width: 40%"></span>
+                                  <span style="width: 40%" ></span>
                               </div>
                            </td>
                            <td style="width: 25%" class="score">Evaluated</td>
                         </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                           <td class="score">Not Evaluated</td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                           <td class="score">Evaluated</td>
-                        </tr>
+                        <?php } ?>
+                        <?php } else { echo "No projects found for the user";}?>
                      </table>
                   </div>
          </div>
@@ -142,30 +155,45 @@
                            <th>Title</th>
                            <th>Completion Status</th>
                         </tr>
+                        <?php 
+                        // query the project details
+                        $conn = mysqli_connect('localhost', 'root', '', 'pacific')
+                        or die('Couldnt connect to the database');
+                        $id = $user->id; // current user id retrieved from session 
+                        $query = "SELECT p.project_id, project_name, project_status 
+                        FROM projects p, works_on w WHERE p.project_id=w.project_id
+                        AND user_id=".$id;
+                        echo $query;
+                        $result = mysqli_query($conn, $query);
+                        if($result){
+                           // if query executes sucessfully
+                           if(mysqli_num_rows($result)>0){
+                              // if the user has projects
+                              $rows = "executed";
+                           } else{
+                              $rows = null;
+                              echo "no projects found for the user";
+                           }
+                        }else{
+                           echo "db error";
+                        }
+                        ?>
+                        <?php if ($rows != null) { ?>
+                        <?php while ($row=mysqli_fetch_assoc($result)){ 
+                           // creates the link for every project
+                           $link = "http://localhost/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
+                           $status = $row['project_status'];
+                           ?>
                         <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
+                           <td><a href="<?php echo $link;?>"><h4><?php echo $row['project_name'];?></h4></a></td>
                            <td style="width: 25%">
                               <div class="progress-bar green stripes">
-                                  <span style="width: 40%"></span>
+                                  <span style="width: 40%" ></span>
                               </div>
                            </td>
                         </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
+                        <?php } ?>
+                        <?php } else { echo "No projects found for the user";}?>
                      </table>
                   </div>
          </div>
@@ -185,9 +213,6 @@ window.onclick = function(event) {
    } 
    // body...
 }
-
-
-
        var slider = document.getElementById("MyRange");
        var output = document.getElementById("demo");
        output.innerHTML = slider.value;
@@ -196,7 +221,6 @@ window.onclick = function(event) {
           output.innerHTML = this.value;
 
        }
-      
    </script> 
    <script src="../js/jquery-1.11.3.min.js"></script>
    <script src="../js/plugins.js"></script>
