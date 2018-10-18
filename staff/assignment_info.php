@@ -15,14 +15,26 @@
 	 include('../layouts/nav.php');
 	 $conn = mysqli_connect('localhost','root','','pacific');
 	 $id = $_GET['id'];
-	   
+	 $id2 = $_GET['id2'];
 	 
-	 $result2 = mysqli_query($conn,"SELECT distinct u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 "); ?>
 
+	   
+	 $result1 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id2."'");
+	 $result2 = mysqli_query($conn,"SELECT distinct a.status, u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 ");
+	 
+	 $rowcount = mysqli_num_rows($result2); ?>
+	
 	<section class="ass_info">
 		<div class="row">
 			<form>
-			 <div class="table-header"><h5>Assignment 1</h5></div>
+			<?php
+                                //include('../php/create_assignments.php');
+                               
+                              while($rows = mysqli_fetch_assoc($result1))
+                              {
+                        ?>
+			 <div class="table-header"><h5><?php echo $rows['assignment_name']; ?></h5></div>
+							  <?php } ?>
 			 
 				
 			</form>
@@ -30,23 +42,28 @@
 		<div class="row">
 			<table>
 				<tr>
-					<!-- <th width="10%">Sr No</th> -->
+					 <th width="10%">Sr No</th>
 					<th>Name</th>
 					
 					
 					<th width="20%">Score</th>
+					<th width="20%">Stauts</th>
 				</tr>
 				
 				<?php
+	$x=1;
 
-
-			 while($rows = mysqli_fetch_assoc($result2))
+			 while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount )
 			 {
 			 	?>
 				 <tr>
-			 <td><?php echo $rows['email']; ?></td>
+				 <td><?php echo $x; $x++; ?></td>	 
 			 
-			 <td><?php echo $rows['assignment_marks']; ?></td>
+			 
+			 
+			 <td><a href="#"><h4><?php  echo $rows['email']; ?></h4></a></td>
+                            <td><a href="#"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
+							<td><a href="#"><h4><?php  echo $rows['status']; ?></h4></a></td>
 				</tr>	
 
 			 <?php } ?>

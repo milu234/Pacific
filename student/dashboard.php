@@ -33,6 +33,21 @@
    #notif-box-content{
       margin:7px;
    }
+   
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
    </style>
 </head>
 
@@ -145,6 +160,7 @@
                            <th>Marks</th>
                            <th>Deadline</th>
                             <th>Assigned By</th>
+                            
                         </tr>
                         <?php
                                 //include('../php/create_assignments.php');
@@ -153,10 +169,12 @@
                               {
                         ?>
                         <tr>
+                        
                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
                            <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
                            <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
                             <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
+                            <!-- <td><button class="btn"><i class="fa fa-trash"></i></button></td> -->
                         </tr>
                       <?php  }?>
                      </table>

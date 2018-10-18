@@ -35,7 +35,7 @@
 		  $queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
 		  
 	   if($queryfile){
-		  	 echo "Succesful";
+		  	 echo "File Upload";
 		   } else{
 		  	 echo "Upload Error!!";
 		   }
