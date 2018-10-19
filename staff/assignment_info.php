@@ -20,8 +20,8 @@
 
 	   
 	 $result1 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id2."'");
-	 $result2 = mysqli_query($conn,"SELECT distinct a.status, u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 ");
-	 
+	 $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  ");
+	 $result3 = mysqli_query($conn,"SELECT distinct * from assignment_evaluation where assignment_id = $id2 ");
 	 $rowcount = mysqli_num_rows($result2); ?>
 	
 	<section class="ass_info">
@@ -46,14 +46,17 @@
 					<th>Name</th>
 					
 					
-					<th width="20%">Score</th>
-					<th width="20%">Stauts</th>
+					
+					 <th width="20%">Stauts</th>
+					 <th width="20%">View Files</th>
+					 <th width="10%">Score</th>
+					 <th width="10%">Evaluate</th>
 				</tr>
 				
 				<?php
 	$x=1;
 
-			 while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount )
+			 while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount and $rows2 = mysqli_fetch_assoc($result3) )
 			 {
 			 	?>
 				 <tr>
@@ -62,8 +65,15 @@
 			 
 			 
 			 <td><a href="#"><h4><?php  echo $rows['email']; ?></h4></a></td>
-                            <td><a href="#"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
-							<td><a href="#"><h4><?php  echo $rows['status']; ?></h4></a></td>
+                            <!-- <td><a href="#"><h4><?php  echo $rows2['assignment_marks']; ?></h4></a></td> -->
+							
+							 <td><a href="#"><h4><?php  echo $rows2['status']; ?></h4></a></td>
+							 <td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
+							 <td><form method="GET" action="evaluate.php"><input type = "text" value = "<?php echo $rows2['assignment_marks']  ?>" name="scoreupdated" ></td>
+							 
+							 <td><input type = "submit" value = "Save" name="score"  >
+							 <input type="hidden" name="id" value="<?php echo $rows2['assignment_id']; ?>"/>
+							 </form></td>
 				</tr>	
 
 			 <?php } ?>

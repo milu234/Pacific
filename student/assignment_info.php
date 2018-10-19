@@ -33,7 +33,7 @@
 		 
 		  move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"assignments/uploads/pdf/".$_FILES["pdf_file"]["name"]);
 		  $queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
-		  
+		  $updatequery = mysqli_query($conn,"UPDATE  assignments set status = 'Submited' where assignment_id = $a_id and user_id = $user->id ");
 	   if($queryfile){
 		  	 echo "File Upload";
 		   } else{
