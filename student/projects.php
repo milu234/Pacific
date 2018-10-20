@@ -110,7 +110,6 @@
                         $query = "SELECT p.project_id, project_name, project_status 
                         FROM projects p, works_on w WHERE p.project_id=w.project_id
                         AND user_id=".$id;
-                        echo $query;
                         $result = mysqli_query($conn, $query);
                         if($result){
                            // if query executes sucessfully
@@ -160,6 +159,7 @@
                         $conn = mysqli_connect('localhost', 'root', '', 'pacific')
                         or die('Couldnt connect to the database');
                         $id = $user->id; // current user id retrieved from session 
+                        
                         $query = "SELECT p.project_id, project_name, project_status 
                         FROM projects p, works_on w WHERE p.project_id=w.project_id
                         AND user_id=".$id;
@@ -178,7 +178,7 @@
                            echo "db error";
                         }
                         ?>
-                        <?php if ($rows != null) { ?>
+                        <?php if ($rows != null) {echo mysqli_num_rows($result);?>
                         <?php while ($row=mysqli_fetch_assoc($result)){ 
                            // creates the link for every project
                            $link = "http://localhost/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
