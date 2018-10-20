@@ -14,7 +14,7 @@
       top:20%;
       left:35%;
       background-color: white;
-      height: 40%;
+      height: 55%;
       width: 30%;
       
     }
@@ -24,7 +24,7 @@
       font-weight: bold; 
       cursor: pointer;
     }
-    #modal-background{
+    .modal-background{
       position:fixed;
       width: 100%;
       height: 100%;
@@ -33,6 +33,9 @@
       top:0;
       left:0;
       display: none;
+    }
+    #assign_btn{
+      float: right;
     }
   </style>
 </head>
@@ -91,6 +94,26 @@
             $users = null; 
           }
 
+          //querying the database to get the details of the members of the project
+          $query = "SELECT email, u.user_id from users u, works_on w where u.user_id=w.user_id and project_id=".$_GET['project_id'];
+          $result4 = mysqli_query($conn, $query);
+          if($result4 && mysqli_num_rows($result4) > 1){
+            //query executed
+            $assign_task = 'executed';
+          }else{
+            $assign_task = null;
+          }
+
+          // querying the database to get the list of task alloted
+          $query = "SELECT task_id, task_title, email from tasks t, users u 
+          where u.user_id = t.user_id and project_id=".$_GET['project_id'];
+          $result5 = mysqli_query($conn, $query);
+          if($result5){
+            $tasks = "executed";
+          }else{
+            $tasks = null;
+          }
+
         }
       ?>
       <div class="row">
@@ -123,20 +146,41 @@
 
           <div class="card col-nine">
             <div class="menu">
-              <div class="table-header"><h2>Tasks</h2></div>
-              <p>Task Alloted</p>
-              <h2>Task 1</h2>
-              <p>Put The Html file and css in one folder</p>
-              <h2>Tasks 2</h2>
-              <p>Make The changes and commit</p>
+              <div class="table-header">
+                <h2>Tasks</h2>
+              </div>
+              <p>Task Allotted
+                <button class="button" id="assign_btn" onclick="assignTask()"><i class="fa fa-plus"></i>&nbsp;Assign Tasks</button>
+              </p>
+              <table>
+                <tr>
+                  <th>Task number</th>
+                  <th>Task Name</th>
+                  <th>Assigned to</th>
+                </tr>
+                <?php
+                  if($result5!=null && mysqli_num_rows($result5) > 0){
+                    while($row = mysqli_fetch_assoc($result5)){
+                      $data = "<tr>
+                                <td>".$row['task_id']."</td>
+                                <td>".$row['task_title']."</td>
+                                <td>".$row['email']."</td>
+                              </tr>";
+                      echo $data;
+                    }
+                  }else{
+                    echo "NO tasks assigned yet!";
+                  }
+                ?>
+              </table>
             </div>
           </div>
       </div>
       
-      <div id="modal-background" align="center">
-        <div id="modal" class="modal" >
+      <div id="modal1-background" align="center" class="modal-background">
+        <div id="modal" class="modal">
           <form action="http://localhost/Pacific/php/add_member.php" method="post">
-            <span id="close-btn" onclick="closeModal()">&times;</span>
+            <span id="close-btn" onclick="closeModal(document.getElementById('modal1-background'))">&times;</span>
             <label for="select_member">Select team member:-</label><br>
             <select name="select_member" name="member_id">
               <?php if($users != null){
@@ -150,7 +194,37 @@
           </form>
         </div>       
       </div>
-  
+
+      <div class="modal-background" id="modal2-background">
+        <div class="modal" align="center">
+          <span id="close-btn" onclick="closeModal(document.getElementById('modal2-background'))">&times;</span>
+          <form method="post" id="assign-task-form" action="../php/add_tasks.php">
+              <h2>Assign a task to a member</h2>
+              <label for="name">Title of the Task</label><br>
+              <input type="text" name="name">
+
+              <label for="description">Description of the task</label><br>
+              <textarea name="description"></textarea><br>
+
+              <label>Select member to assign task to:</label><br>
+              <select name="assign_id">
+              <?php if($assign_task != null){
+                while($row = mysqli_fetch_assoc($result4)){
+                  echo "<option value=".$row['user_id'].">".$row['email']."</option>";
+                }
+              }?>
+              </select><br>
+              <?php
+                if($assign_task == null)
+                  echo "No members to assign tasks to!<br>";
+              ?>
+              <input type="hidden" name="project_id" value="<?php echo $_GET['project_id']?>">
+              <input type="submit" name="add_member_btn"> 
+            <br>
+          </form>
+        </div>
+      </div>
+
   </section>
 
 
@@ -160,7 +234,7 @@
    <script src="../js/main.js"></script>
    <script type="text/javascript">
     function addMember(){
-      var modal = document.getElementById('modal-background');
+      var modal = document.getElementById('modal1-background');
       modal.style.display = "block";
       window.onclick=function(event){
         if (event.target == modal){
@@ -168,9 +242,19 @@
          }
       }
     }
-    function closeModal(){
-      document.getElementById('modal-background').style.display = "none";
+    function assignTask(){
+      var modal = document.getElementById('modal2-background');
+      modal.style.display = "block";
+      window.onclick=function(event){
+        if (event.target == modal){
+            modal.style.display = "none";          
+         }
+      }  
     }
+    function closeModal(element){
+      element.style.display = "none";
+    }
+
    </script>
 </body>
 </html>

@@ -127,7 +127,7 @@
                         <?php if ($rows != null) { ?>
                         <?php while ($row=mysqli_fetch_assoc($result)){ 
                            // creates the link for every project
-                           $link = "http://localhost/Pacific/student/projectsinfo.php?project_id=".$row['project_id'];
+                           $link = "http://localhost/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
                            $status = $row['project_status'];
                            ?>
                         <tr>
