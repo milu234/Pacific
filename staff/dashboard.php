@@ -126,7 +126,7 @@
                         <tr>
                            <td><a href="assignment_info.php?id=<?php echo $rows['class_id'] ; ?>&id2=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
                             <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
-                            <td><a href="assignment_info.php"><h4><?php  echo $rows['class_name']; ?></h4></a></td>
+                            <td><a href="student_list.php?id=<?php echo $rows['class_id']; ?>"><h4><?php  echo $rows['class_name']; ?></h4></a></td>
 
                             <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
                             
