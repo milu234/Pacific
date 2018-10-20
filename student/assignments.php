@@ -12,7 +12,10 @@
 <body id="top">
    <?php
    $active="assignments";
-    include('../layouts/nav.php') ?>
+    include('../layouts/nav.php');
+    $conn = mysqli_connect('localhost','root','','pacific');
+    $result2 = mysqli_query($conn,"SELECT distinct e.assignment_marks, u.email,a.assignment_id,a.assignment_name,a.date_of_submission,a.user_id from users u,assignments a,assignment_evaluation e   where a.class_id = u.class_id and  u.user_id =$user->id  and e.assignment_marks > 10 and e.assignment_id = a.assignment_id ");
+    ?>
  
 
    <section class="stats">
@@ -25,18 +28,27 @@
                            <th>Title</th>
                            <th>Score</th>
                         </tr>
+                        <?php
+                                //include('../php/create_assignments.php');
+                               
+                              while($rows = mysqli_fetch_assoc($result2)  )
+                              {
+                        ?>
+                       
                         <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
-                           <td class="score">50</td>
+                        <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                        <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
                            <td class="score">50</td>
                         </tr>
                         <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
                            <td class="score">50</td>
-                        </tr>
+                        </tr> -->
+
+                        <?php  }?>
                      </table>
                   </div>
             </div>

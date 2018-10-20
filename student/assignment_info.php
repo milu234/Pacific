@@ -33,12 +33,12 @@
 		 
 		  move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"assignments/uploads/pdf/".$_FILES["pdf_file"]["name"]);
 		  $queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
-		  $updatequery = mysqli_query($conn,"UPDATE  assignments set status = 'Submited' where assignment_id = $a_id and user_id = $user->id ");
-	   if($queryfile){
-		  	 echo "File Upload";
-		   } else{
-		  	 echo "Upload Error!!";
-		   }
+		//   $updatequery = mysqli_query($conn,"UPDATE  assignments set status = 'Submited' where assignment_id = $a_id and user_id = $user->id ");
+	//    if($queryfile){
+	// 	  	 echo "File Upload";
+	// 	   } else{
+	// 	  	 echo "Upload Error!!";
+	// 	   }
 
 	 }
 	
@@ -50,7 +50,19 @@
 		<div class="row">
 			
 			 <div class="table-header"><h5>Assignment 1</h5></div>
+			 
+			 <!-- <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p> -->
+			 
 			<form method="post"  enctype="multipart/form-data" >
+			<?php
+			 
+			 while($rows = mysqli_fetch_assoc($result2))
+			 {
+			 	?>
+			 <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p>
+
+			 <?php } ?>
+			
 			 <input type = "file" id = "main-input" class="form-control form-input form-style-base" accept = "application/pdf" name="pdf_file" >
 			 <h4  class = "form-input fake-styled-btn text-center truncate"><span class ="margin" >Choose File</span></h4>
 			 <input type = "submit" class="btn btn-info" name="submit">
@@ -66,10 +78,17 @@
 			 <?php } ?>
 			
 		</div>
-
+		
 		<div class="row">
+		
 			<div class="sec-widget" data-widget="e3d5627b55668a242d472ad134681e63"></div>
 		</div>
+
+
+
+		
+			
+
 		
 	</section>
 

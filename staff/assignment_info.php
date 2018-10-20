@@ -72,11 +72,13 @@
 							 <td><form method="GET" action="evaluate.php"><input type = "text" value = "<?php echo $rows2['assignment_marks']  ?>" name="scoreupdated" ></td>
 							 
 							 <td><input type = "submit" value = "Save" name="score"  >
-							 <input type="hidden" name="id" value="<?php echo $rows2['assignment_id']; ?>"/>
+							 <input type="hidden" name="aid" value="<?php echo $rows2['assignment_id']; ?>"/>
+							 <input type="hidden" name="uid" value="<?php echo $rows2['user_id']; ?>"/>
 							 </form></td>
 				</tr>	
 
-			 <?php } ?>
+			 <?php }
+			  ?>
 
 				
 				<!-- <tr>
