@@ -14,15 +14,18 @@
    $active="assignments";
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
-    $result2 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id ");
-    ?>
- 
+    $result2 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks > 0 "); //assignments Evaluated
+
+
+    $result4 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
+    
+ ?>
 
    <section class="stats">
    		<div class="row">
    			<div class="col-twelve">
                   <div class="container">
-                     <h5 class="add">Assignments Submitted</h5>                 
+                     <h5 class="add">Assignments Evaluated</h5>                 
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
@@ -61,19 +64,29 @@
                         <tr>
                            <th>Title</th>
                         </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
-                           
-                        </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
-                          
-                        </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
-                          
-                        </tr>
-                     </table>
+
+
+                                     <?php
+                               
+                               
+                               while($rows = mysqli_fetch_assoc($result4) )
+                               {
+                         ?>
+                         <tr>
+                         
+                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                            
+                            
+                            
+                            
+                         </tr>
+                       <?php  }?>
+                     
+
+
+
+
+                       </table>
                   </div>
             </div>
          </div>

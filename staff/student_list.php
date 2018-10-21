@@ -18,7 +18,7 @@
 	 
 	
 
-	 $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  ");//for displaying the students of class who are submitting the assignments
+	 $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 GROUP BY u.email ");//for displaying the students of class who are submitting the assignments
 	 
 	 $rowcount = mysqli_num_rows($result2); ?> 
 	 <!-- //Get the count -->

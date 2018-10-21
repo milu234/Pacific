@@ -20,7 +20,12 @@
 
 
     include('../layouts/nav.php');
-//     include('../php/create_assignments.php')
+    $conn = mysqli_connect('localhost','root','','pacific');
+
+    $result2 = mysqli_query($conn,"SELECT distinct c.class_id, a.assignment_id, a.assignment_name from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
+    $result3 = mysqli_query($conn,"SELECT distinct c.class_id, a.assignment_id, a.assignment_name from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
+    
+
      
     ?>
 
@@ -132,15 +137,34 @@
                      <h5 class="add">Assignments Evaluated</h5>                 
                      <table class="table-common">
                         <tr>
-                           <th>Title</th>
+                           <th width = 80%>Title</th>
+                           
                         </tr>
+                        
+                           
+                        
+                        
 
-                        <!-- <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
-                        </tr> -->
+                          <?php
+                                
+                               
+                                while($rows = mysqli_fetch_assoc($result2))
+                                {
+                          ?>
+                          <tr>
+                          <td><a href="assignment_info.php?id=<?php echo $rows['class_id'] ; ?>&id2=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                          
+                              
+                              
+        
+                          </tr>
+                        <?php  }
+                        
+  
+                        ?>
+                        
+
+                       
                      </table>
                   </div>
             </div>
@@ -153,17 +177,28 @@
                         <tr>
                            <th>Title</th>
                         </tr>
+                        <?php 
+
+
+                                          
+                                while($rows = mysqli_fetch_assoc($result3))
+                                {
+                          ?>
+                          <tr>
+                          <td><a href="not_evaluated.php?id=<?php echo $rows['class_id'] ; ?>&id2=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                          
+                              
+                              
+        
+                          </tr>
+                        <?php  }
                         
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 1</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="assignment_info.php"><h4>Assignment 3</h4></a></td>
-                        </tr>
-                     </table>
+  
+                        ?>
+                        
+                            
+                        
+                        </table>
                   </div>
             </div>
          </div>
