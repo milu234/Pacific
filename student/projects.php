@@ -118,7 +118,7 @@
                               $rows = "executed";
                            } else{
                               $rows = null;
-                              echo "no projects found for the user";
+                            //   echo "no projects found for the user";
                            }
                         }else{
                            echo "db error";
@@ -140,7 +140,7 @@
                            <td style="width: 25%" class="score">Evaluated</td>
                         </tr>
                         <?php } ?>
-                        <?php } else { echo "No projects found for the user";}?>
+                        <?php } else { /*echo "No projects found for the user";*/}?>
                      </table>
                   </div>
          </div>
@@ -163,7 +163,7 @@
                         $query = "SELECT p.project_id, project_name, project_status 
                         FROM projects p, works_on w WHERE p.project_id=w.project_id
                         AND user_id=".$id;
-                        echo $query;
+                        // echo $query;
                         $result = mysqli_query($conn, $query);
                         if($result){
                            // if query executes sucessfully
