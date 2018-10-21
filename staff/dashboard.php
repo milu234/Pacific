@@ -19,7 +19,9 @@
 //    $result2 = mysqli_query($conn,"SELECT class_id,assignment_name,date_of_submission,assignment_id,assignment_marks from assignments where user_id = ".$user->id." ");
    $result2 = mysqli_query($conn,"SELECT distinct c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
    $rowcount = mysqli_num_rows($result2);
-   ?>
+   $result4 = mysqli_query($conn,"SELECT distinct  c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c,assignment_evaluation as ae where a.user_id = $user->id and c.class_id = a.class_id   ");
+   $rowcount2 = mysqli_num_rows($result4); ?> 
+   
    
    <section class="stats">
    		<div class="row">
@@ -36,19 +38,19 @@
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php  echo $rowcount ?></i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php  echo $rowcount;?></i></h2>
    									<h6>Assignments Created</h6>
    								</div>
 							</div>
                      <div class="col-three">
                         <div class="card dash-box">
-                              <h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;10</i></h2>
+                              <h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php echo $rowcount2; ?></i></h2>
                               <h6>Assignments Evaluated</h6>
                            </div>
                      </div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-newspaper-o" aria-hidden="true">&nbsp;5</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-newspaper-o" aria-hidden="true">&nbsp;<?php echo $rowcount-$rowcount2  ?></i></h2>
    									<h6>Correction Pending</h6>
    								</div>
 							</div>

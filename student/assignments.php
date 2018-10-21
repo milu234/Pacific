@@ -14,7 +14,7 @@
    $active="assignments";
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
-    $result2 = mysqli_query($conn,"SELECT distinct e.assignment_marks, u.email,a.assignment_id,a.assignment_name,a.date_of_submission,a.user_id from users u,assignments a,assignment_evaluation e   where a.class_id = u.class_id and  u.user_id =$user->id  and e.assignment_marks > 10 and e.assignment_id = a.assignment_id ");
+    $result2 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id ");
     ?>
  
 
