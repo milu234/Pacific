@@ -16,7 +16,7 @@
    <?php
    $active="assignments";
 
-   session_start();
+//    session_start();
 
 
     include('../layouts/nav.php');

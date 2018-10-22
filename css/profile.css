@@ -16,10 +16,16 @@ header{
     background: #14171c !important;
     top: 0 !important;
 }
-
+.preview{
+    padding-top : 10px;
+    height : 200px;
+}
+.buttons{
+    padding-bottom : 10px;
+}
 .profile-photo{
-    width : 90%;
-    max-height : 300px;
+    width : 70%;
+    height : 90%;
     text-align: center;
     border : 1px solid #fff;
     border-radius : 50%;

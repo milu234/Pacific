@@ -377,23 +377,33 @@
 
 			  </div> <!-- /features-block -->
 
-        <!-- ===================================================Contact Us ======================================================= -->
-        <h1>Contact Us</h1>
-   <div id="map"> </div>
-   <style>
-   #map{
-       height : 400px;
-       width:60%
-   }
 
-</style>
-
+        
 		<!-- ========================================================================================================================================== -->
 	</section> <!-- /features -->
 
 
   <!-- ==============================Maps===================================================== -->
-	
+	      <section style="text-align:center" id="about">
+            <div class="row section-intro">
+                <div class="col-twelve with-bottom-line">
+                <h5 class="about-text">Contact Us</h5>
+                </div>
+            
+            </div> 
+
+            <div class="row section-content">
+              <div id="map"> </div>
+              <style>
+              #map{
+                  height : 400px;
+                  text-align:center;
+              }
+              </style>
+            </div>         
+            
+
+        </section>
 
    
    <!-- footer
@@ -486,7 +496,7 @@ function initMap() {
    
    <!-- Java Script
    ================================================== --> 
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmXZEcaOOGxVpwbqYfROvxyG_u7dJGVA0&callback=initMap" /*use you own api key */
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmXZEcaOOGxVpwbqYfROvxyG_u7dJGVA0&callback=initMap" 
    async defer></script>
    <script src="js/jquery-1.11.3.min.js"></script>
    <script src="js/main.js"></script>
