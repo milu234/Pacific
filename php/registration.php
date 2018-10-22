@@ -1,6 +1,10 @@
 <?php
 	//uss php mailer
+	require '../php/includes/User.php';
 	session_start();
+	if(isset($_SESSION['user'])){
+		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
+	}
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
@@ -51,12 +55,11 @@
 			$_SESSION['notif-box-color'] = "green";
 			$_SESSION['notif-box-message'] = "New User created succesfully.";
 		} else{
-		
+
 		}
-		
+
 		// echo "<script type='text/javascript'>alert('$message');</script>";
 		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/admin/dashboard.php");
 	}
 
 ?>
-
