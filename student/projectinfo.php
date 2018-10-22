@@ -16,12 +16,12 @@
       background-color: white;
       height: 55%;
       width: 30%;
-      
+
     }
     #close-btn{
       float:right;
       font-size:40px;
-      font-weight: bold; 
+      font-weight: bold;
       cursor: pointer;
     }
     .modal-background{
@@ -37,6 +37,12 @@
     #assign_btn{
       float: right;
     }
+    #eval-btn{
+      float: right;
+    }
+    a{
+      text-decoration:none;
+    }
   </style>
 </head>
 
@@ -46,8 +52,11 @@
    include('../layouts/nav.php') ?>
 
   <section class="projectinfo">
-      <?php 
+      <?php
         if (isset($_GET['project_id'])){
+          if(isset($_SESSION['err'])){
+            echo "<script>alert('".$_SESSION['err']."')</script>";
+          }
           $conn = mysqli_connect('localhost', 'root', '', 'pacific') or die("couldnt connect to the db");
           // first we get the project details
           $query = "SELECT * FROM projects WHERE project_id=".$_GET['project_id'];
@@ -73,7 +82,7 @@
             header("location:http://localhost/Pacific/index.php");
           }
           // query for the team members
-          $query = "SELECT email from users u, works_on w where u.user_id=w.user_id and project_id=".$_GET['project_id'];
+          $query = "SELECT email, project_role from users u, works_on w where u.user_id=w.user_id and project_id=".$_GET['project_id'];
           $result2 = mysqli_query($conn, $query);
           if ($result2){
             // if the query executes
@@ -86,12 +95,12 @@
           }
           include '../php/includes/utils.php';
           $role_id = getRoleId('student');
-          $query = "SELECT user_id, email from users where role_id=".$role_id; 
+          $query = "SELECT user_id, email from users where role_id=".$role_id;
           $result3 = mysqli_query($conn, $query);
           if(mysqli_num_rows($result3)>0){
             $users = "exists";
           } else{
-            $users = null; 
+            $users = null;
           }
 
           //querying the database to get the details of the members of the project
@@ -105,7 +114,7 @@
           }
 
           // querying the database to get the list of task alloted
-          $query = "SELECT task_id, task_title, email from tasks t, users u 
+          $query = "SELECT task_id, task_title, email from tasks t, users u
           where u.user_id = t.user_id and project_id=".$_GET['project_id'];
           $result5 = mysqli_query($conn, $query);
           if($result5){
@@ -120,6 +129,13 @@
       <div class="col-twelve">
         <div class="card-header">
           <h3>Project Information</h3>
+              <?php if($row['project_evaluation'] == 'not evaluated') {?>
+                <button class="button" type="submit">
+              <a href="../php/send_for_evaluation.php?project_id=<?php echo $_GET['project_id']?>"><i class="fa fa-check"></i>&nbsp;Send for Evaluation</a>
+              </button>
+            <?php }else{?>
+              <h3>Already sent for evaluation.</h3>
+            <?php } ?>
         </div>
           <table class="table-common">
             <tr>
@@ -129,16 +145,22 @@
             <tr>
               <td class="title"><h6>Project Description</h6></td>
               <td><p><?php echo $row['project_description']; ?></p></td>
-            </tr>         
-          </table>         
-      </div> 
+            </tr>
+          </table>
+      </div>
       </div>
       <div class="row">
         <div class="card col-three">
             <div class="menu">
               <div class="table-header"><h2>Team Members</h2></div>
               <?php while($member = mysqli_fetch_assoc($result2)) {?>
-                <div class="menuitem"><?php echo $member['email']; ?></div>
+                <div class="menuitem"><?php
+                  if($member['project_role'] == 'leader'){
+                  echo $member['email']."<strong>(Leader)</strong>";
+                }else{
+                  echo $member['email'];
+                }
+                ?></div>
               <?php }?>
               <button class="button" id="member_btn" onclick="addMember()"><i class="fa fa-plus"></i>&nbsp;ADD MEMBERS</button>
             </div>
@@ -176,7 +198,7 @@
             </div>
           </div>
       </div>
-      
+
       <div id="modal1-background" align="center" class="modal-background">
         <div id="modal" class="modal">
           <form action="http://localhost/Pacific/php/add_member.php" method="post">
@@ -192,7 +214,7 @@
             <input type="hidden" name="project_id" value="<?php echo $_GET['project_id']?>">
             <button type="submit" name="add-btn">Add member</button>
           </form>
-        </div>       
+        </div>
       </div>
 
       <div class="modal-background" id="modal2-background">
@@ -219,7 +241,7 @@
                   echo "No members to assign tasks to!<br>";
               ?>
               <input type="hidden" name="project_id" value="<?php echo $_GET['project_id']?>">
-              <input type="submit" name="add_member_btn"> 
+              <input type="submit" name="add_member_btn">
             <br>
           </form>
         </div>
@@ -238,7 +260,7 @@
       modal.style.display = "block";
       window.onclick=function(event){
         if (event.target == modal){
-            modal.style.display = "none";          
+            modal.style.display = "none";
          }
       }
     }
@@ -247,9 +269,9 @@
       modal.style.display = "block";
       window.onclick=function(event){
         if (event.target == modal){
-            modal.style.display = "none";          
+            modal.style.display = "none";
          }
-      }  
+      }
     }
     function closeModal(element){
       element.style.display = "none";
