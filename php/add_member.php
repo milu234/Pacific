@@ -1,5 +1,9 @@
 <?php
+	require 'includes/User.php';
 	session_start();
+	if(!isset($_SESSION['user'])){
+		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
+	}
 	if(isset($_POST['add-btn'])){
 	$conn = mysqli_connect('localhost', 'root', '', 'pacific')
 	or die("couldnt connect to the database");
