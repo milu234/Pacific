@@ -15,6 +15,8 @@
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
     $result2 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks > 0 "); //assignments Evaluated
+
+
     $result4 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
     
  ?>
