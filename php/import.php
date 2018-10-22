@@ -62,7 +62,7 @@ if (isset($_POST["import"]))
                     $_SESSION['user_imported'] = True;
                     $_SESSION['notif-box-color'] = "green";
                     $_SESSION['notif-box-message'] = "Data successfully imported";
-                    header("location:http://localhost:8080/Pacific/admin/dashboard.php");
+                    header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/admin/dashboard.php");
                 
                     // if (! empty($result)) {
                     //     $type = "success";

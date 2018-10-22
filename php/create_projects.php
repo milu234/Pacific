@@ -28,8 +28,8 @@ if (isset($_POST['save'])){
         	//echo $query;
         	$result = mysqli_query($conn, $query);
         	if($result){
-        		header("location:http://localhost:8080/Pacific/");
+        		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/");
         	}
         }
-		header("location:http://localhost:8080/Pacific/index.php?err=project_upload_error");
+		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/index.php?err=project_upload_error");
 }

@@ -55,7 +55,7 @@
 		}
 		
 		// echo "<script type='text/javascript'>alert('$message');</script>";
-		header("location:http://localhost:8080/Pacific/admin/dashboard.php");
+		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/admin/dashboard.php");
 	}
 
 ?>
