@@ -60,10 +60,10 @@
             if(mysqli_num_rows($result)>0){
               $row = mysqli_fetch_assoc($result);
             } else{
-              header("location:http://localhost/Pacific/index.php");
+              header("location:http://localhost:8080/Pacific/index.php");
             }
           }else{
-            header("location:http://localhost/Pacific/index.php");
+            header("location:http://localhost:8080/Pacific/index.php");
           }
           $query = "SELECT * from works_on where project_id=".$_GET['project_id']." and user_id=".$id;
           $result1 = mysqli_query($conn, $query);
@@ -82,7 +82,7 @@
               $members = "exists";
             }
           }else{
-            //header("location:http://localhost/Pacific/index.php");
+            
           }
           include '../php/includes/utils.php';
           $role_id = getRoleId('student');
@@ -179,7 +179,7 @@
       
       <div id="modal1-background" align="center" class="modal-background">
         <div id="modal" class="modal">
-          <form action="http://localhost/Pacific/php/add_member.php" method="post">
+          <form action="http://localhost:8080/Pacific/php/add_member.php" method="post">
             <span id="close-btn" onclick="closeModal(document.getElementById('modal1-background'))">&times;</span>
             <label for="select_member">Select team member:-</label><br>
             <select name="select_member" name="member_id">

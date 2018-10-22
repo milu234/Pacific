@@ -10,12 +10,12 @@
 	if ($result){
 		if(mysqli_num_rows($result)>0){
 			$_SESSION['err'] = "User is already a member";
-			header("location:http://localhost/Pacific/index.php");
+			header("location:http://localhost:8080/Pacific/index.php");
 		}else{
 			$query = "INSERT INTO works_on values('".$_POST['select_member']."', '".$_POST['project_id']."')";
 			$result = mysqli_query($conn, $query);
 			if($result){
-				header("location:http://localhost/Pacific/student/projectinfo.php?project_id=".$_POST['project_id']);
+				header("location:http://localhost:8080/Pacific/student/projectinfo.php?project_id=".$_POST['project_id']);
 			}
 		}
 	} 

@@ -16,7 +16,7 @@ include 'includes/User.php';
       $query = "INSERT into assignments(assignment_name,assignment_marks,assignment_type,description_of_assignment,date_of_submission,user_id,class_id) VALUES ('".$nameoftheassignment."',".$marksallotedtoassignment.",'".$assignment_type."','".$description."','".$dateofsubmission."',".$user->id.",".$class_id.")";
       $result = mysqli_query($conn,$query);
     //   echo $query;
-      header("location:http://localhost/Pacific/staff/dashboard.php");
+      header("location:http://localhost:8080/Pacific/staff/dashboard.php");
 
 
       $result2 = mysqli_query($conn,"SELECT assignment_name,date_of_submission from assignments where user_id = ".$user->id." ");

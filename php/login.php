@@ -25,16 +25,16 @@
 			// header("location:http://localhost/Pacific/");
 
 			if($user['role_id'] == 1){
-				header("location:http://localhost/Pacific/student/dashboard.php");
+				header("location:http://localhost:8080/Pacific/student/dashboard.php");
 			}
 
 			else if($user['role_id'] == 2) {
-				header("location:http://localhost/Pacific/staff/dashboard.php");
+				header("location:http://localhost:8080/Pacific/staff/dashboard.php");
 			}
 
 		} else {
 			$_SESSION['err'] = "Invalid username or password.";
-			header("location:http://localhost/Pacific");
+			header("location:http://localhost:8080/Pacific");
 		}
 
 	} else {
