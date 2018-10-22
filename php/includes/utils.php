@@ -2,7 +2,7 @@
 
 $database_connection = mysqli_connect("localhost", "root", "", "pacific") or die("couldnt connect to the database");
 
-function getClasId($class_name) {
+function getClassId($class_name) {
 	global $database_connection;
 	$query = "Select class_id from class where class_name='".$class_name."'";
 	$result = mysqli_query($database_connection, $query); 
@@ -12,15 +12,16 @@ function getClasId($class_name) {
 	}
 	return $id;
 }
+
 function getClassName($class_id) {
 	global $database_connection;
 	$query = "Select class_name from class where class_id=".$class_id;
 	$result = mysqli_query($database_connection, $query); 
-	$id = null;
+	$name = null;
 	if(mysqli_num_rows($result) > 0) {
-		$id = mysqli_fetch_assoc($result)['class_name'];
+		$name = mysqli_fetch_assoc($result)['class_name'];
 	}
-	return $id;
+	return $name;
 }
 
 function getRoleId($role_name) {

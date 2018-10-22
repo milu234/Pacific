@@ -13,7 +13,30 @@ header{
 	margin-top: 100px;
 }
 
-
+#notif-box{
+    /*position is fixed so that the notif box appears anywhere in the window*/
+    position:fixed;
+    width:200px;
+    height: 90px;
+    top:50px;
+    left:-400px;
+    opacity: 0;
+    transition:opacity ease-in-out 1000ms, left ease-in-out 1000ms;
+    background-color: green;
+    color:white;
+    border-radius: 4px;
+    font-family: Arial;
+    z-index: 1000;
+ }
+ #notif-close{
+    cursor: pointer;
+    float:right;
+    margin-right: 5px;
+    margin-top: 2px;
+ }
+ #notif-box-content{
+    margin:7px;
+ }
 .add {
     background: #24b3ab;
     color: white;
@@ -69,4 +92,182 @@ th, td{
 		float :right;
 	}
 }
+
+.form-admin{
+    display:inline-block;
+    width:94%;
+    vertical-align: center;
+    font-size:2rem;
+}
+
+.form-admin label{
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+
+.row{
+    padding-top : 5px !important;
+    padding-bottom : 5px !important;
+}
+
+.form-label{
+    padding-top:2px;
+    box-sizing: border-box;
+    font-family: serif;
+}
+.form-control {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .375rem .75rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+.card{
+    padding:5px!important;
+    padding-top:15px !important;
+    box-sizing: border-box;
+}
+
+.button-class {
+    background-color: #4CAF50 ; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button-import{
+    background-color: rgb(194, 211, 37);    
+    border: none;
+    color: white;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button-class:hover  .button-import:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .container-radio {
+    padding-right: 20%;
+    padding-left: 20%;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+select {
+
+    /* styling */
+    width: 100%;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  
+
 

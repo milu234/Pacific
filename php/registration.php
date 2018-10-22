@@ -14,9 +14,11 @@
 		// if the database does not get connected, display an erorr message.
 		echo "There was an error connecting to the database.";
 	} else {
-		$user = $_POST['email'];
+		$name = $_POST['name'];
+		$email = $_POST['email'];
 		$pass = $_POST['psw'];
-		$conf_pass = $_POST['confpsw'];
+		$password_hash = password_hash($pass, PASSWORD_BCRYPT);
+		// $conf_pass = $_POST['confpsw'];
 		$radio = $_POST['radio']; // user role
 		$class = $_POST['class_name'];
 
@@ -24,31 +26,36 @@
 		include 'includes/utils.php';
 		echo $radio;
 		$role_id = getRoleId($radio);
-		$class_id = getClasId($class);
+		$class_id = getClassId($class);
 
-		$query = "Insert into users(email, password, role_id, class_id) values('".$user."', '".$pass."',".$role_id.", ".$class_id.");";
+		$query = "Insert into users(name,email, password, role_id, class_id) values('".$name."','".$email."', '".$password_hash."',".$role_id.", ".$class_id.");";
 		$result = mysqli_query($conn, $query);
 		if($result){
-			include 'includes/User.php';
-			$query = "Select user_id from users where email='".$user."'";
-			$result1 = mysqli_query($conn, $query);
-			if(mysqli_num_rows($result1) > 0){
-				// get the user id from the database after insertion
-				$id = mysqli_fetch_assoc($result1)['user_id'];
-				$user_obj = new User($id, $email, getRoleName($role_id), getClassName($class_id));
-				$_SESSION['user'] = $user_obj;
-				if($role_id == 1){
-					header("location:http://localhost/Pacific/student/dashboard.php");
-				}
-				else if($role_id == 2) {
-					header("location:http://localhost/Pacific/staff/dashboard.php");
-				}
-				// header("location:http://localhost/Pacific");
-			}
+			// include 'includes/User.php';
+			// $query = "Select user_id from users where email='".$user."'";
+			// $result1 = mysqli_query($conn, $query);
+			// if(mysqli_num_rows($result1) > 0){
+			// 	// get the user id from the database after insertion
+			// 	$id = mysqli_fetch_assoc($result1)['user_id'];
+			// 	$user_obj = new User($id, $email, getRoleName($role_id), getClassName($class_id));
+			// 	$_SESSION['user'] = $user_obj;
+			// 	if($role_id == 1){
+			// 		header("location:http://localhost/Pacific/student/dashboard.php");
+			// 	}
+			// 	else if($role_id == 2) {
+			// 		header("location:http://localhost/Pacific/staff/dashboard.php");
+			// 	}
+			// 	// header("location:http://localhost/Pacific");
+			// }
+			$_SESSION['user_created'] = True;
+			$_SESSION['notif-box-color'] = "green";
+			$_SESSION['notif-box-message'] = "New User created succesfully.";
 		} else{
-			$_SESSION['err'] = "User already exits.";
-			header("location:http://localhost/Pacific/");
+		
 		}
+		
+		// echo "<script type='text/javascript'>alert('$message');</script>";
+		header("location:http://localhost:8080/Pacific/admin/dashboard.php");
 	}
 
 ?>

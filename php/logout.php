@@ -1,5 +1,5 @@
 <?php
 	session_start();
 	session_destroy();
-	header("location:http://localhost/Pacific/");
+	header("location:http://localhost:8080/Pacific/");
 ?>

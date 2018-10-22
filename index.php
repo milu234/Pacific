@@ -231,11 +231,13 @@
    			<p class="lead">Create and Post your projects here for Evaluation and solve the real time assignments and get yourself evaluated</p>
 
    		</div>   		
-   	</div>
+     </div>
+     
+     <br><br>
 
    	<div class="row process-content">
 
-   		<div class="left-side">
+   		<div class="col-three">
 
    			<div class="item" data-item="1">
 
@@ -243,19 +245,19 @@
 
    				<p>A college Email-Id and Password is Enough</p>
    					
-   			</div>
+         </div>
+      </div>
+      <div class="col-three">
+        <div class="item" data-item="2">
 
-   			<div class="item" data-item="2">
+          <h5>Upload</h5>
 
-	   			<h5>Upload</h5>
-
-	   			<p>Upload the work or projects that you have done beyond the syllabus and get yourself evluated . Complete the tasks and assignments in given time and be a programmer streak</p>
-   					
-   			</div>
-   				
-   		</div> <!-- /left-side -->
+          <p>Upload the work or projects that you have done beyond the syllabus and get yourself evluated . Complete the tasks and assignments in given time and be a programmer streak</p>
+    
+        </div>
+      </div>
    		
-   		<div class="right-side">
+   		<div class="col-three">
    				
    			<div class="item" data-item="3">
 
@@ -263,17 +265,18 @@
 
    				<p>Create groups and start working on the project for better experience and also get yourself a mentor and get yourself evaluated</p>
    					
-   			</div>
+         </div>
+      </div>
 
-   			<div class="item" data-item="4">
+      <div class="col-three">
+        <div class="item" data-item="4">
 
-   				<h5>Publish</h5>
+        <h5>Publish</h5>
 
-   				<p>Keep track of all your projects before publishing and also complete the fortnight targets . Get an experience of working in a group and also be better programmer</p>
-   					
-   			</div>
-
-   		</div> <!-- /right-side -->  		
+        <p>Keep track of all your projects before publishing and also complete the fortnight targets . Get an experience of working in a group and also be better programmer</p>
+          
+        </div>
+      </div>
 
    	</div> <!-- /process-content --> 
 
@@ -313,8 +316,6 @@
 	   			<h5>Our features</h5>
 	   			<h1>Pick the suitable account type for you.</h1>
 
-	   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
 	   		</div>   		
    		</div>
 
@@ -334,10 +335,9 @@
 	               <div class="bottom-part">
 
 	            		<ul class="features">
-		                  <li><strong>3GB</strong> Storage</li>
-		                  <li><strong>10GB</strong> Bandwidth</li>		                  
-		                  <li><strong>5</strong> Databases</li>		                  
-		                  <li><strong>30</strong> Email Accounts</li>
+		                  <li>Create Assignments</li>
+		                  <li>Evaluate Assignments</li>		                  
+		                  <li>Evaluate Projects</li>		                  
 		               </ul>
 
 		               <a class="button large" href="">Get Started</a>
@@ -363,10 +363,9 @@
 	               <div class="bottom-part">
 
 	            		<ul class="features">
-		                  <li><strong>5GB</strong> Storage</li>
-		                  <li><strong>15GB</strong> Bandwidth</li>		                  
-		                  <li><strong>7</strong> Databases</li>		                  
-		                  <li><strong>40</strong> Email Accounts</li>
+		                  <li>Create Projects</li>
+		                  <li>Send Projects for Evaluation</li>		                  
+		                  <li>Solve Assignments</li>		                  
 		               </ul>
 
 		               <a class="button large" href="">Get Started</a>
@@ -455,7 +454,6 @@
    <!-- Java Script
    ================================================== --> 
    <script src="js/jquery-1.11.3.min.js"></script>
-   <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
 </body>

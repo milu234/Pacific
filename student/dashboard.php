@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<title>Dashboard</title>
 	<meta charset="utf-8">
@@ -8,32 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
   <link rel="stylesheet" type="text/css" href="../css/calendar.css">
-  <style>
-   #notif-box{
-      /*position is fixed so that the notif box appears anywhere in the window*/
-      position:fixed;
-      width:200px;
-      height: 90px;
-      top:50px;
-      left:-400px;
-      opacity: 0;
-      transition:opacity ease-in-out 1000ms, left ease-in-out 1000ms;
-      background-color: green;
-      color:white;
-      border-radius: 4px;
-      font-family: Arial;
-      z-index: 1000;
-   }
-   #notif-close{
-      cursor: pointer;
-      float:right;
-      margin-right: 5px;
-      margin-top: 2px;
-   }
-   #notif-box-content{
-      margin:7px;
-   }
-   </style>
 </head>
 
 <body id="top">
