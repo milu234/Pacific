@@ -6,17 +6,18 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/assignment_info.css">
-	
+
 </head>
 <body id="top">
 
 	<?php
 	$active="assignments";
-	 include('../layouts/nav.php');
+	 	include('../layouts/nav.php');
+	 	
 	 $conn = mysqli_connect('localhost','root','','pacific');
-	 $id = $_GET['id'];  //Get the class id 
+	 $id = $_GET['id'];  //Get the class id
 	 $id2 = $_GET['id2']; //Get assignment id
-	 
+
 	 $result1 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id2."'"); //For assigned by column
 
 	//  $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  ");//for displaying the students of class who are submitting the assignments
@@ -25,7 +26,7 @@
 	 $rowcount = mysqli_num_rows($result2);?>
 
 	 <!-- //Get the count -->
-	
+
 	<section class="ass_info">
 		<div class="row">
 			<form>
@@ -38,8 +39,8 @@
 			 	<div class="table-header"><h5><?php echo $rows['assignment_name']; ?></h5></div>
 	   <?php } ?>
 <!-- ========================================================PHP ENDS====================================================== -->
-			 
-				
+
+
 			</form>
 		</div>
 		<div class="row">
@@ -59,10 +60,10 @@
 			while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount and $rows2 = mysqli_fetch_assoc($result3) )
 			    {?>
 				 <tr>
-					
+
 				<!-- For displaying the students who had submitted their work and evaluate -->
 
-				 <td><?php echo $x; $x++; ?></td>	 
+				 <td><?php echo $x; $x++; ?></td>
 			 	<td><a href="#"><h4><?php  echo $rows['email']; ?></h4></a></td>
                 <td><a href="#"><h4><?php  echo $rows2['status']; ?></h4></a></td>
 				<td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
@@ -74,17 +75,17 @@
 					<input type="hidden" name="uid" value="<?php echo $rows2['user_id']; ?>"/>
 					<input type="hidden" name="aeid" value="<?php echo $rows2['assignment_evaluation_id']; ?>"/>
 				</form></td>
-				</tr>	
+				</tr>
 
 			 <?php }?>
 
 			 <!-- ====================================================PHP ENDS============================== -->
 
-				
+
 			</table>
 		</div>
-		
-		
+
+
 	</section>
 	<div class="clearfix"></div>
 	<script src="../js/jquery-1.11.3.min.js"></script>

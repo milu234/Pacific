@@ -12,7 +12,8 @@
 <body id="top">
    <?php
    $active="projects";
-    include('../layouts/nav.php') ?>
+    include('../layouts/nav.php');
+		 ?>
 
    <section class="stats">
 		 <?php

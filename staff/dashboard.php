@@ -15,14 +15,14 @@
    $active="dashboard";
    include('../layouts/nav.php');
    $conn = mysqli_connect('localhost','root','','pacific');
-   
+
 //    $result2 = mysqli_query($conn,"SELECT class_id,assignment_name,date_of_submission,assignment_id,assignment_marks from assignments where user_id = ".$user->id." ");
    $result2 = mysqli_query($conn,"SELECT distinct c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
    $rowcount = mysqli_num_rows($result2);
    $result4 = mysqli_query($conn,"SELECT distinct  c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c,assignment_evaluation as ae where a.user_id = $user->id and c.class_id = a.class_id   ");
-   $rowcount2 = mysqli_num_rows($result4); ?> 
-   
-   
+   $rowcount2 = mysqli_num_rows($result4); ?>
+
+
    <section class="stats">
    		<div class="row">
    			<div class="card col-twelve">
@@ -34,7 +34,7 @@
    									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;5</i></h2>
    									<h6>Projects Evaluated</h6>
    								</div>
-								
+
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
@@ -56,7 +56,7 @@
 							</div>
    						</div>
    					</div>
-   				  				
+
    			</div>
 
    		</div>
@@ -67,7 +67,7 @@
    			</div>
    			<div class="col-eight">
                <div class="container">
-                     <h5 class="add">Recent Evaluation Results</h5>                 
+                     <h5 class="add">Recent Evaluation Results</h5>
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
@@ -85,7 +85,7 @@
                </div>
                <br>
 					<div class="container">
-                     <h5 class="add">Projects Evaluated</h5>                 
+                     <h5 class="add">Projects Evaluated</h5>
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
@@ -103,15 +103,15 @@
                </div>
    				<br>
 					<div class="container">
-                     <h5 class="add">Assignments</h5>                 
+                     <h5 class="add">Assignments</h5>
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
-                           
+
                            <th>Marks</th>
                            <th>Class Assigned</th>
                            <th>Deadline</th>
-                           
+
                         </tr>
 
                         <!-- <tr>
@@ -121,7 +121,7 @@
                         <!-- ============================================================ -->
                         <?php
                                 //include('../php/create_assignments.php');
-                               
+
                               while($rows = mysqli_fetch_assoc($result2))
                               {
                         ?>
@@ -131,26 +131,26 @@
                             <td><a href="student_list.php?id=<?php echo $rows['class_id']; ?>"><h4><?php  echo $rows['class_name']; ?></h4></a></td>
 
                             <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
-                            
-      
+
+
                         </tr>
                       <?php  }
-                      
+
 
                       ?>
-                      
-                       
+
+
                         <!-- ===================================================================== -->
                      </table>
                </div>
    				<br>
    			</div>
-   			
+
    			<!-- <div class="col-three"></div> -->
    		</div>
    </section>
-	
-	
+
+
 	<?php include('../layouts/footer.php') ?>
    <script src="../js/jquery-1.11.3.min.js"></script>
    <script src="../js/plugins.js"></script>

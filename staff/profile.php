@@ -2,7 +2,7 @@
         $conn = mysqli_connect("localhost","root","","pacific");
             if(isset($_SESSION['user']))
             $user = unserialize($_SESSION['user']);
-    ?> 
+    ?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -16,23 +16,24 @@
 </head>
 <body>
 
-    
+
     <?php
    $active="dashboard";
     include('../layouts/nav.php');
-    ?>       
+    
+    ?>
 
     <section class="container">
         <div class="row">
             <div class="card col-three">
                 <form method="post" action="" enctype="multipart/form-data" id="myform">
                     <div class='preview'>
-                        <img 
-                        src="<?php 
+                        <img
+                        src="<?php
                         if($user->image_path!=null)
                         echo "$user->image_path";
                         else
-                        echo "uploads/person.png" 
+                        echo "uploads/person.png"
                         ?>"
                         id="img" class="profile-photo">
                     </div>
@@ -66,14 +67,14 @@
                             <div class="col-three"><label for="role">User Role</label></div>
                             <div class="col-nine">
                             <label class="form-control label" name="email" id="email"><?php echo "$user->role"?></label>
-                            </div>              
+                            </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-three"><label for="email">Class</label></div>
                             <div class="col-nine">
                             <label class="form-control label" name="email" id="email"><?php echo "$user->class"?></label>
-                            </div>              
+                            </div>
                         </div>
                         <br>
                         <div class="row" style="text-align:center">
@@ -81,8 +82,8 @@
                         <div class="col-six">
                             <button type="submit" onClick="document.getElementById('form').reset()" style="background-color: red" class="button-class">Reset</button>
                         </div>
-                                        
-                        </div>                  
+
+                        </div>
                     </form>
                 </div>
             </div>
@@ -94,7 +95,7 @@
 
     <div class="clearfix"></div>
 
-    
+
     <?php include('../layouts/footer.php') ?>
     <script src="../js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
@@ -114,7 +115,7 @@
                 processData: false,
                 success: function(response){
                     if(response != 0){
-                        $("#img").attr("src",response); 
+                        $("#img").attr("src",response);
                         $(".preview img").show(); // Display image element
                     }else{
                         alert('file not uploaded');
@@ -124,7 +125,7 @@
         });
         });
     </script>
-   
+
    <script src="../js/plugins.js"></script>
    <script src="../js/notify.js"></script>
    <script src="../js/main.js"></script>
