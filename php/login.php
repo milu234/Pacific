@@ -2,7 +2,7 @@
 	session_start();
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
-
+	$pass = password_hash($password,PASSWORD_DEFAULT);
 	$conn = mysqli_connect("localhost", "root", "", "Pacific") or die("couldnt connect to the database.");
 
 	// first we check whether the user exists
@@ -10,14 +10,14 @@
 	$result = mysqli_query($conn, $query);
 	if(mysqli_num_rows($result) == 1){
 		// user exists
-		$query = "Select user_id, class_id, role_id from users where email='".$email."' and password='".$password."'";
-		$result = mysqli_query($conn, $query);
+		$query = "Select user_id, name, class_id, role_id,image_path from users where email='".$email."' and password='".$pass."'";
+		$pass_data = mysqli_query($conn, $query);
 		if(mysqli_num_rows($result) == 1){
 			// password matched
 			$user = mysqli_fetch_assoc($result);
 			include 'includes/utils.php';
 			include 'includes/User.php';
-			$user_obj = new User($user['user_id'], $email, getRoleName($user['role_id']), getClassName($user['class_id']));
+			$user_obj = new User($user['user_id'],$user['name'], $email, getRoleName($user['role_id']), getClassName($user['class_id']), $user['image_path']);
 			$_SESSION['user'] = serialize($user_obj);
 			$_SESSION['login_success'] = True;
 			$_SESSION['notif-box-color'] = "green";
@@ -32,6 +32,10 @@
 				header("location:http://localhost:8080/Pacific/staff/dashboard.php");
 			}
 
+			else if($user['role_id'] == 3) {
+				header("location:http://localhost:8080/Pacific/admin/dashboard.php");
+			}
+
 		} else {
 			$_SESSION['err'] = "Invalid username or password.";
 			header("location:http://localhost:8080/Pacific");
@@ -39,7 +43,7 @@
 
 	} else {
 		$_SESSION['err'] = "User does not exit";
-		header("location:http://localhost/Pacific");
+		header("location:http://localhost:8080/Pacific");
 	}
 
 	

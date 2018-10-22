@@ -687,6 +687,7 @@ a.menu-toggle {
 /*============================Footer========================================*/
 
 footer {
+	bottom:0;
 	padding-bottom: 0;
 	font-size: 1.9rem;
 	line-height: 2.7rem;

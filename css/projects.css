@@ -7,7 +7,7 @@ body{
 .stats{
 	height : 100%;
 	position: relative;
-	margin-top: 100px;
+	margin-top: 50px;
 	z-index: 100;
 }
 
@@ -38,6 +38,11 @@ input[type=text]:focus,
 input[type=password]:focus{
 	background-color: #ddd;
 	outline: none;
+}
+
+td{
+  margin-top : 0 !important;
+  margin-bottom : 0 !important;
 }
 
 /*Set a style for all the buttons*/
@@ -136,10 +141,14 @@ hr{
 
 /*change styles on cncel button on esxtr asmall screens*/
 
-@media screen and (max-width: 300px){
+@media screen and (max-width: 360px){
 	.cancelbtn, .signupbtn{
 		width: 100%
-	}
+  }
+  
+  .stats{
+    margin-top : 100px;
+  }
 }
 
 /*******************************************Radio button****************************/

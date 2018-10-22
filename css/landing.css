@@ -172,9 +172,9 @@
 
 #process {
 	background: #FFFFFF;
-	padding-top: 12rem;
+	padding-top: 2rem;
 	padding-bottom: 15rem;
-	min-height: 75em;
+	min-height: 40em;
 }
 
 .process-content {
@@ -193,12 +193,7 @@
 	position: absolute;
 	top: 0;
 }
-.process-content .right-side {
-	right: 0;
-}
-.process-content .left-side {
-	left: 0;
-}
+
 
 .process-content .item[data-item]::before {
 	background: #38424e;
@@ -269,8 +264,8 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     color: white;
 }
 .about-content{
@@ -296,8 +291,8 @@
 /*features section*/
 #features {
 	background: #EAEAED;
-	padding-top: 12rem;
-	padding-bottom: 9.6rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 .features-content {
 	margin-top: 6.6rem;
