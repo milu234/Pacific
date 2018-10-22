@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	if(isset($_POST['add-btn'])){
 	$conn = mysqli_connect('localhost', 'root', '', 'pacific')
@@ -12,12 +12,12 @@
 			$_SESSION['err'] = "User is already a member";
 			header("location:http://localhost:8080/Pacific/index.php");
 		}else{
-			$query = "INSERT INTO works_on values('".$_POST['select_member']."', '".$_POST['project_id']."')";
+			$query = "INSERT INTO works_on values('".$_POST['select_member']."', '".$_POST['project_id']."', 'member')";
 			$result = mysqli_query($conn, $query);
 			if($result){
 				header("location:http://localhost:8080/Pacific/student/projectinfo.php?project_id=".$_POST['project_id']);
 			}
 		}
-	} 
+	}
 	}
  ?>

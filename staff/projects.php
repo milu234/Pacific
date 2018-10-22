@@ -15,39 +15,53 @@
     include('../layouts/nav.php') ?>
 
    <section class="stats">
+		 <?php
+		 	$conn = mysqli_connect("localhost", 'root', '', 'pacific')
+			or die("couldnt connect to the database");
+
+			// Query all the projects that are to be evaluated
+			$query1 = "SELECT project_name, project_id, project_status from projects where project_evaluation='sent for evaluation'";
+			$result1 = mysqli_query($conn, $query1);
+			if(mysqli_num_rows($result1) > 0){
+				$not_evaluated_projects = "exits";
+			}else{
+				$not_evaluated_projects = null;
+			}
+			$query2 = "SELECT project_name, project_id, project_status from projects where project_evaluation='evaluated'";
+			$result2 = mysqli_query($conn, $query2);
+			if(mysqli_num_rows($result2) > 0){
+				$evaluated_projects = "exist";
+			}else{
+				$evaluated_projects = null;
+			}
+		  ?>
    		<div class="row">
    			<div class="col-twelve">
                   <div class="container">
-                     <h5 class="add">Projects Evaluated</h5>                 
+                     <h5 class="add">Projects Evaluated</h5>
                      <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                           <th>Completion Status</th>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
-                           <td style="width: 25%">
-                              <div class="progress-bar green stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
+												<?php if($evaluated_projects != null){ ?>
+													<tr>
+	                           <th>Title</th>
+	                           <th>Completion Status</th>
+	                        </tr>
+													<?php
+													while($row=mysqli_fetch_assoc($result2)){
+														$link = "projectinfo.php?project_id=".$row['project_id'];
+														echo '
+														<tr>
+														<td><a href="'.$link.'"><h4>'.$row['project_name'].'</h4></a></td>
+													 	<td style="width: 25%">
+															<div class="progress-bar green stripes">
+																	<span style="width: '.$row['project_status'].'%"></span>
+															</div>
+													  </td>
+														</tr>
+														';
+													}
+												}else{
+													echo "<h1>No projects have been evaluated.</h1>";
+												}?>
                      </table>
                   </div>
          </div>
@@ -55,42 +69,36 @@
    		<div class="row">
             <div class="col-twelve">
                   <div class="container">
-                     <h5 class="add">Projects Not Evaluated</h5>                 
+                     <h5 class="add">Projects Not Evaluated</h5>
                      <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                           <th>Completion Status</th>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
-                           <td style="width: 25%">
-                              <div class="progress-bar green stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                           <td>
-                              <div class="progress-bar blue stripes">
-                                  <span style="width: 40%"></span>
-                              </div>
-                           </td>
-                        </tr>
+												<?php if($not_evaluated_projects != null){ ?>
+													<tr>
+	                           <th>Title</th>
+	                           <th>Completion Status</th>
+	                        </tr>
+													<?php
+													while($row=mysqli_fetch_assoc($result1)){
+														$link = "projectinfo.php?project_id=".$row['project_id'];
+														echo '
+														<tr>
+														<td><a href="'.$link.'"><h4>'.$row['project_name'].'</h4></a></td>
+													 	<td style="width: 25%">
+															<div class="progress-bar green stripes">
+																	<span style="width: '.$row['project_status'].'%"></span>
+															</div>
+													  </td>
+														</tr>
+														';
+													}
+												}else{
+													echo "<h1>All projects have been evaluated</h1>";
+												}?>
                      </table>
                   </div>
          </div>
          </div>
    </section>
-   
+
    <div class="clearfix"></div>
    <script src="../js/jquery-1.11.3.min.js"></script>
    <script src="../js/plugins.js"></script>
