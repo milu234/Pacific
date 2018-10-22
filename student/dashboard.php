@@ -21,8 +21,13 @@
    $active="dashboard";
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
-    $result2 = mysqli_query($conn,"SELECT assignments.assignment_id,assignments.assignment_name,assignments.date_of_submission from  assignments inner join users on assignments.class_id = users.class_id ");
-//     $id = $_GET['assignment_id'];
+    $result2 = mysqli_query($conn,"SELECT u.email,a.assignment_id,a.assignment_name,a.assignment_marks,a.date_of_submission,a.user_id from users u,assignments a   where a.class_id = u.class_id and u.user_id = $user->id ");
+    $result3 = mysqli_query($conn,"SELECT u.email  from users u , assignments a where u.user_id = a.user_id ");
+    $result4 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks > 0 "); //assignments Evaluated
+    $rowcount1 = mysqli_num_rows($result4);
+    $result5 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
+    $rowcount2 = mysqli_num_rows($result5);
+//      $id = $_GET['assignment_id'];
     
     ?>
 
@@ -47,13 +52,13 @@
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;10</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php echo $rowcount1  ?></i></h2>
    									<h6>Assignments Submitted</h6>
    								</div>
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;5</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php echo $rowcount2 ?></i></h2>
    									<h6>Assignments Pending</h6>
    								</div>
 							</div>
@@ -114,19 +119,24 @@
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
+                           <th>Marks</th>
                            <th>Deadline</th>
-                           <!-- <th>Assigned By</th> -->
+                            <th>Assigned By</th>
+                            
                         </tr>
                         <?php
-                                //include('../php/create_assignments.php');
                                
-                              while($rows = mysqli_fetch_assoc($result2))
+                               
+                              while($rows = mysqli_fetch_assoc($result2) and $rows2 = mysqli_fetch_assoc($result3) )
                               {
                         ?>
                         <tr>
+                        
                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                           <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
                            <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
-                           <!-- <td><a href="assignment_info.php"><h4<  echo $rows['email']; ?></h4></a></td> -->
+                            <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
+                            <!-- <td><button class="btn"><i class="fa fa-trash"></i></button></td> -->
                         </tr>
                       <?php  }?>
                      </table>

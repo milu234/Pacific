@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2018 at 06:36 AM
+-- Generation Time: Oct 21, 2018 at 05:28 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -31,13 +31,27 @@ SET time_zone = "+00:00";
 CREATE TABLE `assignments` (
   `assignment_id` int(11) UNSIGNED NOT NULL,
   `assignment_name` varchar(255) NOT NULL,
-  `assignment_description` varchar(255) NOT NULL,
   `assignment_marks` int(11) NOT NULL,
   `date_of_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_of_submission` datetime NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `class_id` int(10) UNSIGNED NOT NULL
+  `class_id` int(10) UNSIGNED NOT NULL,
+  `assignment_type` varchar(255) NOT NULL,
+  `description_of_assignment` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`assignment_id`, `assignment_name`, `assignment_marks`, `date_of_creation`, `date_of_submission`, `user_id`, `class_id`, `assignment_type`, `description_of_assignment`) VALUES
+(40, 'OLAP', 20, '2018-10-21 02:37:02', '2018-10-23 23:59:00', 43, 3, 'document', 'USE BUISNESS INTELLIGENCE STUDIO'),
+(41, 'Pointers', 20, '2018-10-21 02:38:36', '2018-10-23 23:59:00', 43, 1, 'document', 'Do it with poinetrs with structure'),
+(42, 'OS', 20, '2018-10-21 02:39:15', '2018-10-25 23:59:00', 43, 2, 'document', 'Sceduling'),
+(43, 'ADBMS', 20, '2018-10-21 02:40:55', '2018-10-26 23:59:00', 43, 4, 'document', 'Enter the perfect values'),
+(44, 'XML', 20, '2018-10-21 02:53:09', '2018-10-24 23:59:00', 37, 3, 'document', 'Enter the XML Commads'),
+(45, 'One King', 20, '2018-10-21 03:47:48', '2018-10-19 23:59:00', 37, 3, 'document', 'lkddncklnlqnc'),
+(46, 'Tentative Cipher', 30, '2018-10-21 04:25:55', '2018-10-25 17:55:00', 40, 3, 'document', 'Do it in python');
 
 -- --------------------------------------------------------
 
@@ -50,8 +64,22 @@ CREATE TABLE `assignment_evaluation` (
   `assignment_marks` int(11) NOT NULL,
   `assignment_comments` varchar(255) NOT NULL,
   `assignment_id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `pdf_file` varchar(200) NOT NULL,
+  `status` varchar(200) NOT NULL DEFAULT 'submitted'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment_evaluation`
+--
+
+INSERT INTO `assignment_evaluation` (`assignment_evaluation_id`, `assignment_marks`, `assignment_comments`, `assignment_id`, `user_id`, `pdf_file`, `status`) VALUES
+(37, 18, '', 40, 33, 'Paraphrasing assignment.pdf', 'submitted'),
+(38, 20, '', 44, 33, 'IP UT 2.pdf', 'submitted'),
+(39, 15, '', 45, 33, 'CNS commands.pdf', 'submitted'),
+(40, 0, '', 46, 33, 'CNS commands.pdf', 'submitted'),
+(41, 16, '', 44, 36, 'ACM-IbadanPaperTeeh2.pdf', 'submitted'),
+(42, 15, '', 44, 34, 'IJERTV2IS100652.pdf', 'submitted');
 
 -- --------------------------------------------------------
 
@@ -97,7 +125,8 @@ CREATE TABLE `projects` (
 INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_link`, `github_username`, `project_status`) VALUES
 (1, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 50),
 (2, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 32),
-(3, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 61);
+(3, 'PGCORP', 'qoaboaobvobovbdovbovb', 'https://github.com/milu234/Data-structures.git', 'milu234', 61),
+(4, 'PGCORP', '30', 'https://github.com/milu234/Data-structures.git', 'milu234', 70);
 
 -- --------------------------------------------------------
 
@@ -150,10 +179,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `class_id`) VALUES
-(10, '2016.milan.hazra@ves.ac.in', '1234', 1, 1),
-(12, 'amit@gmail.com', '1234', 2, 3),
-(13, 'm@gmail.com', '1234', 2, 5),
-(16, 'walshfer@gmail.com', '1234', 1, 1);
+(33, 'milan@gmail.com', '123456', 1, 3),
+(34, 'chirag@gmail.com', '123456', 1, 3),
+(35, 'walsh@gmail.com', '123456', 1, 3),
+(36, 'athul@gmail.com', '123456', 1, 3),
+(37, 'pooja@gmail.com', '123456', 2, 5),
+(38, 'sagar@gmail.com', '123456', 1, 4),
+(39, 'shravan@gmail.com', '123456', 1, 4),
+(40, 'dimple@gmail.com', '123456', 2, 5),
+(41, 'utsav@gmail.com', '123456', 1, 4),
+(43, 'jayshree@gmail.com', '123456', 2, 5),
+(44, 'harsh@gmail.com', '123456', 1, 4),
+(45, 'anish@gmail.com', '123456', 1, 2),
+(46, 'mahesh@gmail.com', '123456', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -183,7 +221,8 @@ ALTER TABLE `assignments`
 --
 ALTER TABLE `assignment_evaluation`
   ADD PRIMARY KEY (`assignment_evaluation_id`),
-  ADD KEY `assign_id_foreign` (`assignment_id`);
+  ADD KEY `assign_id_foreign` (`assignment_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `class`
@@ -234,13 +273,13 @@ ALTER TABLE `works_on`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `assignment_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `assignment_evaluation`
 --
 ALTER TABLE `assignment_evaluation`
-  MODIFY `assignment_evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_evaluation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `class`
@@ -252,7 +291,7 @@ ALTER TABLE `class`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `project_evaluation`
@@ -270,7 +309,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables
@@ -287,7 +326,8 @@ ALTER TABLE `assignments`
 -- Constraints for table `assignment_evaluation`
 --
 ALTER TABLE `assignment_evaluation`
-  ADD CONSTRAINT `assign_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`assignment_id`);
+  ADD CONSTRAINT `assign_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`assignment_id`),
+  ADD CONSTRAINT `assignment_evaluation_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `project_evaluation`
