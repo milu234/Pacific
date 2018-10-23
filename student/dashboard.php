@@ -69,33 +69,33 @@
 
    		</div>
    		<div class="row">
-   			<div class="col-four" id="cal" class="calendar">
-   				calendar
+                  <div class="col-twelve">
+                        <div class="container">
+                              <h5 class="add">Recent Evaluation Results</h5>                 
+                              <table class="table-common">
+                                    <tr>
+                                    <th>Title</th>
+                                    <th>Score</th>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Assignment 1</h4></a></td>
+                                    <td class="score">50</td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Project 1</h4></a></td>
+                                    <td class="score">50</td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Assignment 3</h4></a></td>
+                                    <td class="score">50</td>
+                                    </tr>
+                              </table>
+                        </div>
+                  </div>
+            </div>
 
-   			</div>
-   			<div class="col-eight">
-               <div class="container">
-                     <h5 class="add">Recent Evaluation Results</h5>                 
-                     <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                           <th>Score</th>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 1</h4></a></td>
-                           <td class="score">50</td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Project 1</h4></a></td>
-                           <td class="score">50</td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 3</h4></a></td>
-                           <td class="score">50</td>
-                        </tr>
-                     </table>
-               </div>
-               <br>
+            <div class="row">
+               <div class="col-five">
 			<div class="container">
                      <h5 class="add">Projects</h5>                 
                      <table class="table-common">
@@ -112,37 +112,38 @@
                            <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
                         </tr>
                      </table>
+                  </div>
                </div>
-   				<br>
-					<div class="container">
-                     <h5 class="add">Assignments</h5>                 
-                     <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                           <th>Marks</th>
-                           <th>Deadline</th>
-                            <th>Assigned By</th>
-                            
-                        </tr>
-                        <?php
-                               
-                               
-                              while($rows = mysqli_fetch_assoc($result2) and $rows2 = mysqli_fetch_assoc($result3) )
-                              {
-                        ?>
-                        <tr>
-                        
-                           <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
-                           <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
-                           <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
-                            <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
-                            <!-- <td><button class="btn"><i class="fa fa-trash"></i></button></td> -->
-                        </tr>
-                      <?php  }?>
-                     </table>
-               </div>
-   				<br>
-   			</div>
+                  <div class="col-six">
+                        <div class="container">
+                              <h5 class="add">Assignments</h5>                 
+                              <table class="table-common">
+                                    <tr>
+                                    <th>Title</th>
+                                    <th>Marks</th>
+                                    <th>Deadline</th>
+                                    <th>Assigned By</th>
+                                    
+                                    </tr>
+                                    <?php
+                                          
+                                          
+                                          while($rows = mysqli_fetch_assoc($result2) and $rows2 = mysqli_fetch_assoc($result3) )
+                                          {
+                                    ?>
+                                    <tr>
+                                    
+                                    <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                                    <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
+                                    <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
+                                    <td><a href="assignment_info.php"><h4><?php  echo $rows2['email']; ?></h4></a></td>
+                                    <!-- <td><button class="btn"><i class="fa fa-trash"></i></button></td> -->
+                                    </tr>
+                              <?php  }?>
+                              </table>
+                        </div>
+                  </div>
+			
    			
    			<!-- <div class="col-three"></div> -->
    		</div>

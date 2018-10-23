@@ -28,7 +28,7 @@ if (isset($_POST['save'])){
         	//echo $query;
         	$result = mysqli_query($conn, $query);
         	if($result){
-        		header("location:http://localhost/Pacific/");
+        		header("location:http://localhost:8080/Pacific/");
         	}
         }
 		header("location:http://localhost/Pacific/index.php?err=project_upload_error");

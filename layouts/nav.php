@@ -27,24 +27,21 @@
 						echo '<li class="current"><a href="dashboard.php" title="">Dashboard</a></li>
 						<li><a href="projects.php" title="">Projects</a></li>
 						<li><a href="assignments.php" title="">Assignments</a></li>
-						<li class="highlight with-sep"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>Hi , '.$user->name.' </a></li>
-						<li class="highlight"><a href="profile.php">My Profile</a></li>
+						<li class="highlight with-sep"><a href="profile.php" title=""><i class="fa fa-user-circle-o"></i>Hi , '.$user->name.' </a></li>
 						<li class="highlight"><a href="../php/logout.php">Logout</a></li>';  
 					} 
 					if($active=="projects"){
 						echo '<li><a href="dashboard.php" title="">Dashboard</a></li>
 						<li class="current"><a href="projects.php" title="">Projects</a></li>
 						<li><a href="assignments.php" title="">Assignments</a></li>
-						<li class="highlight with-sep"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>hi , '.$user->name.'</a></li>
-						<li class="highlight"><a href="profile.php">My Profile</a></li>
+						<li class="highlight with-sep"><a href="profile.php" title=""><i class="fa fa-user-circle-o"></i>Hi , '.$user->name.'</a></li>
 						<li class="highlight"><a href="../php/logout.php" title="">Logout</a></li>';
 					} 
 					if($active=="assignments"){
 						echo '<li><a href="dashboard.php" title="">Dashboard</a></li>
 						<li><a href="projects.php" title="">Projects</a></li>
 						<li class="current"><a href="assignments.php" title="">Assignments</a></li>
-						<li class="highlight with-sep"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>hi , '.$user->name.'</a></li>
-						<li class="highlight"><a href="profile.php">My Profile</a></li>
+						<li class="highlight with-sep"><a href="profile.php" title=""><i class="fa fa-user-circle-o"></i>Hi , '.$user->name.'</a></li>
 						<li class="highlight"><a href="../php/logout.php" title="">Logout</a></li>';
 					} 
 				?>

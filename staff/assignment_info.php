@@ -63,8 +63,8 @@
 				<!-- For displaying the students who had submitted their work and evaluate -->
 
 				 <td><?php echo $x; $x++; ?></td>	 
-			 	<td><a href="#"><h4><?php  echo $rows['email']; ?></h4></a></td>
-                <td><a href="#"><h4><?php  echo $rows2['status']; ?></h4></a></td>
+			 	<td><h4><?php  echo $rows['email']; ?></h4></td>
+                <td><h4><?php  echo $rows2['status']; ?></h4></td>
 				<td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
 				<!-- For evaluation of the marks pass the id and take the input marks from the user -->
 				<td><form method="GET" action="evaluate.php">

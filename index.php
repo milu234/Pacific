@@ -58,7 +58,6 @@
 					
                <?php if(!isset($_SESSION['user'])) {?>
                   <li class="highlight with-sep"><a onclick="login()" href="#">Login</a></li>				
-   					<li class="highlight"><a onclick="signup()" href="#">Sign Up</a></li>	
                <?php } else {?>
                   <li class="highlight"><a href="php/logout.php">Logout</a></li>
                   <li class="highlight"><a href="student/dashboard.php">Dashboard</a></li>
@@ -73,94 +72,6 @@
    	</div>   	
    	
    </header> <!-- /header -->       
-
-<div id="id1" class="modal">
-      <form class="modal-content"  action="php/registration.php" method = "POST" onsubmit = "return validate()" >
-      <span id="span1" class="close">&times;</span> 
-         <div class="container">
-            <h5 style="text-align: center; color: #05bca9;">Register</h5>
-            <hr>
-            <div class="formrow">
-               <div class="col-three"><label for="email"><b>Email</b></label></div>
-               <div class="col-nine"><input type="text" placeholder="Enter your Email"  name="email" id="email"  required></div>           
-            </div>
-
-                <!-- ================== -->
-                <!-- <div class="formrow">
-               <div class="col-three"><label for="confpsw"><b>First Name</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your first name"  name="confpsw" id="conf_pass"  required></div>            
-            </div> -->
-
-
-            <!-- <div class="formrow">
-               <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
-            </div> -->
-
-            <!-- =================================== -->
-
-
-
-            <div class="formrow">
-               <div class="col-three"><label for="psw"><b>Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password"  name="psw" id="pass" required></div>              
-            </div>
-            <div class="formrow">
-               <div class="col-three"><label for="confpsw"><b>Confirm Password</b></label></div>
-               <div class="col-nine"><input type="password" placeholder="Enter your Password again"  name="confpsw" id="conf_pass"  required></div>            
-            </div>
-            <div class="formrow">
-               <div class="col-three"><label for="category"><b>I am a</b></label></div>
-               <div class="col-nine">
-                  <label class="container-radio"><b>Student</b><input type="radio" checked="checked" name="radio" value="student" ><span class="checkmark"></label>
-                  <label class="container-radio"><b>Teacher</b><input type="radio" name="radio" value="staff" ><span class="checkmark"></label>
-               </div>              
-            </div>
-            <div class="formrow">
-               <div class="col-three"><label for="email"><b>Select Class</b></label></div>
-               <div class="col-nine">
-                  <select class="round" name = "class_name" required="">
-                     <option value="0" disabled>Select Class</option>
-                     <option value="D5">D5</option>
-                     <option value="D10">D10</option>
-                     <option value="D15">D15</option>
-                     <option value="D20">D20</option>
-                     <option value="Teaching_Staff">Teaching Staff</option>
-                  </select>
-               </div>              
-            </div>
-            <br>
-            <div class="formrow">
-               <div class="col-twelve">
-                  <label>
-                     <input type="checkbox" checked="" name="remember" style="margin-bottom: 15px">Remember Me
-                  </label>
-               </div>           
-            </div>
-            <div class="formrow">
-               <div class="col-twelve">
-                  <p>By creating an account you agree to our <a href="staff/terms_conditions.php" style="color:dodgerblue">Terms & Privacy</a>.</p>
-               </div>             
-            </div>
-
-            <div class="formrow" style="justify-content: center;">
-               <div class="col-six" style="text-align: center;">
-                  <button type="submit" class="signupbtn">Sign Up</button>
-               </div>
-               <div class="col-six" style="text-align: center;">
-                  <button onclick="document.getElementById('id1').style.display='none'" class="cancelbtn">Cancel</button>
-               </div>                           
-            </div>
-
-            <div class="clearfix">
-              
-              
-            </div>
-
-
-         </div>
-      </form>
-   </div>
 
    <div id="id2" class="modal">
       <form class="modal-content" method="post" action="php/login.php" >
@@ -419,32 +330,20 @@
    </footer>  
 
    <script>
-      function signup(){
-         document.getElementById('id2').style.display='none';
-         document.getElementById('id1').style.display='block';
-      }
 
       function login(){
          document.getElementById('id2').style.display='block';
       }
       //Get the modal
-      var modal1 = document.getElementById('id1');
       var modal2 = document.getElementById('id2');
-      var span1 = document.getElementById("span1");
       var span2 = document.getElementById("span2");
 
       //When the users click anywhere outside the modal
-      span1.onclick = function() {
-         modal1.style.display = "none"; 
-      }
       span2.onclick = function() {
          document.getElementById('id2').style.display='none';
          console.log("done");
       }
       window.onclick = function(event) {
-         if (event.target == modal1){
-            modal1.style.display = "none";          
-         }
          if (event.target == modal2){
             modal2.style.display='none';          
          }          

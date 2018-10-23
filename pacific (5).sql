@@ -158,7 +158,8 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`role_id`, `role_name`) VALUES
 (1, 'student'),
-(2, 'staff');
+(2, 'staff'),
+(3, 'admin');
 
 -- --------------------------------------------------------
 

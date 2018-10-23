@@ -21,7 +21,7 @@
             <h5 style="text-align: center; color: #05bca9;">Project</h5>
             <hr>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "nameoftheproject"><b>Name of the Project</b></label>
                </div>
@@ -30,16 +30,16 @@
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "descriptionoftheproject"><b>Description</b></label>
                </div>
                <div class="col-eight">
-                  <input type="text" placeholder="Enter the description of the project" name="descriptionoftheproject" required>
+                  <textarea style="width:100%; height : 50px;" placeholder="Enter the description of the project" name="descriptionoftheproject" required></textarea>
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "projectstatus"><b>Project Status</b></label>
                </div>
@@ -49,7 +49,7 @@
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "projectgithublink"><b>Project Github Link</b></label>
                </div>
@@ -59,7 +59,7 @@
             </div>
 
 
-                    <div class="formrow">
+                    <div class="row">
                <div class="col-three">
                   <label for = "githubusername"><b>Github Username</b></label>
                </div>
@@ -127,7 +127,7 @@
                         <?php if ($rows != null) { ?>
                         <?php while ($row=mysqli_fetch_assoc($result)){
                            // creates the link for every project
-                           $link = "http://localhost/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
+                           $link = "http://localhost:8080/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
                            $status = $row['project_status'];
                            ?>
                         <tr>
