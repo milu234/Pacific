@@ -3,6 +3,9 @@
 
 include 'includes/User.php';
 session_start();
+if(!isset($_SESSION['user'])){
+  header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
+}
 
 //Load Composer's autoloader
 require '../vendor/autoload.php';
@@ -28,8 +31,8 @@ if (isset($_POST['save'])){
         	//echo $query;
         	$result = mysqli_query($conn, $query);
         	if($result){
-        		header("location:http://localhost:8080/Pacific/");
+        		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/");
         	}
         }
-		header("location:http://localhost/Pacific/index.php?err=project_upload_error");
+		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/index.php?err=project_upload_error");
 }

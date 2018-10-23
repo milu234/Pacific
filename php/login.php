@@ -1,5 +1,9 @@
 <?php
+	require '../php/includes/User.php';
 	session_start();
+	if(isset($_SESSION['user'])){
+		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
+	}
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
 	$pass = password_hash($password,PASSWORD_DEFAULT);
@@ -25,26 +29,26 @@
 			// header("location:http://localhost/Pacific/");
 
 			if($user['role_id'] == 1){
-				header("location:http://localhost:8080/Pacific/student/dashboard.php");
+				header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/student/dashboard.php");
 			}
 
 			else if($user['role_id'] == 2) {
-				header("location:http://localhost:8080/Pacific/staff/dashboard.php");
+				header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/staff/dashboard.php");
 			}
 
 			else if($user['role_id'] == 3) {
-				header("location:http://localhost:8080/Pacific/admin/dashboard.php");
+				header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/admin/dashboard.php");
 			}
 
 		} else {
 			$_SESSION['err'] = "Invalid username or password.";
-			header("location:http://localhost:8080/Pacific");
+			header("location:http://".$_SERVER['HTTP_HOST']."/Pacific");
 		}
 
 	} else {
 		$_SESSION['err'] = "User does not exit";
-		header("location:http://localhost:8080/Pacific");
+		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific");
 	}
 
-	
+
 ?>
