@@ -202,7 +202,7 @@
 
       <div id="modal1-background" align="center" class="modal-background">
         <div id="modal" class="modal">
-          <form action="http://".$_SERVER['HTTP_HOST']."/Pacific/php/add_member.php" method="post">
+          <form action="../php/add_member.php" method="post">
             <span id="close-btn" onclick="closeModal(document.getElementById('modal1-background'))">&times;</span>
             <label for="select_member">Select team member:-</label><br>
             <select name="select_member" name="member_id">

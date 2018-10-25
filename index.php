@@ -74,7 +74,7 @@
    </header> <!-- /header -->       
 
    <div id="id2" class="modal">
-      <form class="modal-content" method="post" action="php/login.php" >
+      <form class="modal-content animate" method="post" action="php/login.php" >
          <span id="span2" class="close">&times;</span> 
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Login</h5>
@@ -95,7 +95,7 @@
                   <button onclick="document.getElementById('id2').style.display='none'" class="cancelbtn">Cancel</button>
                </div>                           
             </div>
-            <div style="text-align: center; "><p>You Don't Have An Account Here ?</p><button onclick="signup()" class="button" href="#">Sign Up Here</button></div>
+            
             
          </div>
 
