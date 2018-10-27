@@ -1,6 +1,9 @@
 <?php
-	include 'includes/db.php';
+	require '../php/includes/User.php';
 	session_start();
+	if(isset($_SESSION['user'])){
+		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
+	}
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
 	$pass = password_hash($password,PASSWORD_DEFAULT);
@@ -47,5 +50,5 @@
 		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific");
 	}
 
-	
+
 ?>
