@@ -1,0 +1,136 @@
+body{
+	background-color: #dbdde0 !important;
+}
+
+.container {
+    padding-top: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+header{
+	position: fixed !important;
+    background: #14171c !important;
+    top: 0 !important;
+}
+.preview{
+    padding-top : 10px;
+    height : 200px;
+}
+.buttons{
+    padding-bottom : 10px;
+}
+.profile-photo{
+    width : 70%;
+    height : 90%;
+    text-align: center;
+    border : 1px solid #fff;
+    border-radius : 50%;
+}
+
+.profile-data{
+    background-color: #ffffff;
+}
+
+.form-admin{
+    display:inline-block;
+    width:94%;
+    vertical-align: center;
+    font-size:2rem;
+}
+
+.form-admin .row{
+ padding-top : 10px;
+}
+
+.form-admin input{
+    margin-left : 50px;
+   width : 85%
+}
+.form-admin label{
+    margin-left : 50px;
+    font-weight: bold;
+}
+
+.form-control {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .375rem .75rem;
+    font-size: 1.5rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+input{
+    margin : 0 50px !important;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.button-class {
+    background-color: #4CAF50 ; /* Green */
+    border: none;
+    width : 50%;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button-class:hover  .button-import:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.card{
+    display: block;
+    width : 24% !important;
+    text-align : center;
+}
+
+.label{
+    width : 85%;
+}
+
+.space_filler{
+    height : 150px;
+}
+@media only screen and (max-width:360px) {
+	.form-admin label{
+		margin-left : 10px !important;
+    }
+    
+    .form-admin input{
+        margin-left : 10px;
+       width : 100%
+    }
+
+    .card{
+        width : 100% !important;
+        display: block;
+        text-align : center;
+    }
+
+    .label{
+        width : 100%;
+    }
+
+    input{
+        margin : 0 10px !important;
+    }
+
+    .space_filler{
+        height : 0px;
+    }
+}
