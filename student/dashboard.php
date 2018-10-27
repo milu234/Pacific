@@ -52,7 +52,7 @@
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php echo $rowcount1  ?></i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-tasks" aria-hidden="true">&nbsp;<?php echo $rowcount2  ?></i></h2>
    									<h6>Assignments Submitted</h6>
    								</div>
 							</div>

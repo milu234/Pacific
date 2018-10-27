@@ -53,11 +53,12 @@
 
   <section class="projectinfo">
       <?php
+      include 'db.php';
         if (isset($_GET['project_id'])){
           if(isset($_SESSION['err'])){
             echo "<script>alert('".$_SESSION['err']."')</script>";
           }
-          $conn = mysqli_connect('localhost', 'root', '', 'pacific') or die("couldnt connect to the db");
+          
           // first we get the project details
           $query = "SELECT * FROM projects WHERE project_id=".$_GET['project_id'];
           $user = unserialize($_SESSION['user']);

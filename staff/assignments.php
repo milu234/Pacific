@@ -14,13 +14,14 @@
 
 <body id="top">
    <?php
+   include 'db.php';
    $active="assignments";
 
 //    session_start();
 
 
     include('../layouts/nav.php');
-    $conn = mysqli_connect('localhost','root','','pacific');
+    
 
     $result2 = mysqli_query($conn,"SELECT distinct c.class_id, a.assignment_id, a.assignment_name from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
     $result3 = mysqli_query($conn,"SELECT distinct c.class_id, a.assignment_id, a.assignment_name from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");

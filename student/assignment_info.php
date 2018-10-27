@@ -11,10 +11,11 @@
 <body id="top">
 			<!-- ======================================================================PHPStarts=========================== -->
 <?php
+	include 'db.php';
 	$active="assignments";
 	
 	 include('../layouts/nav.php');
-	 $conn = mysqli_connect('localhost','root','','pacific');
+	 
 	 $id = $_GET['id'];										//get assignment id
 	 $result2 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id."'");
 	if(isset($_POST['submit'])){

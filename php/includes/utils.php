@@ -1,6 +1,7 @@
 <?php
-
 $database_connection = mysqli_connect("localhost", "root", "", "pacific") or die("couldnt connect to the database");
+
+include 'db.php';
 
 function getClassId($class_name) {
 	global $database_connection;

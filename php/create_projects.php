@@ -1,5 +1,6 @@
 <?php
 
+include 'includes/db.php';
 
 include 'includes/User.php';
 session_start();
@@ -8,7 +9,7 @@ session_start();
 require '../vendor/autoload.php';
 
 //Setup the connection
-$conn = mysqli_connect('localhost', 'root', '', 'Pacific');
+
 
 if (isset($_POST['save'])){
         $nameoftheproject = $_POST['nameoftheproject'];

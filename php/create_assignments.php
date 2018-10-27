@@ -1,15 +1,16 @@
 <?php
+include 'includes/db.php';
 include 'includes/User.php';
    session_start();
    if(isset($_SESSION['user']))
       $user = unserialize($_SESSION['user']);
       include 'includes/utils.php';
 
-      $conn = mysqli_connect('localhost','root','','pacific');
+      
       $nameoftheassignment = $_POST['nameoftheassignment'];
       $marksallotedtoassignment = $_POST['marksallotedtotheassignment'];
       $class = $_POST['classalloted'];
-      $class_id = getClasId($class);
+      $class_id = getClassId($class);
       $assignment_type = $_POST['assignment_type'];
       $description = $_POST['descriptionoftheassignment'];
       $dateofsubmission = $_POST['deadline'];

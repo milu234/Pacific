@@ -1,6 +1,7 @@
 <?php
+include 'db.php';
 include '../php/includes/User.php';
-$conn = mysqli_connect("localhost","root","","pacific");
+
 session_start();
 	if(isset($_SESSION['user']))
 	   $user = unserialize($_SESSION['user']);

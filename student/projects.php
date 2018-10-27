@@ -11,6 +11,7 @@
 
 <body id="top">
    <?php
+   include 'db.php';
    $active="projects";
    include('../layouts/nav.php') ?>
 
@@ -104,8 +105,7 @@
                         </tr>
                         <?php
                         // query the project details
-                        $conn = mysqli_connect('localhost', 'root', '', 'pacific')
-                        or die('Couldnt connect to the database');
+                       
                         $id = $user->id; // current user id retrieved from session
                         $query = "SELECT p.project_id, project_name, project_status,project_evaluation
                         FROM projects p, works_on w WHERE p.project_id=w.project_id
@@ -127,7 +127,7 @@
                         <?php if ($rows != null) { ?>
                         <?php while ($row=mysqli_fetch_assoc($result)){
                            // creates the link for every project
-                           $link = "http://localhost:8080/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
+                           $link = "http://".$_SERVER['HTTP_HOST']."/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
                            $status = $row['project_status'];
                            ?>
                         <tr>
@@ -156,8 +156,7 @@
                         </tr>
                         <?php
                         // query the project details
-                        $conn = mysqli_connect('localhost', 'root', '', 'pacific')
-                        or die('Couldnt connect to the database');
+                        include 'db.php';
                         $id = $user->id; // current user id retrieved from session
 
                         $query = "SELECT p.project_id, project_name, project_status
