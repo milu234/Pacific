@@ -20,7 +20,7 @@
    <?php
    $active="dashboard";
     include('../layouts/nav.php');
-    $conn = mysqli_connect('localhost','root','','pacific');
+    require "../php/includes/db.php";
     $result2 = mysqli_query($conn,"SELECT u.email,a.assignment_id,a.assignment_name,a.assignment_marks,a.date_of_submission,a.user_id from users u,assignments a   where a.class_id = u.class_id and u.user_id = $user->id ");
     $result3 = mysqli_query($conn,"SELECT u.email  from users u , assignments a where u.user_id = a.user_id ");
     $result4 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks > 0 "); //assignments Evaluated

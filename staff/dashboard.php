@@ -12,7 +12,7 @@
 
 <body id="top">
 	<?php
-      include 'db.php';
+      require "../php/includes/db.php";
    $active="dashboard";
    include('../layouts/nav.php');
    

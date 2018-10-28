@@ -1,6 +1,6 @@
 <?php
 include '../php/includes/User.php';
-include 'db.php';
+require "../php/includes/db.php";
 session_start();
 	if(isset($_SESSION['user']))
 	   $user = unserialize($_SESSION['user']);

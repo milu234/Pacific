@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+require "../php/includes/db.php";
 include '../php/includes/User.php';
 
 session_start();

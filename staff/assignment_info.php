@@ -12,9 +12,8 @@
 
 	<?php
 	$active="assignments";
-	include 'db.php';
+	require "../php/includes/db.php";
 	 include('../layouts/nav.php');
-	//  $conn = mysqli_connect('localhost','root','','pacific');
 	 $id = $_GET['id'];  //Get the class id 
 	 $id2 = $_GET['id2']; //Get assignment id
 	 
@@ -27,7 +26,7 @@
 
 	 <!-- //Get the count -->
 	
-	<section class="ass_info">
+	<section style="margin-top : 100px;" class="ass_info">
 		<div class="row">
 			<form>
 <!-- ============================================================PHP================================================== -->

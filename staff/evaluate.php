@@ -5,7 +5,7 @@
     // include('assignment_info.php');
     // include('assignment_info.php');
     
-    include 'db.php';
+    require "../php/includes/db.php";
     if(isset($_GET['score'])){
         $scoreupdated=$_GET['scoreupdated'];
         $aid = $_GET['aid'];
@@ -20,3 +20,4 @@
           header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/staff/dashboard.php");
      }
 
+?>

@@ -11,7 +11,7 @@
 
 <body id="top">
    <?php
-   include 'db.php';
+   require "../php/includes/db.php";
    $active="projects";
    include('../layouts/nav.php') ?>
 
@@ -156,7 +156,6 @@
                         </tr>
                         <?php
                         // query the project details
-                        include 'db.php';
                         $id = $user->id; // current user id retrieved from session
 
                         $query = "SELECT p.project_id, project_name, project_status

@@ -1,12 +1,11 @@
 <?php
-
+require "./includes/db.php";
 require_once '../vendor/google-api-php-client/src/Google/Client.php';
 require_once '../vendor/google-api-php-client/src/Google/Service/Oauth2.php';
 require_once '../vendor/google-api-php-client/src/Google/Service/Drive.php';
-$conn = mysqli_connect('localhost','root','','pacific');
+session_start();
 if(isset($_SESSION['user']))
     $user = unserialize($_SESSION['user']);
-session_start();
 header('Content-Type: text/html; charset=utf-8');
 // Init the variables
 $driveInfo = "";
@@ -134,12 +133,14 @@ function shareFile($role,$userEmail,$fileId){
         $fileId, $userPermission, array('fields' => 'id')
       );
 }
-    $allowedExts=array("pdf"); 							//accept only pdf
-    $a_id = $_GET['id'];  								//Get assignment id
-    $temp=explode(".",$_FILES['pdf_file']['name']);		//take the file name
-    $extension=end($temp); 								//Filter the extension
-    $upload_pdf = $_FILES["pdf_file"]["name"];			//accept the files
-    move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"../student/assignments/uploads/pdf/".$_FILES["pdf_file"]["name"]);  //Give the path
-    $queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
-    header('location:http://localhost:8080/pacific/student/assignment_info.php')
+
+	$allowedExts=array("pdf"); 							//accept only pdf
+	$a_id = $_GET['aid'];  								//Get assignment id
+	$temp=explode(".",$_FILES['pdf_file']['name']);		//take the file name
+	$extension=end($temp); 								//Filter the extension
+	$upload_pdf = $_FILES["pdf_file"]["name"];			//accept the files
+	move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"assignments/uploads/pdf/".$_FILES["pdf_file"]["name"]);  //Give the path
+	$queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
+
+    header('location:http://localhost:8080/pacific/student/dashboard.php')
 ?>

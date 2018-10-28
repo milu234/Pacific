@@ -53,7 +53,7 @@
 
   <section class="projectinfo">
       <?php
-      include 'db.php';
+      require "../php/includes/db.php";
         if (isset($_GET['project_id'])){
           if(isset($_SESSION['err'])){
             echo "<script>alert('".$_SESSION['err']."')</script>";

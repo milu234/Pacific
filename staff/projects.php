@@ -16,7 +16,7 @@
 
    <section class="stats">
 		 <?php
-			include 'db.php';
+			require "../php/includes/db.php";
 			// Query all the projects that are to be evaluated
 			$query1 = "SELECT project_name, project_id, project_status from projects where project_evaluation='sent for evaluation'";
 			$result1 = mysqli_query($conn, $query1);

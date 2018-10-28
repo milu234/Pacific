@@ -1,5 +1,5 @@
 <?php
-        include 'db.php';
+        require "../php/includes/db.php";
             if(isset($_SESSION['user']))
             $user = unserialize($_SESSION['user']);
         
