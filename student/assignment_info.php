@@ -11,7 +11,7 @@
 <body id="top">
 			<!-- ======================================================================PHPStarts=========================== -->
 <?php
-	include 'db.php';
+	require "../php/includes/db.php";
 	$active="assignments";
 	
 	 include('../layouts/nav.php');
@@ -28,12 +28,13 @@
 		$queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
 	}
 ?>
+
 <!-- =============================================PHP Ends================================================ -->
-	<section class="ass_info">
+	<section style="margin-top:100px;" class="ass_info">
 		<div class="row">
 			
-			 <div class="table-header"><h5>Assignment 1</h5></div>
-			 <form method="post"  enctype="multipart/form-data" >
+			 <div class="add"><h5 style="color:#ffffff">Assignment 1</h5></div>
+			 <form method="post" enctype="multipart/form-data" >
 			 <!-- =============================================PHP Starts================================================= -->
 <?php
 			 
@@ -44,6 +45,7 @@
 			 <input type = "file" id = "main-input" class="form-control form-input form-style-base" accept = "application/pdf" name="pdf_file" >
 			 <h4  class = "form-input fake-styled-btn text-center truncate"><span class ="margin" >Choose File</span></h4>
 			 <input type = "submit" class="btn btn-info" name="submit">
+			 <input type="hidden" name="aid" value="<?php echo $id; ?>"/>
 			</form>
 			 <br>
 			 <?php

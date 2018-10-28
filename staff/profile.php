@@ -1,5 +1,5 @@
 <?php
-        include 'db.php';
+        require "../php/includes/db.php";
             if(isset($_SESSION['user']))
             $user = unserialize($_SESSION['user']);
     ?> 
@@ -77,10 +77,7 @@
                         </div>
                         <br>
                         <div class="row" style="text-align:center">
-                        <div class="col-six"><button type="submit" class="button-class">Save</button></div>
-                        <div class="col-six">
-                            <button type="submit" onClick="document.getElementById('form').reset()" style="background-color: red" class="button-class">Reset</button>
-                        </div>
+                        <div class="col-twelve"><button type="submit" class="button-class">Save</button></div>
                                         
                         </div>                  
                     </form>

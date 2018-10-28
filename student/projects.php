@@ -11,18 +11,18 @@
 
 <body id="top">
    <?php
-   include 'db.php';
+   require "../php/includes/db.php";
    $active="projects";
    include('../layouts/nav.php') ?>
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="../php/create_projects.php" method="POST" >
+      <form class="modal-content animate" action="../php/create_projects.php" method="POST" >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
             <h5 style="text-align: center; color: #05bca9;">Project</h5>
             <hr>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "nameoftheproject"><b>Name of the Project</b></label>
                </div>
@@ -31,16 +31,16 @@
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "descriptionoftheproject"><b>Description</b></label>
                </div>
                <div class="col-eight">
-                  <input type="text" placeholder="Enter the description of the project" name="descriptionoftheproject" required>
+                  <textarea style="width:100%; height : 50px;" placeholder="Enter the description of the project" name="descriptionoftheproject" required></textarea>
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "projectstatus"><b>Project Status</b></label>
                </div>
@@ -50,7 +50,7 @@
                </div>
             </div>
 
-            <div class="formrow">
+            <div class="row">
                <div class="col-three">
                   <label for = "projectgithublink"><b>Project Github Link</b></label>
                </div>
@@ -60,7 +60,7 @@
             </div>
 
 
-                    <div class="formrow">
+                    <div class="row">
                <div class="col-three">
                   <label for = "githubusername"><b>Github Username</b></label>
                </div>
@@ -156,7 +156,6 @@
                         </tr>
                         <?php
                         // query the project details
-                        include 'db.php';
                         $id = $user->id; // current user id retrieved from session
 
                         $query = "SELECT p.project_id, project_name, project_status

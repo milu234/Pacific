@@ -1,6 +1,7 @@
 <?php
 	include 'includes/db.php';
 	require '../php/includes/User.php';
+	// require '../php/includes/User.php';
 	session_start();
 	if(isset($_SESSION['user'])){
 		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
@@ -8,7 +9,7 @@
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
 	$pass = password_hash($password,PASSWORD_DEFAULT);
-	// $conn = mysqli_connect("localhost", "root", "", "Pacific") or die("couldnt connect to the database.");
+	require "./includes/db.php";
 
 	// first we check whether the user exists
 	$query = "Select * from users where email='".$email."'";

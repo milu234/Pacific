@@ -14,7 +14,7 @@
 
 <body id="top">
    <?php
-   include 'db.php';
+   require "../php/includes/db.php";
    $active="assignments";
 
 //    session_start();
@@ -32,10 +32,10 @@
 
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="../php/create_assignments.php"  method="POST"  >
+      <form class="modal-content animate" action="../php/create_assignments.php"  method="POST"  >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
-            <h5 style="text-align: center; color: #05bca9;">Asignment</h5>
+            <h5 style="text-align: center; color: #05bca9;">Assignment</h5>
             <hr>
 
             <!-- Name of the assignment -->
@@ -64,7 +64,7 @@
                   <label for = "marksallotedtotheassignment"><b>Description</b></label>
                </div>
                <div class="col-eight">
-                  <textarea placeholder="Enter the Description of the project" name="descriptionoftheassignment" required></textarea>
+                  <textarea style="width:100%; height : 50px;" placeholder="Enter the description for the assignment" name="descriptionoftheassignment" required></textarea>
                </div>
             </div>
 
@@ -76,7 +76,7 @@
                   <label for = "selectclass"><b>Select Class</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round"  name="classalloted">
+                  <select style="width:100%" class="round"  name="classalloted">
                      <option value="0" disabled>Select Class</option>
                      <option value="D5">D5</option>
                      <option value="D10">D10</option>
@@ -92,7 +92,7 @@
                   <label for = "assignmenttype"><b>Assignment Type</b></label>
                </div>
                <div class="col-eight">
-                  <select class="round" name="assignment_type"  >
+                  <select style="width:100%" class="round" name="assignment_type"  >
                      <option value="0" disabled>Assignment Type</option>
                      <option value="document">Document</option>
                      <option value="code">Code</option>
@@ -105,17 +105,17 @@
                   <label for ="deadline">Deadline</label>
                </div>
                <div class="col-eight">
-                  <input type = "datetime-local" placeholder="Enter the Description of the project" name="deadline" required></textarea>
+                  <input style="width:100%; height: 30px;" type = "datetime-local" placeholder="Enter the Description of the project" name="deadline" required></textarea>
                </div>
             </div>
 
             </div>
             
-            <div class="formrow clearfix" style="justify-content: center;">
-               <div class="col-six" style="text-align: center;">
+            <div class="row">
+               <div class="col-six" style="text-align: center">
                   <button type="submit" class="signupbtn">Save</button>
                </div>
-               <div class="col-six" style="text-align: center;">
+               <div class="col-six" style="text-align: center">
                   <button onclick="document.getElementById('id2').style.display='none'" class="cancelbtn">Cancel</button>
                </div>                           
             </div>
@@ -141,11 +141,6 @@
                            <th width = 80%>Title</th>
                            
                         </tr>
-                        
-                           
-                        
-                        
-
                           <?php
                                 
                                

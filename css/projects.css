@@ -7,7 +7,7 @@ body{
 .stats{
 	height : 100%;
 	position: relative;
-	margin-top: 50px;
+	margin-top: 70px;
 	z-index: 100;
 }
 
@@ -102,7 +102,23 @@ button:hover{
 	margin: 0 auto 15% auto; /*5%fron the yop ans 15# from  yje bottom and the middle */
 	border:1px solid #888;
 	border-radius: 30px;
-	width: 80%; /*Could be more or less depending on the screen sizee*/
+  width: 80%; /*Could be more or less depending on the screen sizee*/
+  color : #FFFFFF;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
 }
 
 /*style the horizontal ruler*/
@@ -373,7 +389,7 @@ a{
 
 @media screen and (max-width: 1600px){
   .modal{
-    padding :2% 5%;
+    padding :4% 1%;
   }
 }
 

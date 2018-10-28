@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost","root","","pacific");
+require "./includes/db.php";
 require_once('../vendor/php-excel-reader/excel_reader2.php');
 require_once('../vendor/SpreadsheetReader.php');
 

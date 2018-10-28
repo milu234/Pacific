@@ -12,7 +12,7 @@
 
 <body id="top">
 	<?php
-      include 'db.php';
+      require "../php/includes/db.php";
    $active="dashboard";
    include('../layouts/nav.php');
    
@@ -26,8 +26,8 @@
    
    <section class="stats">
    		<div class="row">
+               <h5 class="add">Basic Statistics</h5>
    			<div class="card col-twelve">
-   					<h5 class="add">Basic Statistics</h5>
    					<div class="card-body">
    						<div class="row">
    							<div class="col-three">
@@ -61,94 +61,93 @@
    			</div>
 
    		</div>
-   		<div class="row">
-   			<div class="col-four" id="cal" class="calendar">
-   				calendar
+   		<!-- <div class="row">
+   		      <div class="col-twelve">
+                        <div class="container">
+                              <h5 class="add">Recent Evaluation Results</h5>                 
+                              <table class="table-common">
+                                    <tr>
+                                    <th>Title</th>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Assignment 1</h4></a></td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Project 1</h4></a></td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="#"><h4>Assignment 3</h4></a></td>
+                                    </tr>
+                              </table>
+                        </div>
+                  </div>
+            </div> -->
 
-   			</div>
-   			<div class="col-eight">
-               <div class="container">
-                     <h5 class="add">Recent Evaluation Results</h5>                 
-                     <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 1</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Project 1</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="#"><h4>Assignment 3</h4></a></td>
-                        </tr>
-                     </table>
-               </div>
-               <br>
-					<div class="container">
-                     <h5 class="add">Projects Evaluated</h5>                 
-                     <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                        </tr>
-                     </table>
-               </div>
-   				<br>
-					<div class="container">
-                     <h5 class="add">Assignments</h5>                 
-                     <table class="table-common">
-                        <tr>
-                           <th>Title</th>
-                           
-                           <th>Marks</th>
-                           <th>Class Assigned</th>
-                           <th>Deadline</th>
-                           
-                        </tr>
+            <div class="row">
+                  <div class="col-five">
+                        <div class="container">
+                              <h5 class="add">Projects Evaluated</h5>                 
+                              <table class="table-common">
+                                    <tr>
+                                    <th>Title</th>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
+                                    </tr>
+                              </table>
+                        </div>
+                  </div>
+			
+                  <div class="col-six">
+                        <div style="overflow-x:auto;" class="container">
+                              <h5 class="add">Assignments</h5>                 
+                              <table class="table-common">
+                                    <tr>
+                                    <th>Title</th>
+                                    
+                                    <th>Marks</th>
+                                    <th>Class Assigned</th>
+                                    <th>Deadline</th>
+                                    
+                                    </tr>
 
-                        <!-- <tr>
-                           <th>Deadline</th>
-                        </tr> -->
+                                    <!-- <tr>
+                                    <th>Deadline</th>
+                                    </tr> -->
 
-                        <!-- ============================================================ -->
-                        <?php
-                                //include('../php/create_assignments.php');
-                               
-                              while($rows = mysqli_fetch_assoc($result2))
-                              {
-                        ?>
-                        <tr>
-                           <td><a href="assignment_info.php?id=<?php echo $rows['class_id'] ; ?>&id2=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
-                            <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
-                            <td><a href="student_list.php?id=<?php echo $rows['class_id']; ?>"><h4><?php  echo $rows['class_name']; ?></h4></a></td>
+                                    <!-- ============================================================ -->
+                                    <?php
+                                          //include('../php/create_assignments.php');
+                                          
+                                          while($rows = mysqli_fetch_assoc($result2))
+                                          {
+                                    ?>
+                                    <tr>
+                                    <td><a href="assignment_info.php?id=<?php echo $rows['class_id'] ; ?>&id2=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                                    <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
+                                    <td><a href="student_list.php?id=<?php echo $rows['class_id']; ?>"><h4><?php  echo $rows['class_name']; ?></h4></a></td>
 
-                            <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
-                            
-      
-                        </tr>
-                      <?php  }
-                      
+                                    <td><a href="assignment_info.php"><h4><?php  echo $rows['date_of_submission']; ?></h4></a></td>
+                                    
+                  
+                                    </tr>
+                              <?php  }
+                              
 
-                      ?>
-                      
-                       
-                        <!-- ===================================================================== -->
-                     </table>
-               </div>
-   				<br>
-   			</div>
-   			
-   			<!-- <div class="col-three"></div> -->
+                              ?>
+ 
+                              </table>
+                        </div>
+                  </div>
+
    		</div>
+
    </section>
 	
 	

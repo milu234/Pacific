@@ -53,7 +53,7 @@
 
   <section class="projectinfo">
       <?php
-      include 'db.php';
+      require "../php/includes/db.php";
         if (isset($_GET['project_id'])){
           if(isset($_SESSION['err'])){
             echo "<script>alert('".$_SESSION['err']."')</script>";
@@ -80,7 +80,7 @@
           if(mysqli_num_rows($result1)==0){
             // if the user has not worked on the project
             $_SESSION['err'] = "Invalid project number";
-            header("location:http://localhost/Pacific/index.php");
+            header("location:http://localhost:8080/Pacific/index.php");
           }
           // query for the team members
           $query = "SELECT email, project_role from users u, works_on w where u.user_id=w.user_id and project_id=".$_GET['project_id'];
@@ -129,6 +129,7 @@
       <div class="row">
       <div class="col-twelve">
         <div class="card-header">
+        <div class="col-seven"></div>
           <h3>Project Information</h3>
               <?php if($row['project_evaluation'] == 'not evaluated') {?>
                 <button class="button" type="submit">
@@ -202,7 +203,7 @@
 
       <div id="modal1-background" align="center" class="modal-background">
         <div id="modal" class="modal">
-          <form action="http://".$_SERVER['HTTP_HOST']."/Pacific/php/add_member.php" method="post">
+          <form action="../php/add_member.php" method="post">
             <span id="close-btn" onclick="closeModal(document.getElementById('modal1-background'))">&times;</span>
             <label for="select_member">Select team member:-</label><br>
             <select name="select_member" name="member_id">

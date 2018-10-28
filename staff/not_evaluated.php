@@ -12,7 +12,7 @@
 
 	<?php
 	$active="assignments";
-	include 'db.php';
+	require "../php/includes/db.php";
 	 include('../layouts/nav.php');
 	 
 	 $id = $_GET['id'];  //Get the class id 
@@ -27,7 +27,7 @@
 
 	 <!-- //Get the count -->
 	
-	<section class="ass_info">
+	<section style="margin-top:100px;" class="ass_info">
 		<div class="row">
 			<form>
 <!-- ============================================================PHP================================================== -->
@@ -36,7 +36,7 @@
          // For dipalying the assignment name n the tanle header
         while($rows = mysqli_fetch_assoc($result1))
             { ?>
-			 	<div class="table-header"><h5><?php echo $rows['assignment_name']; ?></h5></div>
+			 	<div  class="add"><h5><?php echo $rows['assignment_name']; ?></h5></div>
 	   <?php } ?>
 <!-- ========================================================PHP ENDS====================================================== -->
 			 
@@ -44,14 +44,14 @@
 			</form>
 		</div>
 		<div class="row">
-			<table>
+			<table class="table-common">
 				<tr>
-					 <th width="10%">Sr No</th>
+					 <th width="8%">Sr No</th>
 					 <!-- ====================Table Headers =================================== -->
 					<th>Name</th>
-					<th width="20%">Stauts</th>
+					<th width="20%">Status</th>
 					<th width="20%">View Files</th>
-					<th width="10%">Score</th>
+					<th width="12%">Score</th>
 					<th width="10%">Evaluate</th>
 				</tr>
 				<!-- ==============================================PHP Starts =========================================== -->
@@ -86,6 +86,9 @@
 		</div>
 		
 		
+	</section>
+
+	<section style="height : 400px;">
 	</section>
 	<div class="clearfix"></div>
 	<script src="../js/jquery-1.11.3.min.js"></script>

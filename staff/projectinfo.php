@@ -42,7 +42,7 @@
 
   <section class="projectinfo">
     <?php
-    include 'db.php';
+    require "../php/includes/db.php";
       if(isset($_GET['project_id'])){
         
         //

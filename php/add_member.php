@@ -2,6 +2,7 @@
 	include 'includes/db.php';
 	require 'includes/User.php';
 	session_start();
+	require "./includes/db.php";
 	if(!isset($_SESSION['user'])){
 		header("location:http:".$_SERVER['HTTP_HOST']."/Pacific");
 	}

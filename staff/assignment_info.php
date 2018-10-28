@@ -12,9 +12,8 @@
 
 	<?php
 	$active="assignments";
-	include 'db.php';
+	require "../php/includes/db.php";
 	 include('../layouts/nav.php');
-	//  $conn = mysqli_connect('localhost','root','','pacific');
 	 $id = $_GET['id'];  //Get the class id 
 	 $id2 = $_GET['id2']; //Get assignment id
 	 
@@ -27,7 +26,7 @@
 
 	 <!-- //Get the count -->
 	
-	<section class="ass_info">
+	<section style="margin-top : 100px;" class="ass_info">
 		<div class="row">
 			<form>
 <!-- ============================================================PHP================================================== -->
@@ -36,7 +35,7 @@
          // For dipalying the assignment name n the tanle header
         while($rows = mysqli_fetch_assoc($result1))
             { ?>
-			 	<div class="table-header"><h5><?php echo $rows['assignment_name']; ?></h5></div>
+			 	<div class="add"><h5 style="color:#ffffff;"><?php echo $rows['assignment_name']; ?></h5></div>
 	   <?php } ?>
 <!-- ========================================================PHP ENDS====================================================== -->
 			 
@@ -44,49 +43,54 @@
 			</form>
 		</div>
 		<div class="row">
-			<table>
-				<tr>
-					 <th width="10%">Sr No</th>
-					 <!-- ====================Table Headers =================================== -->
-					<th>Name</th>
-					<th width="20%">Stauts</th>
-					<th width="20%">View Files</th>
-					<th width="10%">Score</th>
-					<th width="10%">Evaluate</th>
-				</tr>
-				<!-- ==============================================PHP Starts =========================================== -->
-		<?php
-			$x=1;
-			while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount and $rows2 = mysqli_fetch_assoc($result3) )
-			    {?>
-				 <tr>
+			<div style="overflow-x:auto;" class="container">
+			<table class="table-common">
+					<tr style="text-align:center;padding:5px;">
+						<th width="10%">Sr No</th>
+						<!-- ====================Table Headers =================================== -->
+						<th>Name</th>
+						<th>Status</th>
+						<th>View Files</th>
+						<th>Score</th>
+						<th>Evaluate</th>
+					</tr>
+					<!-- ==============================================PHP Starts =========================================== -->
+			<?php
+				$x=1;
+				while($rows = mysqli_fetch_assoc($result2) and $x <= $rowcount and $rows2 = mysqli_fetch_assoc($result3) )
+					{?>
+					<tr>
+						
+					<!-- For displaying the students who had submitted their work and evaluate -->
+
+					<td><?php echo $x; $x++; ?></td>	 
+					<td><h4><?php  echo $rows['email']; ?></h4></td>
+					<td><h4><?php  echo $rows2['status']; ?></h4></td>
+					<td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
+					<!-- For evaluation of the marks pass the id and take the input marks from the user -->
+					<td><form style="text-align:center;" method="GET" action="evaluate.php">
+						<input style="width:80%; text-align:center;" type = "text" value = "<?php echo $rows2['assignment_marks']  ?>" name="scoreupdated" ></td>
+						<td><input class="button-class" type = "submit" value = "Save" name="score"  >
+						<input type="hidden" name="aid" value="<?php echo $rows2['assignment_id']; ?>"/>
+						<input type="hidden" name="uid" value="<?php echo $rows2['user_id']; ?>"/>
+						<input type="hidden" name="aeid" value="<?php echo $rows2['assignment_evaluation_id']; ?>"/>
+					</form></td>
+					</tr>	
+
+				<?php }?>
+
+				<!-- ====================================================PHP ENDS============================== -->
+
 					
-				<!-- For displaying the students who had submitted their work and evaluate -->
-
-				 <td><?php echo $x; $x++; ?></td>	 
-			 	<td><a href="#"><h4><?php  echo $rows['email']; ?></h4></a></td>
-                <td><a href="#"><h4><?php  echo $rows2['status']; ?></h4></a></td>
-				<td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
-				<!-- For evaluation of the marks pass the id and take the input marks from the user -->
-				<td><form method="GET" action="evaluate.php">
-					<input type = "text" value = "<?php echo $rows2['assignment_marks']  ?>" name="scoreupdated" ></td>
-					<td><input type = "submit" value = "Save" name="score"  >
-					<input type="hidden" name="aid" value="<?php echo $rows2['assignment_id']; ?>"/>
-					<input type="hidden" name="uid" value="<?php echo $rows2['user_id']; ?>"/>
-					<input type="hidden" name="aeid" value="<?php echo $rows2['assignment_evaluation_id']; ?>"/>
-				</form></td>
-				</tr>	
-
-			 <?php }?>
-
-			 <!-- ====================================================PHP ENDS============================== -->
-
-				
-			</table>
+				</table>
+			</div>
 		</div>
 		
 		
 	</section>
+
+	<div class="padding" style="height : 53%">
+	</div>
 	<div class="clearfix"></div>
 	<script src="../js/jquery-1.11.3.min.js"></script>
    <script src="../js/plugins.js"></script>
