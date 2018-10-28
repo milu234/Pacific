@@ -31,10 +31,10 @@
 
 
    <div id="id2" class="modal">
-      <form class="modal-content" action="../php/create_assignments.php"  method="POST"  >
+      <form class="modal-content animate" action="../php/create_assignments.php"  method="POST"  >
          <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close Modal">&times;</span>
          <div class="container">
-            <h5 style="text-align: center; color: #05bca9;">Asignment</h5>
+            <h5 style="text-align: center; color: #05bca9;">Assignment</h5>
             <hr>
 
             <!-- Name of the assignment -->

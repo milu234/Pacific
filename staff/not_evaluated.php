@@ -45,12 +45,12 @@
 		<div class="row">
 			<table>
 				<tr>
-					 <th width="10%">Sr No</th>
+					 <th width="8%">Sr No</th>
 					 <!-- ====================Table Headers =================================== -->
 					<th>Name</th>
-					<th width="20%">Stauts</th>
+					<th width="20%">Status</th>
 					<th width="20%">View Files</th>
-					<th width="10%">Score</th>
+					<th width="12%">Score</th>
 					<th width="10%">Evaluate</th>
 				</tr>
 				<!-- ==============================================PHP Starts =========================================== -->

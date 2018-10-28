@@ -9,6 +9,26 @@
       unset($_SESSION['err']);
    }
 ?>
+
+<?php
+  if(isset($_GET['code']))
+  {
+    require "functions.php";
+	header('Content-Type: text/html; charset=utf-8');
+	global $CLIENT_ID, $CLIENT_SECRET, $REDIRECT_URI;
+	$client = new Google_Client();
+	$client->setClientId($CLIENT_ID);
+	$client->setClientSecret($CLIENT_SECRET);
+	$client->setRedirectUri($REDIRECT_URI);
+	$client->setScopes('email');
+	$authUrl = $client->createAuthUrl();
+	getCredentials($_GET['code'], $authUrl);
+	$userName = $_SESSION["userInfo"]["name"];
+	$userEmail = $_SESSION["userInfo"]["email"];
+  }
+	
+
+?>
 <head>
 
    <!--- basic page needs
@@ -304,10 +324,11 @@
             </div> 
 
             <div class="row section-content">
-              <div id="map"> </div>
+            <iframe id="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=VESIT/@19.0453696,72.8890976,19z&key=AIzaSyApzOuCklGrR7z95uj5-vcewu5tmuzAqNw" allowfullscreen></iframe>
               <style>
               #map{
                   height : 400px;
+                  width : 100%;
                   text-align:center;
               }
               </style>
@@ -378,17 +399,6 @@
 		}
 
 
-
-          // Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 19.045393, lng: 72.88960529999997};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 25, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
    </script>
 
 

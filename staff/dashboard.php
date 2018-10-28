@@ -25,8 +25,8 @@
    
    <section class="stats">
    		<div class="row">
+               <h5 class="add">Basic Statistics</h5>
    			<div class="card col-twelve">
-   					<h5 class="add">Basic Statistics</h5>
    					<div class="card-body">
    						<div class="row">
    							<div class="col-three">
@@ -60,7 +60,7 @@
    			</div>
 
    		</div>
-   		<div class="row">
+   		<!-- <div class="row">
    		      <div class="col-twelve">
                         <div class="container">
                               <h5 class="add">Recent Evaluation Results</h5>                 
@@ -80,7 +80,7 @@
                               </table>
                         </div>
                   </div>
-            </div>
+            </div> -->
 
             <div class="row">
                   <div class="col-five">
@@ -104,7 +104,7 @@
                   </div>
 			
                   <div class="col-six">
-                        <div class="container">
+                        <div style="overflow-x:auto;" class="container">
                               <h5 class="add">Assignments</h5>                 
                               <table class="table-common">
                                     <tr>

@@ -34,13 +34,13 @@
                         <?php
                                 //include('../php/create_assignments.php');
                                
-                              while($rows = mysqli_fetch_assoc($result2)  )
+                              while($rows1 = mysqli_fetch_assoc($result2)  )
                               {
                         ?>
                        
                         <tr>
-                        <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
-                        <td><a href="assignment_info.php"><h4><?php  echo $rows['assignment_marks']; ?></h4></a></td>
+                        <td><a href="assignment_info.php"><h4><?php  echo $rows1['assignment_name']; ?></h4></a></td>
+                        <td><a href="assignment_info.php"><h4><?php  echo $rows1['assignment_marks']; ?></h4></a></td>
                         </tr>
                         <!-- <tr>
                            <td><a href="assignment_info.php"><h4>Assignment 2</h4></a></td>
@@ -69,12 +69,12 @@
                                      <?php
                                
                                
-                               while($rows = mysqli_fetch_assoc($result4) )
+                               while($rows2 = mysqli_fetch_assoc($result4) )
                                {
                          ?>
                          <tr>
                          
-                            <td><a href="assignment_info.php?id=<?php echo $rows['assignment_id']; ?>"><h4><?php  echo $rows['assignment_name']; ?></h4></a></td>
+                            <td><a href="assignment_info.php?id=<?php echo $rows2['assignment_id']; ?>"><h4><?php  echo $rows2['assignment_name']; ?></h4></a></td>
                             
                             
                             

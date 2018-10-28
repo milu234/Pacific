@@ -2,9 +2,11 @@ body{
   background-color: #dbdde0 !important;
 }
 
+.padding{
+  height : 53%;
+}
 .ass_info{
-  position: relative;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -30,14 +32,29 @@ header{
 h5{
   margin :1rem !important;
 }
-.table-header {
-    width: 100%;
-    padding: .75rem 1.25rem;
-    margin: 0;
-    background-color: #24b3ab;
-    border-bottom: 1px solid rgba(0,0,0,.125);
+.add {
+  background: #24b3ab;
+  height : 80px;
+  color: white;
+  margin-top : 0;
+  padding: 20px;
+  margin-bottom : 20px;
 }
 
+.button-class {
+  background-color: #4CAF50 ; /* Green */
+  border: none;
+  width : 80%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -53,4 +70,5 @@ input[type=text], select, textarea {
   nav{
     float: right;
   }
+
 }

@@ -27,14 +27,13 @@
     $rowcount1 = mysqli_num_rows($result4);
     $result5 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
     $rowcount2 = mysqli_num_rows($result5);
-//      $id = $_GET['assignment_id'];
     
     ?>
 
    <section class="stats">
    		<div class="row">
-   			<div class="card col-twelve">
-   					<h5 class="add">Basic Statistics</h5>
+               <h5 class="add">Basic Statistics</h5>
+   			<div class="card col-twelve"> 					
    					<div class="card-body">
    						<div class="row">
    							<div class="col-three">
@@ -68,7 +67,7 @@
    			</div>
 
    		</div>
-   		<div class="row">
+   		<!-- <div class="row">
                   <div class="col-twelve">
                         <div class="container">
                               <h5 class="add">Recent Evaluation Results</h5>                 
@@ -92,7 +91,7 @@
                               </table>
                         </div>
                   </div>
-            </div>
+            </div> -->
 
             <div class="row">
                <div class="col-five">
@@ -115,7 +114,7 @@
                   </div>
                </div>
                   <div class="col-six">
-                        <div class="container">
+                        <div style="overflow-x:auto;" class="container">
                               <h5 class="add">Assignments</h5>                 
                               <table class="table-common">
                                     <tr>

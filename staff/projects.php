@@ -60,7 +60,7 @@
 														';
 													}
 												}else{
-													echo "<h1>No projects have been evaluated.</h1>";
+													echo "<h5>No projects have been evaluated.</h5>";
 												}?>
                      </table>
                   </div>
@@ -91,7 +91,7 @@
 														';
 													}
 												}else{
-													echo "<h1>All projects have been evaluated</h1>";
+													echo "<h5>All projects have been evaluated</h5>";
 												}?>
                      </table>
                   </div>

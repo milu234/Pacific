@@ -27,12 +27,13 @@
 		$queryfile = mysqli_query($conn,"INSERT into `assignment_evaluation`(assignment_marks,assignment_comments,assignment_id,user_id,`pdf_file`) values (0,'',$a_id,$user->id,'".$upload_pdf."') ");
 	}
 ?>
+
 <!-- =============================================PHP Ends================================================ -->
 	<section class="ass_info">
 		<div class="row">
 			
-			 <div class="table-header"><h5>Assignment 1</h5></div>
-			 <form method="post"  enctype="multipart/form-data" >
+			 <div class="add"><h5 style="color:#ffffff">Assignment 1</h5></div>
+			 <form method="post" action="../php/drive.php"  enctype="multipart/form-data" >
 			 <!-- =============================================PHP Starts================================================= -->
 <?php
 			 

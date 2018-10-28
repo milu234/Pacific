@@ -133,4 +133,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     .space_filler{
         height : 0px;
     }
+
+    .button-class{
+        width : 50%;
+    }
 }

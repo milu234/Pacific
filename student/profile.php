@@ -2,7 +2,13 @@
         $conn = mysqli_connect("localhost","root","","pacific");
             if(isset($_SESSION['user']))
             $user = unserialize($_SESSION['user']);
-    ?> 
+        
+            require_once("../php/functions.php");
+            header('Content-Type: text/html; charset=utf-8');
+            $authUrl = getAuthorizationUrl("", "");
+    ?>
+
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -78,7 +84,8 @@
                         <br>
                         <div class="row" style="text-align:center">
                         <div class="col-twelve"><button type="submit" class="button-class">Save</button></div>
-                                        
+                        <a href=<?php echo "'" . $authUrl . "'" ?>>Authorize</a>
+                                       
                         </div>                  
                     </form>
                 </div>
