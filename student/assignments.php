@@ -14,11 +14,10 @@
    require "../php/includes/db.php";
    $active="assignments";
     include('../layouts/nav.php');
-    $conn = mysqli_connect('localhost','root','','pacific');
-    $result2 = mysqli_query($conn,"SELECT  distinct e.assignment_marks , a.assignment_name from assignments as a , assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks > 0 "); //assignments Evaluated
-
-
-    $result4 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
+    
+    $result5 = mysqli_query($conn,"SELECT a.assignment_name,a.assignment_id from assignments as a,users as u where a.assignment_id not in (select e.assignment_id from assignment_evaluation as e) and a.class_id = u.class_id and u.user_id = $user->id ");//assignments pending
+    $rowcount2 = mysqli_num_rows($result5);
+    $result4 = mysqli_query($conn,"SELECT a.assignment_id,a.assignment_name,e.assignment_marks from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id ");//assignments pending
     
  ?>
 
@@ -26,7 +25,7 @@
    		<div class="row">
    			<div class="col-twelve">
                   <div class="container">
-                     <h5 class="add">Assignments Evaluated</h5>                 
+                     <h5 class="add">Assignments Submitted</h5>                 
                      <table class="table-common">
                         <tr>
                            <th>Title</th>
@@ -35,12 +34,12 @@
                         <?php
                                 //include('../php/create_assignments.php');
                                
-                              while($rows1 = mysqli_fetch_assoc($result2)  )
+                              while($rows1 = mysqli_fetch_assoc($result4)  )
                               {
                         ?>
                        
                         <tr>
-                        <td><a href="assignment_info.php"><h4><?php  echo $rows1['assignment_name']; ?></h4></a></td>
+                        <td><a href="assignment_info.php?id=<?php echo $rows1['assignment_id']; ?>"><h4><?php  echo $rows1['assignment_name']; ?></h4></a></td>
                         <td><a href="assignment_info.php"><h4><?php  echo $rows1['assignment_marks']; ?></h4></a></td>
                         </tr>
                         <!-- <tr>
@@ -70,7 +69,7 @@
                                      <?php
                                
                                
-                               while($rows2 = mysqli_fetch_assoc($result4) )
+                               while($rows2 = mysqli_fetch_assoc($result5) )
                                {
                          ?>
                          <tr>
