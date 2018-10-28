@@ -7,7 +7,7 @@
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
 	$pass = password_hash($password,PASSWORD_DEFAULT);
-	$conn = mysqli_connect("localhost", "root", "", "Pacific") or die("couldnt connect to the database.");
+	// $conn = mysqli_connect("localhost", "root", "", "Pacific") or die("couldnt connect to the database.");
 
 	// first we check whether the user exists
 	$query = "Select * from users where email='".$email."'";

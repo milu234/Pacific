@@ -12,8 +12,9 @@
 
 	<?php
 	$active="assignments";
+	include 'db.php';
 	 include('../layouts/nav.php');
-	 $conn = mysqli_connect('localhost','root','','pacific');
+	//  $conn = mysqli_connect('localhost','root','','pacific');
 	 $id = $_GET['id'];  //Get the class id 
 	 $id2 = $_GET['id2']; //Get assignment id
 	 
@@ -21,7 +22,7 @@
 
 	//  $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  ");//for displaying the students of class who are submitting the assignments
 	$result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 and assignment_id=$id2  ");//for displaying the students of class who are submitting the assignments
-	 $result3 = mysqli_query($conn,"SELECT distinct * from assignment_evaluation where assignment_id = $id2 "); // for evaluation of the marks
+	 $result3 = mysqli_query($conn,"SELECT distinct * from assignment_evaluation where assignment_id = $id2 and assignment_marks > 0 "); // for evaluation of the marks
 	 $rowcount = mysqli_num_rows($result2);?>
 
 	 <!-- //Get the count -->

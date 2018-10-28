@@ -1,4 +1,5 @@
 <?php
+include 'includes/db.php';
 include 'includes/User.php';
  	session_start();
  	if(!isset($_SESSION['user'])){
@@ -8,7 +9,7 @@ include 'includes/User.php';
       $user = unserialize($_SESSION['user']);
       include 'includes/utils.php';
 
-      $conn = mysqli_connect('localhost','root','','pacific');
+      
       $nameoftheassignment = $_POST['nameoftheassignment'];
       $marksallotedtoassignment = $_POST['marksallotedtotheassignment'];
       $class = $_POST['classalloted'];

@@ -12,9 +12,10 @@
 
 <body id="top">
 	<?php
+      include 'db.php';
    $active="dashboard";
    include('../layouts/nav.php');
-   $conn = mysqli_connect('localhost','root','','pacific');
+   
    
 //    $result2 = mysqli_query($conn,"SELECT class_id,assignment_name,date_of_submission,assignment_id,assignment_marks from assignments where user_id = ".$user->id." ");
    $result2 = mysqli_query($conn,"SELECT distinct c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");

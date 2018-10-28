@@ -11,9 +11,10 @@
 <body id="top">
 
 	<?php
+	include 'db.php';
 	$active="assignments";
 	 include('../layouts/nav.php');
-	 $conn = mysqli_connect('localhost','root','','pacific');
+	 
 	 $id = $_GET['id'];  //Get the class id 
 	 
 	

@@ -42,9 +42,9 @@
 
   <section class="projectinfo">
     <?php
+    include 'db.php';
       if(isset($_GET['project_id'])){
-        $conn = mysqli_connect('localhost', 'root', '', 'pacific')
-        or die("couldnt connect to the database");
+        
         //
         $query = "SELECT project_name, project_description from projects where project_id=".$_GET['project_id'];
         $result = mysqli_query($conn, $query);

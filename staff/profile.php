@@ -1,5 +1,5 @@
 <?php
-        $conn = mysqli_connect("localhost","root","","pacific");
+        include 'db.php';
             if(isset($_SESSION['user']))
             $user = unserialize($_SESSION['user']);
     ?> 

@@ -1,4 +1,5 @@
 <?php
+	include 'includes/db.php';
 	//uss php mailer
 	require '../php/includes/User.php';
 	session_start();
@@ -12,7 +13,7 @@
 	require '../vendor/autoload.php';
 
 	// Setup the connection
-	$conn = mysqli_connect('localhost', 'root', '', 'Pacific');
+	
 
 	if(!$conn){
 		// if the database does not get connected, display an erorr message.

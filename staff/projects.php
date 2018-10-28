@@ -16,9 +16,7 @@
 
    <section class="stats">
 		 <?php
-		 	$conn = mysqli_connect("localhost", 'root', '', 'pacific')
-			or die("couldnt connect to the database");
-
+			include 'db.php';
 			// Query all the projects that are to be evaluated
 			$query1 = "SELECT project_name, project_id, project_status from projects where project_evaluation='sent for evaluation'";
 			$result1 = mysqli_query($conn, $query1);

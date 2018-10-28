@@ -11,6 +11,7 @@
 
 <body id="top">
    <?php
+   include 'db.php';
    $active="assignments";
     include('../layouts/nav.php');
     $conn = mysqli_connect('localhost','root','','pacific');
