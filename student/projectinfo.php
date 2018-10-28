@@ -115,7 +115,7 @@
           }
 
           // querying the database to get the list of task alloted
-          $query = "SELECT task_id, task_title, email from tasks t, users u
+          $query = "SELECT task_title, email from tasks t, users u
           where u.user_id = t.user_id and project_id=".$_GET['project_id'];
           $result5 = mysqli_query($conn, $query);
           if($result5){
@@ -141,12 +141,12 @@
         </div>
           <table class="table-common">
             <tr>
-              <td class="title"><h6>Project Name</h6></td>
-              <td><p><?php echo $row['project_name'] ?></p></td>
+              <td class="title"><h5>Project Name</h5></td>
+              <td><a href="<?php echo $row['project_link']?>" target="_blank"><p style="font-size:20px; font-weight:bold;"><?php echo $row['project_name'] ?></p></a></td>
             </tr>
             <tr>
-              <td class="title"><h6>Project Description</h6></td>
-              <td><p><?php echo $row['project_description']; ?></p></td>
+              <td class="title"><h5>Project Description</h5></td>
+              <td><p style="font-size:20px;"><?php echo $row['project_description']; ?></p></td>
             </tr>
           </table>
       </div>
@@ -184,14 +184,16 @@
                 </tr>
                 <?php
                   if($result5!=null && mysqli_num_rows($result5) > 0){
-                    while($row = mysqli_fetch_assoc($result5)){
+                    $row = mysqli_fetch_all($result5);
+                    for($i=1;$i<=mysqli_num_rows($result5);$i++){
                       $data = "<tr>
-                                <td>".$row['task_id']."</td>
-                                <td>".$row['task_title']."</td>
-                                <td>".$row['email']."</td>
+                                <td>$i</td>
+                                <td>".$row[$i-1][0]."</td>
+                                <td>".$row[$i-1][1]."</td>
                               </tr>";
                       echo $data;
                     }
+
                   }else{
                     echo "NO tasks assigned yet!";
                   }
@@ -224,8 +226,8 @@
           <span id="close-btn" onclick="closeModal(document.getElementById('modal2-background'))">&times;</span>
           <form method="post" id="assign-task-form" action="../php/add_tasks.php">
               <h2>Assign a task to a member</h2>
-              <label for="name">Title of the Task</label><br>
-              <input type="text" name="name">
+              <label for="title">Title of the Task</label><br>
+              <input type="text" name="title">
 
               <label for="description">Description of the task</label><br>
               <textarea name="description"></textarea><br>
@@ -254,7 +256,6 @@
 
 <?php include('../layouts/footer.php');?>
     <script src="../js/jquery-1.11.3.min.js"></script>
-   <script src="../js/plugins.js"></script>
    <script src="../js/main.js"></script>
    <script type="text/javascript">
     function addMember(){

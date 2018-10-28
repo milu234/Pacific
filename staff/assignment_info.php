@@ -20,7 +20,7 @@
 	 $result1 = mysqli_query($conn,"SELECT * from assignments where assignment_id='".$id2."'"); //For assigned by column
 
 	//  $result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1  ");//for displaying the students of class who are submitting the assignments
-	$result2 = mysqli_query($conn,"SELECT distinct  u.email,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 and assignment_id=$id2  ");//for displaying the students of class who are submitting the assignments
+	$result2 = mysqli_query($conn,"SELECT distinct  u.name,a.assignment_marks from users u,assignments a where a.class_id = u.class_id and u.class_id=$id and u.role_id = 1 and assignment_id=$id2  ");//for displaying the students of class who are submitting the assignments
 	 $result3 = mysqli_query($conn,"SELECT distinct * from assignment_evaluation where assignment_id = $id2 and assignment_marks > 0 "); // for evaluation of the marks
 	 $rowcount = mysqli_num_rows($result2);?>
 
@@ -64,7 +64,7 @@
 					<!-- For displaying the students who had submitted their work and evaluate -->
 
 					<td><?php echo $x; $x++; ?></td>	 
-					<td><h4><?php  echo $rows['email']; ?></h4></td>
+					<td><h4><?php  echo $rows['name']; ?></h4></td>
 					<td><h4><?php  echo $rows2['status']; ?></h4></td>
 					<td><a href="../student/assignments/uploads/pdf/<?php echo $rows2['pdf_file'] ?>" target="_blank" ><h4><?php  echo $rows2['pdf_file']; ?></h4></a></td>
 					<!-- For evaluation of the marks pass the id and take the input marks from the user -->

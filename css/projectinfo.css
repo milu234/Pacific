@@ -124,3 +124,16 @@ input[type=password]:focus{
     overflow: hidden;
     background-color: #f1f1f1;
 }
+td a{
+  color : #5c6066 !important;
+}
+td a:hover{
+  color :#209fd6 !important;
+}
+td a:link {
+  text-decoration: none;
+}
+
+td a:visited {
+  text-decoration: none;
+}

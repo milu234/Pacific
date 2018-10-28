@@ -140,7 +140,7 @@
                            <td style="width: 25%" class="score"><?php echo $row['project_evaluation']?></td>
                         </tr>
                         <?php } ?>
-                        <?php } else { /*echo "No projects found for the user";*/}?>
+                        <?php } ?>
                      </table>
                   </div>
          </div>
@@ -161,7 +161,6 @@
                         $query = "SELECT p.project_id, project_name, project_status
                         FROM projects p, works_on w WHERE p.project_id=w.project_id
                         AND user_id=".$id." AND project_role='leader'";
-                        // echo $query;
                         $result = mysqli_query($conn, $query);
                         if($result){
                            // if query executes sucessfully
@@ -176,14 +175,14 @@
                            echo "db error";
                         }
                         ?>
-                        <?php if ($rows != null) {echo mysqli_num_rows($result);?>
+                        <?php if ($rows != null) {?>
                         <?php while ($row=mysqli_fetch_assoc($result)){
                            // creates the link for every project
                            $link = "http://".$_SERVER['HTTP_HOST']."/Pacific/student/projectinfo.php?project_id=".$row['project_id'];
                            $status = $row['project_status'];
                            ?>
                         <tr>
-                           <td><a href="<?php echo $link;?>"><h4><?php echo $row['project_name'];?></h4></a></td>
+                           <td ><a href="<?php echo $link;?>"><h4><?php echo $row['project_name'];?></h4></a></td>
                            <td style="width: 25%">
                               <div class="progress-bar green stripes">
                                   <span style="width: <?php echo $status ?>%" ></span>
@@ -221,7 +220,6 @@ window.onclick = function(event) {
        }
    </script>
    <script src="../js/jquery-1.11.3.min.js"></script>
-   <script src="../js/plugins.js"></script>
    <script src="../js/main.js"></script>
    <?php include('../layouts/footer.php');?>
 </body>

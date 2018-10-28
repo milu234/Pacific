@@ -32,14 +32,14 @@
 <!-- =============================================PHP Ends================================================ -->
 	<section style="margin-top:100px;" class="ass_info">
 		<div class="row">
-			
-			 <div class="add"><h5 style="color:#ffffff">Assignment 1</h5></div>
-			 <form method="post" enctype="multipart/form-data" >
+			 
 			 <!-- =============================================PHP Starts================================================= -->
 <?php
 			 
 		while($rows = mysqli_fetch_assoc($result2))
 			{ ?>
+			<div class="add"><h5 style="color:#ffffff"><?php echo $rows['assignment_name']; ?></h5></div>
+			 <form method="post" enctype="multipart/form-data" >
 			 <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p>
 			 <?php } ?>
 			 <input type = "file" id = "main-input" class="form-control form-input form-style-base" accept = "application/pdf" name="pdf_file" >
@@ -48,14 +48,7 @@
 			 <input type="hidden" name="aid" value="<?php echo $id; ?>"/>
 			</form>
 			 <br>
-			 <?php
-			 
-			 while($rows = mysqli_fetch_assoc($result2))
-			 {
-			 	?>
-			 <p class="card-body"><?php echo $rows['description_of_assignment']; ?></p>
-
-			 <?php } ?>
+			
 			
 		</div>
 		

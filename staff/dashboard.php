@@ -16,12 +16,15 @@
    $active="dashboard";
    include('../layouts/nav.php');
    
-   
 //    $result2 = mysqli_query($conn,"SELECT class_id,assignment_name,date_of_submission,assignment_id,assignment_marks from assignments where user_id = ".$user->id." ");
    $result2 = mysqli_query($conn,"SELECT distinct c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c where a.user_id = $user->id and c.class_id = a.class_id  ");
    $rowcount = mysqli_num_rows($result2);
    $result4 = mysqli_query($conn,"SELECT distinct  c.class_name, a.class_id,a.assignment_name,a.date_of_submission,a.assignment_marks,a.assignment_id from assignments as a,class as c,assignment_evaluation as ae where a.user_id = $user->id and c.class_id = a.class_id   ");
-   $rowcount2 = mysqli_num_rows($result4); ?> 
+   $rowcount2 = mysqli_num_rows($result4);
+   $result5 =  mysqli_query($conn,"SELECT pe.project_id,p.project_name from project_evaluation as pe,projects as p where pe.project_id = p.project_id and pe.user_id = $user->id ");
+   $rowcount5 = mysqli_num_rows($result5);
+
+?> 
    
    
    <section class="stats">
@@ -32,7 +35,7 @@
    						<div class="row">
    							<div class="col-three">
    								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;5</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;<?php  echo $rowcount5;?></i></h2>
    									<h6>Projects Evaluated</h6>
    								</div>
 								
@@ -61,27 +64,6 @@
    			</div>
 
    		</div>
-   		<!-- <div class="row">
-   		      <div class="col-twelve">
-                        <div class="container">
-                              <h5 class="add">Recent Evaluation Results</h5>                 
-                              <table class="table-common">
-                                    <tr>
-                                    <th>Title</th>
-                                    </tr>
-                                    <tr>
-                                    <td><a href="#"><h4>Assignment 1</h4></a></td>
-                                    </tr>
-                                    <tr>
-                                    <td><a href="#"><h4>Project 1</h4></a></td>
-                                    </tr>
-                                    <tr>
-                                    <td><a href="#"><h4>Assignment 3</h4></a></td>
-                                    </tr>
-                              </table>
-                        </div>
-                  </div>
-            </div> -->
 
             <div class="row">
                   <div class="col-five">
@@ -91,15 +73,19 @@
                                     <tr>
                                     <th>Title</th>
                                     </tr>
+                                    <?php
+                                          //include('../php/create_assignments.php');
+                                          
+                                          while($rows = mysqli_fetch_assoc($result5))
+                                          {
+                                    ?>
                                     <tr>
-                                    <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
+                                    <td><a href="projectinfo.php?project_id=<?php echo $rows['project_id']; ?>"><h4><?php  echo $rows['project_name']; ?></h4></a></td>
                                     </tr>
-                                    <tr>
-                                    <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                                    </tr>
-                                    <tr>
-                                    <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                                    </tr>
+                              <?php  }
+                              
+
+                              ?>
                               </table>
                         </div>
                   </div>

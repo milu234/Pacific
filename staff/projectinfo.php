@@ -44,12 +44,22 @@
     <?php
     require "../php/includes/db.php";
       if(isset($_GET['project_id'])){
-        
-        //
-        $query = "SELECT project_name, project_description from projects where project_id=".$_GET['project_id'];
-        $result = mysqli_query($conn, $query);
-        if($result){
-          $project_info = mysqli_fetch_assoc($result);
+        $id = $_GET['project_id'];
+        $query1 = "SELECT project_name, project_description,project_link from projects where project_id=".$_GET['project_id'];
+        $result1 = mysqli_query($conn, $query1);
+        $query2 = "SELECT u.name,t.task_title,t.task_description from users as u,tasks as t where u.user_id in (select user_id from works_on where project_id = $id) and t.user_id = u.user_id";
+        $result2 = mysqli_query($conn,$query2);
+        $query3 = "SELECT project_evaluation from projects where project_id = $id";
+        $result3 = mysqli_query($conn,$query3);
+        $row_count = mysqli_num_rows($result2);
+        if($result1){
+          $project_info = mysqli_fetch_assoc($result1);
+        }
+        if($result2){
+          $project_members = mysqli_fetch_all($result2);
+        }
+        if($result3){
+          $project_status = mysqli_fetch_assoc($result3);
         }
     }
     ?>
@@ -61,7 +71,7 @@
           <table class="table-common">
             <tr>
               <td class="title"><h5>Project Name</h5></td>
-              <td><p><?php echo $project_info['project_name']?></p></td>
+              <td><a href="<?php echo $project_info['project_link']?>" target="_blank"><p style="font-size:20px; font-weight:bold;"><?php echo $project_info['project_name']?></p></a></td>
             </tr>
             <tr>
               <td class="title"><h5>Project Description</h5></td>
@@ -75,25 +85,31 @@
           <div class="card col-twelve">
             <div class="menu">
               <div class="table-header"><h2 class="add">Tasks Performed By Each Student</h2></div>
-              <button class="collapsible">Student 1<i style="float: right;" class="fa fa-plus"></i></button>
+              <?php
+              for($i=0;$i<$row_count;$i++){
+              ?>
+                <button class="collapsible"><?php echo $project_members[$i][0]  ?><i style="float: right;" class="fa fa-plus"></i></button>
               <div class="content">
-                <p>Task Performed by student 1</p>
+                <table class="table-common">
+                <tr>
+                  <h4>Task Name</h4>
+                  <p><?php echo $project_members[$i][1]?></p>
+                </tr>
+                <tr>
+                <h4>Task Description</h4>
+                <p><?php echo $project_members[$i][2]?></p>
+                </tr>
+                </table>               
               </div>
-              <button class="collapsible">Student 2<i style="float: right;" class="fa fa-plus"></i></button>
-              <div class="content">
-                <p>Task Performed by student 2</p>
-              </div>
-              <button class="collapsible">Student 3<i style="float: right;" class="fa fa-plus"></i></button>
-              <div class="content">
-                <p>Task Performed by student 3</p>
-              </div>
-
+              <?php } ?>
             </div>
           </div>
       </div>
       <br>
       <div style="text-align: center;" class="row">
+      <?php if($project_status['project_evaluation'] == "sent for evaluation") { ?>
         <button style="background-color: #24b3ab;" class="button" onclick="showModal()">Mark as Evaluated</button>
+      <?php }?>
       </div>
 
   </section>
@@ -134,10 +150,10 @@
   }
   </script>
 
+<div class="clearfix"></div>
 
 <?php include('../layouts/footer.php');?>
     <script src="../js/jquery-1.11.3.min.js"></script>
-   <script src="../js/plugins.js"></script>
    <script src="../js/main.js"></script>
 </body>
 </html>

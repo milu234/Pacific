@@ -28,11 +28,11 @@ if (isset($_POST['save'])){
         if(mysqli_num_rows($result) > 0) {
         	$project_id = mysqli_fetch_assoc($result)['project_id'];
         	$user = unserialize($_SESSION['user']);
-        	$query = "INSERT into works_on values(".$user->id.", $project_id, 'leader')";
+        	$query = "INSERT into works_on(user_id,project_id,project_role) values(".$user->id.", $project_id, 'leader')";
         	//echo $query;
         	$result = mysqli_query($conn, $query);
         	if($result){
-        		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/");
+        		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/student/dashboard.php");
         	}
         }
 		header("location:http://".$_SERVER['HTTP_HOST']."/Pacific/index.php?err=project_upload_error");

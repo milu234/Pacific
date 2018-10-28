@@ -27,7 +27,10 @@
     $rowcount1 = mysqli_num_rows($result4);
     $result5 = mysqli_query($conn,"SELECT a.assignment_name from assignments as a,assignment_evaluation as e where a.assignment_id = e.assignment_id and e.user_id = $user->id and e.assignment_marks = 0 ");//assignments pending
     $rowcount2 = mysqli_num_rows($result5);
-    
+    $result6 = mysqli_query($conn,"SELECT * from projects as p, works_on as w where p.project_id = w.project_id and w.user_id = $user->id ");
+    $rowcount3 = mysqli_num_rows($result6);
+    $result7 = mysqli_query($conn,"SELECT * from project_evaluation as pe, works_on as w where pe.project_id = w.project_id and w.user_id = $user->id");
+    $rowcount4 = mysqli_num_rows($result7);
     ?>
 
    <section class="stats">
@@ -38,14 +41,14 @@
    						<div class="row">
    							<div class="col-three">
    								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;5</i></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;<?php echo $rowcount3 ?></i></h2>
    									<h6>Projects Created</h6>
    								</div>
 								
 							</div>
 							<div class="col-three">
 								<div class="card dash-box">
-   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;2</i></h2></h2>
+   									<h2><i style="font-size:3rem;" class="fa fa-clipboard" aria-hidden="true">&nbsp;<?php echo $rowcount4 ?></i></h2></h2>
    									<h6>Projects Submitted</h6>
    								</div>
 							</div>
@@ -101,15 +104,20 @@
                         <tr>
                            <th>Title</th>
                         </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 1</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 2</h4></a></td>
-                        </tr>
-                        <tr>
-                           <td><a href="projectinfo.php"><h4>Project 3</h4></a></td>
-                        </tr>
+                     <?php
+                                          
+                                          
+                                          while($rows = mysqli_fetch_assoc($result6) )
+                                          {
+                                    ?>
+                                    <tr>
+                                    
+                                    <td><a href="projectinfo.php?project_id=<?php echo $rows['project_id']; ?>"><h4><?php  echo $rows['project_name']; ?></h4></a></td>
+                                    
+                                    <!-- <td><button class="btn"><i class="fa fa-trash"></i></button></td> -->
+                                    </tr>
+                              <?php  }?>
+                        
                      </table>
                   </div>
                </div>

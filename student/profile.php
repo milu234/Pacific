@@ -33,7 +33,7 @@
             <div class="card col-three">
                 <form method="post" action="" enctype="multipart/form-data" id="myform">
                     <div class='preview'>
-                        <img 
+                    <img 
                         src="<?php 
                         if($user->image_path!=null)
                         echo "$user->image_path";
