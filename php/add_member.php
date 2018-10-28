@@ -1,4 +1,5 @@
 <?php
+	include 'includes/db.php';
 	require 'includes/User.php';
 	session_start();
 	require "./includes/db.php";

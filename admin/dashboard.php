@@ -39,8 +39,15 @@
 
             <nav id="main-nav-wrap ">
                     <ul class="main-navigation">
-                        <li><a href="import.php">Import</a></li> 
-						<li class="highlight"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>Hi , <?php "'.$user->name.'" ?></a></li>
+                        
+						<li class="highlight"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>Hi , <?php echo $user->name ?></a></li>
+
+                        <li><a href="../php/import.php">Import</a></li> 
+                        <!-- ================================View users========================================== -->
+
+                    <li><a href="viewusers.php">View Users</a></li> 
+						<!-- <li class="highlight"><a href="#features" title=""><i class="fa fa-user-circle-o"></i>Hi , <?php echo $user->name ?></a></li> -->
+
 						<li class="highlight"><a href="../php/logout.php" title="">Logout</a></li>
                     </ul>
             </nav>
