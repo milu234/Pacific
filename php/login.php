@@ -1,4 +1,5 @@
 <?php
+	include 'includes/db.php';
 	require '../php/includes/User.php';
 	session_start();
 	if(isset($_SESSION['user'])){
@@ -20,7 +21,7 @@
 			// password matched
 			$user = mysqli_fetch_assoc($result);
 			include 'includes/utils.php';
-			include 'includes/User.php';
+			// include 'includes/User.php';
 			$user_obj = new User($user['user_id'],$user['name'], $email, getRoleName($user['role_id']), getClassName($user['class_id']), $user['image_path']);
 			$_SESSION['user'] = serialize($user_obj);
 			$_SESSION['login_success'] = True;
